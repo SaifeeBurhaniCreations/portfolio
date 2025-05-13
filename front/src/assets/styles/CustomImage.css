@@ -1,0 +1,15 @@
+/* CustomImage.css */
+
+.custom-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    .image {
+        border-radius: 16px;
+    }
+    .loader {
+        position: absolute;
+    }
+}
