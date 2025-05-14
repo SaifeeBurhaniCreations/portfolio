@@ -1,7 +1,10 @@
 import { getColor } from "../../constants/colors"
+import SparkClick from "../icons/SparkClick"
 import AutoLayout from "../layout/AutoLayout"
+import { HStack } from "../layout/HStack"
 import { VStack } from "../layout/VStack"
 import Typography from "../typography/Typography"
+import Button from "./Buttons/Button"
 import CustomImage from "./CustomImage"
 
 interface ProjectCardProps {
@@ -25,7 +28,7 @@ const ProjectDescriptionCard: React.FC<CardContentProps> = ({ children, index })
         padding: '30px',
         width: '110%',
         position: 'relative',
-        zIndex: 9,
+        zIndex: 6,
         marginLeft: !index ? '-10%' : '0'
     };
 
@@ -36,6 +39,7 @@ const ProjectDescriptionCard: React.FC<CardContentProps> = ({ children, index })
                 family='jk' 
                 style={{ fontWeight: 500 }} 
                 color={getColor('purple', 100)}
+                isAnimate={true}
             >
                 {children}
             </Typography>
@@ -70,6 +74,14 @@ const ProjectContent: React.FC<Pick<ProjectCardProps, 'projectName' | 'index' | 
             <ProjectDescriptionCard index={isEvenIndex}>
                 {description}
             </ProjectDescriptionCard>
+            <HStack align="center" justify="center">
+                <Button height={10} border="none" bg="transparent" width={10} >
+                    <SparkClick />
+                </Button>
+                <Button height={10} border="none" bg="transparent" width={10} >
+                    <SparkClick />
+                </Button>
+            </HStack>
         </VStack>
     )
 }
@@ -83,8 +95,9 @@ const ProjectBanner: React.FC<Pick<ProjectCardProps, 'banner' | 'index'>> = ({ b
             : '0 10px 10px 0'
     }
 
-    const containerStyle = {
+    const containerStyle: React.CSSProperties = {
         backgroundColor: getColor("purple", 700),
+        overflow: 'hidden',
         padding: isEvenIndex 
             ? '30px 0 0 30px' 
             : '30px 30px 0 0',
@@ -99,6 +112,9 @@ const ProjectBanner: React.FC<Pick<ProjectCardProps, 'banner' | 'index'>> = ({ b
                 style={imageStyle} 
                 imgStyle={imageStyle} 
                 src={banner} 
+                direction={isEvenIndex ? 'right' : 'left'}
+                isAnimate={true}
+                onZoom={true}
             />
         </div>
     )

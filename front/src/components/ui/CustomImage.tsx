@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { CustomImageProps } from "../../types";
 import Loader from './Loader';
 import '../../assets/styles/CustomImage.css';
+import { imageFadeAnimation } from '../animation/animation';
+
 
 const CustomImage: React.FC<CustomImageProps> = ({
     src,
@@ -12,31 +14,51 @@ const CustomImage: React.FC<CustomImageProps> = ({
     borderRadius = 16,
     fallback = "https://via.placeholder.com/150",
     loadingIndicator = true,
+    isAnimate = false,
+    direction = 'left',
+    onZoom = false
 }) => {
     const [imageError, setImageError] = useState(false);
     const [loading, setLoading] = useState(true);
+    const imgRef = useRef<HTMLImageElement>(null);
 
-    // Determine the image source
     const source = imageError ? fallback : src;
 
-    const imageInStyle = {
+    const imageInStyle: React.CSSProperties = {
         width,
         height,
         borderRadius,
+        transition: "transform 0.3s ease",
         ...imgStyle,
     };
 
-    return (
-        <div className="custom-image" style={{ ...style }}>
-            {/* Loading Indicator */}
-            {loading && loadingIndicator && (
-                <Loader />
-            )}
+    useEffect(() => {
+        if (isAnimate && !loading && imgRef.current) {
+            imageFadeAnimation(imgRef, direction)
+        }
+    }, [isAnimate, loading, direction]);
 
-            {/* Image */}
+    const handleMouseEnter = () => {
+        if (onZoom && imgRef.current) {
+            imgRef.current.style.transform = "scale(1.05)";
+        }
+    };
+
+    const handleMouseLeave = () => {
+        if (onZoom && imgRef.current) {
+            imgRef.current.style.transform = "scale(1)";
+        }
+    };
+
+    return (
+        <div style={{ ...style }}>
+            {loading && loadingIndicator && <Loader />}
+
             <img
+                ref={imgRef}
                 src={source}
-                className="image"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
                 style={imageInStyle}
                 onLoad={() => setLoading(false)}
                 onError={() => {

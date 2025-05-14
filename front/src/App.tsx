@@ -1,5 +1,4 @@
 import './App.css'
-import banner_img from './assets/images/png/banner-img.png' 
 import arrow_img from './assets/images/png/arrow-img.png' 
 import Typography from './components/typography/Typography'
 import CustomImage from './components/ui/CustomImage'
@@ -8,13 +7,16 @@ import { VStack } from './components/layout/VStack'
 import ProjectCard from './components/ui/ProjectCard'
 import AutoLayout from './components/layout/AutoLayout'
 import card_img_1 from './assets/images/png/card-1.png'
-import TechStackSvg from './components/TechStackSvg'
+import TechStackSvg from './components/svgComponents/TechStackSvg'
 import WorkDetailCard from './components/ui/WorkDetailCard'
 import project_img from "./assets/images/project-img.jpg"
 import { HStack } from './components/layout/HStack'
 import MainWrapper from './components/layout/MainWrapper'
 import Gradient from './components/ui/Gradient'
 import TypewriterText from './components/typography/TypewriterText'
+import BannerSvg from './components/svgComponents/BannerSvg'
+import SBLogo from './components/icons/SBLogo'
+import logo from './assets/images/svg/full-logo.svg'
 
 
 
@@ -52,9 +54,12 @@ const projects = [
     description: "A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.", 
     banner: project_img
   },
+  {
+    projectName : "Example Project", 
+    description: "A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.", 
+    banner: project_img
+  },
 ]
-
-
 
 const App = () => {
 
@@ -62,10 +67,10 @@ const App = () => {
     <>
       <header className='header' style={{backgroundColor: getColor("purple", 800)}}>
         <div className="container">
-          <div className="row">
+          <div className="row align-items-center">
             <div className="col-md-6">
               <div className="logo">
-
+                <CustomImage borderRadius={0} src={logo} style={{ justifyContent: 'start' }} imgStyle={{ objectFit: 'contain', width: '34%' }} />
               </div>
             </div>
             <div className="col-md-6">
@@ -85,7 +90,7 @@ const App = () => {
         <HStack align='end' justify='start' gap={50} style={{position: "relative"}}>
           <div className="width-100">
             <Gradient width={500} position={{ left: '12%', top: '55%', transform: `translate(-50%, -50%)` }} />
-            <CustomImage borderRadius={0} src={banner_img} />
+            <BannerSvg />
             <CustomImage style={{position: 'absolute', top: '-40%', left: '16%'}} width={180} borderRadius={0} src={arrow_img} />
             <Typography 
               style={{ position: 'absolute', top: '-28%', left: '28%' }} 
@@ -138,12 +143,13 @@ const App = () => {
       </MainWrapper>
 
       <MainWrapper>
-        <VStack justify='center' align='center' gap={30}>
+        <VStack justify='center' align='center' style={{position: 'relative'}} gap={30}>
           <VStack justify='center' align='center' gap={10}>
             <Typography variant='h3' family='p' style={{fontWeight: 400}} color={getColor('light')}>I'm currently looking to join a <span style={{color: getColor("purple")}}>cross-functional</span> team</Typography>
             <Typography variant='h6' family='p' style={{fontWeight: 400}} color={getColor('light')}>that values improving people's lives through accessible design </Typography>
           </VStack>
           <TechStackSvg />
+          <SBLogo isAnimate={true} position={{ transform: 'translate(-50%, -50%)', top: '69%', left: '49.4%', position: 'absolute' }} />
         </VStack>
       </MainWrapper>
 
