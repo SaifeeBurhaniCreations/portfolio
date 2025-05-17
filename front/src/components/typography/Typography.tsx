@@ -34,9 +34,10 @@ interface TypographyProps {
   style?: CSSProperties;
   family?: FamilyVariant;
   children: React.ReactNode;
+  className?: any;
 }
 
-const Typography = memo(({ variant, color, align, style, children, family }: TypographyProps) => {
+const Typography = memo(({ variant, color, align, style, children, family, className }: TypographyProps) => {
   const textStyle: CSSProperties = {
     ...typographyStyles[variant],
     color: color || 'dark',
@@ -44,7 +45,7 @@ const Typography = memo(({ variant, color, align, style, children, family }: Typ
     fontFamily: family && familyMapping[family] || familyMapping["jk"],
   };
 
-  return <span style={{ ...textStyle, ...style }}>{children}</span>;
+    return <span className={className}  style={{ ...textStyle, ...style }}>{children}</span>;
 });
 
 export default Typography;

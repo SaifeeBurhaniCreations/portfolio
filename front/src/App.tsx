@@ -54,8 +54,6 @@ const projects = [
   },
 ]
 
-
-
 const App = () => {
 
   return (
@@ -93,10 +91,10 @@ const App = () => {
               family='p' 
               color={getColor('light')}
             >
-              Hello! I Am{' '}
+              Hi, from{' '}
               <TypewriterText
                 color={getColor('purple')}
-                words={['Jafar us sadiq', 'Ali asger']}
+                words={['Saifee Burhani Creations Team']}
                 typingSpeed={100}
                 erasingSpeed={50}
                 delayBetweenWords={2000}
@@ -104,9 +102,9 @@ const App = () => {
             </Typography>
           </div>
           <VStack align='start' justify='center' gap={5}>
-            <Typography variant='b3' family='p' color={getColor('light')}>A Designer who</Typography>
-            <Typography variant='h1' family='p' style={{fontWeight: 400}} color={getColor('light')}>Judges a book <br /> by its <span style={{color: getColor("purple")}}>cover</span>...</Typography>
-            <Typography variant='b5' family='p' color={getColor('light')}>Because if the cover does not impress you what else can?</Typography>
+            <Typography variant='b3' family='p' color={getColor('light')}>We’re a creative </Typography>
+            <Typography variant='h1' family='p' style={{fontWeight: 400}} color={getColor('light')}> Tech agency that <br />  <span style={{color: getColor("purple")}}>believes</span>...</Typography>
+            <Typography variant='b5' family='p' color={getColor('light')}>in today’s digital world, design is credibility</Typography>
           </VStack>
         </HStack>
       </MainWrapper>
@@ -114,11 +112,18 @@ const App = () => {
       <MainWrapper>
         <VStack justify='between' align='start' gap={50}>
           <VStack justify='center' align='start' gap={10}>
-            <Typography variant='h1' family='p' style={{fontWeight: 400}} color={getColor('light')}>I'm a Software Engineer.|</Typography>
-            <Typography variant='b2' family='p' style={{fontWeight: 400}} color={getColor('light')}>Currently, I'm a Software Engineer at <span style={{color: getColor("purple")}}>Facebook</span>,</Typography>
+          <TypewriterText
+                color={getColor('purple')}
+                words={['We design and develop digital experiences that feel as good as they look']}
+                typingSpeed={100}
+                erasingSpeed={50}
+                delayBetweenWords={2000}
+                variant='h2'
+              />
+            <Typography variant='b2' family='p' style={{fontWeight: 400}} color={getColor('light')}>Aliasger & Jafar lead a digital studio turning ideas into <span style={{color: getColor("purple")}}>standout interfaces</span>,</Typography>
           </VStack>
 
-          <Typography variant='b2' family='p' style={{fontWeight: 400}} color={getColor('light')}>A self-taught UI/UX designer, functioning in the industry for 3+ years now. I make meaningful and delightful digital products that create an equilibrium between user needs and business goals.</Typography>
+          <Typography variant='b2' family='p' style={{fontWeight: 400}} color={getColor('light')}>We help brands simplify complexity with beautiful, functional, and scalable digital solutions.</Typography>
         </VStack>
       </MainWrapper>
 
