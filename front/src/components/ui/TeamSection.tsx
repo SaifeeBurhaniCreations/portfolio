@@ -45,7 +45,7 @@ export const TeamSection: React.FC = () => {
                 <HStack justify="center" align="center" gap={32} style={{minHeight: '350px'}}>
                     {teamMembers.map((member, index) => (
                         <div className="position-rel" key={index}>
-                            <Gradient width={300} position={{ left: '50%', top: '50%', transform: `translate(-50%, -50%)` }} />
+                            <Gradient width={300} coordinates={{ left: '50%', top: '50%', transform: `translate(-50%, -50%)` }} />
                             <div key={index} style={{background: getColor('overlay', 300)}} className="profile-card">
                                 <div className="img">
                                     <img src={member.image} alt={member.name} />

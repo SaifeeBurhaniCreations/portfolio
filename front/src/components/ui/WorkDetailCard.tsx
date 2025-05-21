@@ -151,7 +151,7 @@ const WorkDetailCard: React.FC<ProjectCardProps> = ({ projectName, description, 
                 index={index} 
             />
             <div className="position-rel">
-                <Gradient width={550} position={gredientStyle} />
+                <Gradient width={550} coordinates={gredientStyle} />
                 <ProjectBanner 
                     banner={banner} 
                     index={index} 
