@@ -76,10 +76,10 @@ const ProjectContent: React.FC<Pick<ProjectCardProps, 'projectName' | 'index' | 
                 {description}
             </ProjectDescriptionCard>
             <HStack align="center" justify="center">
-                <Button height={10} border="none" bg="transparent" width={10} >
+                <Button height={12} border="none" bg="transparent" width={12} >
                     <SparkClick />
                 </Button>
-                <Button height={10} border="none" bg="transparent" width={10} >
+                <Button height={12} border="none" bg="transparent" width={12} >
                     <SparkClick />
                 </Button>
             </HStack>
@@ -90,7 +90,7 @@ const ProjectContent: React.FC<Pick<ProjectCardProps, 'projectName' | 'index' | 
 const ProjectBanner: React.FC<Pick<ProjectCardProps, 'banner' | 'index'>> = ({ banner, index }) => {
     const isEvenIndex = index % 2 === 0
     
-    const imageStyle = {
+    const imageStyle: React.CSSProperties = {
         borderRadius: isEvenIndex 
             ? '10px 0 0 10px' 
             : '0 10px 10px 0'
@@ -110,12 +110,18 @@ const ProjectBanner: React.FC<Pick<ProjectCardProps, 'banner' | 'index'>> = ({ b
         <div style={containerStyle}>
             <CustomImage 
                 borderRadius={0} 
-                style={imageStyle} 
+                style={{
+                    display: "flex",
+                    justifyContent: isEvenIndex 
+                    ? 'flex-end' 
+                    : 'flex-start',
+                }} 
                 imgStyle={imageStyle} 
                 src={banner} 
                 direction={isEvenIndex ? 'right' : 'left'}
                 isAnimate={true}
                 onZoom={true}
+                width={"90%"}
             />
         </div>
     )

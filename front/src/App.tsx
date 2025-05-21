@@ -7,16 +7,19 @@ import { VStack } from './components/layout/VStack'
 import ProjectCard from './components/ui/ProjectCard'
 import AutoLayout from './components/layout/AutoLayout'
 import card_img_1 from './assets/images/png/card-1.png'
+import card_img_2 from './assets/images/png/card-2.png'
+import card_img_3 from './assets/images/png/card-3.png'
+import card_img_4 from './assets/images/png/card-4.png'
 import TechStackSvg from './components/svgComponents/TechStackSvg'
 import WorkDetailCard from './components/ui/WorkDetailCard'
 import project_img from "./assets/images/project-img.jpg"
+import work_img_1 from "./assets/images/png/work-2.png"
 import { HStack } from './components/layout/HStack'
 import MainWrapper from './components/layout/MainWrapper'
 import Gradient from './components/ui/Gradient'
 import TypewriterText from './components/typography/TypewriterText'
 import BannerSvg from './components/svgComponents/BannerSvg'
 import SBLogo from './components/svgComponents/SBLogo'
-import logo from './assets/images/svg/sbc.svg'
 import TeamSection from './components/ui/TeamSection'
 import Input from './components/ui/Inputs/Input'
 import { useState } from 'react'
@@ -26,37 +29,38 @@ import Send from './components/icons/Send'
 import QuestionMark from './components/svgComponents/QuestionMark'
 import Accordion from './components/ui/Accordian/Accordion'
 import Footer from './components/ui/Footer'
+import Header from './components/ui/Header'
 
 
 
-const array = [
+const tools = [
   {
     banner: card_img_1,
-    heading: "CIB on the Mobile",
-    description: "Take your client onboard seamlessly by our amazing tool of digital onboard process.",
+    heading: "SBC-Deploy",
+    description: "Seamless in-house app deployment platform. Automate delivery with ease. Get 1 month free for real client deployment.",
   },
   {
-    banner: card_img_1,
-    heading: "CIB on the Mobile",
-    description: "Take your client onboard seamlessly by our amazing tool of digital onboard process.",
+    banner: card_img_2,
+    heading: "SBC-UtilX",
+    description: "Smart utility monitoring and analytics. Optimize usage, reduce costs, and gain insights instantly. Get started with a 1-month free trial for real-time data tracking.",
   },
   {
-    banner: card_img_1,
-    heading: "CIB on the Mobile",
-    description: "Take your client onboard seamlessly by our amazing tool of digital onboard process.",
+    banner: card_img_3,
+    heading: "SBC-ERP",
+    description: "All-in-one ERP solution for growing businesses. Manage operations, finance, and inventory with ease. Start with a 1-month free trial and streamline your workflow today.",
   },
   {
-    banner: card_img_1,
-    heading: "CIB on the Mobile",
-    description: "Take your client onboard seamlessly by our amazing tool of digital onboard process.",
+    banner: card_img_4,
+    heading: "SBC-Toolset",
+    description: "A complete dev kit with hooks, design & icon libraries, and prebuilt frameworks. Build faster with our optimized starter kits. Try it free for 1 month.",
   }
 ]
 
 const projects = [
   {
-    projectName : "Example Project", 
+    projectName : "OddiVille", 
     description: "A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.", 
-    banner: project_img
+    banner: work_img_1
   },
   {
     projectName : "Example Project", 
@@ -142,39 +146,14 @@ const services = [
   // Add more items as needed
 ];
 
+
 const App = () => {
 
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
 
-
   return (
     <>
-      <header className='header'>
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12">
-              <div className="layout" style={{backgroundColor: getColor('overlay'), backgroundBlendMode: 'overlay, normal', backdropFilter: 'blur(40px)', border: `1px solid ${getColor('purple', 100, 0.2)}`}}>
-              <div className="navlinks">
-                <ul>
-                  <li><Typography variant='b2' color={getColor('light')}>Home</Typography></li>
-                  <li><Typography variant='b2' color={getColor('light')}>About</Typography></li>
-                </ul>
-              </div>
-              <div className="logo">
-                <CustomImage borderRadius={0} onZoom={true} src={logo} style={{ justifyContent: 'center', display: 'flex', cursor: 'pointer' }} imgStyle={{ objectFit: 'contain', width: '64%' }} />
-              </div>
-              <div className="navlinks">
-                <ul>
-                  <li><Typography variant='b2' color={getColor('light')}>Projects</Typography></li>
-                  <li><Typography variant='b2' color={getColor('light')}>Blogs</Typography></li>
-                </ul>
-              </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header />
 
       <MainWrapper>
         <HStack align='end' justify='start' gap={50} style={{position: "relative"}}>
@@ -188,10 +167,10 @@ const App = () => {
               family='p' 
               color={getColor('light')}
             >
-              Hello! I Am{' '}
+              Hi, from{' '}
               <TypewriterText
                 color={getColor('purple')}
-                words={['Jafar us sadiq', 'Ali asger']}
+                words={['Saifee Burhani Creations Team']}
                 typingSpeed={100}
                 erasingSpeed={50}
                 delayBetweenWords={2000}
@@ -199,32 +178,43 @@ const App = () => {
             </Typography>
           </div>
           <VStack align='start' justify='center' gap={5}>
-            <Typography variant='b3' family='p' color={getColor('light')}>We’re a creative </Typography>
-            <Typography variant='h1' family='p' style={{fontWeight: 400}} color={getColor('light')}> Tech agency that <br />  <span style={{color: getColor("purple")}}>believes</span>...</Typography>
-            <Typography variant='b5' family='p' color={getColor('light')}>in today’s digital world, design is credibility</Typography>
+            <Typography variant='b3' family='p' color={getColor('light')}>
+              We’re a creative
+            </Typography>
+            <Typography variant='h1' family='p' style={{ fontWeight: 400 }} color={getColor('light')}>
+              Tech agency that <br /> <span style={{ color: getColor('purple') }}>builds</span> ideas into impact
+            </Typography>
+            <Typography variant='b5' family='p' color={getColor('light')}>
+              through bold design and bulletproof code
+            </Typography>
           </VStack>
+
         </HStack>
       </MainWrapper>
 
       <MainWrapper>
         <VStack justify='between' align='start' gap={50}>
           <VStack justify='center' align='start' gap={10}>
-            <Typography variant='h1' family='p' style={{fontWeight: 400}} color={getColor('light')}>I'm a Software Engineer.|</Typography>
-            <Typography variant='b2' family='p' style={{fontWeight: 400}} color={getColor('light')}>Currently, I'm a Software Engineer at <span style={{color: getColor("purple")}}>Facebook</span>,</Typography>
+            <Typography variant='h2' family='p' style={{ fontWeight: 400 }} color={getColor('light')}>We design and develop digital experiences that feel as good as they look|</Typography>
+            <Typography variant='b2' family='p' style={{ fontWeight: 400 }} color={getColor('light')}>
+              Aliasger & Jafar us Sadiq lead a creative tech studio turning bold concepts into <span style={{ color: getColor('purple') }}>striking interfaces</span>, blending pixel-perfect design with robust, scalable code.
+            </Typography>
+
           </VStack>
 
-          <Typography variant='b2' family='p' style={{fontWeight: 400}} color={getColor('light')}>A self-taught UI/UX designer, functioning in the industry for 3+ years now. I make meaningful and delightful digital products that create an equilibrium between user needs and business goals.</Typography>
+          <Typography variant='b2' family='p' style={{ fontWeight: 400 }} color={getColor('light')}>We partner with ambitious brands to transform complex ideas into beautifully designed, high-performance digital experiences.
+            From strategy and design to scalable development, we build solutions that are not only functional and intuitive—but also ready to grow with your business.</Typography>
         </VStack>
       </MainWrapper>
 
       <MainWrapper>
         <VStack align='start' justify='center' gap={30}>
-          <Typography variant='h2' family='p' style={{fontWeight: 400}} color={getColor('light')}>Work Experience</Typography>
+          <Typography variant='h2' family='p' style={{fontWeight: 400}} color={getColor('light')}>SBC Tools & Systems</Typography>
           <AutoLayout className='position-rel' columns={2} align='center' gap={30}>
           <Gradient width={650} position={{ left: '50%', top: '38%', transform: `translate(-50%, -50%)` }} />
 
             {
-              array?.map((value, index) => (
+              tools?.map((value, index) => (
                 <ProjectCard banner={value.banner} heading={value.heading} description={value.description} index={index} />
               ))
             }

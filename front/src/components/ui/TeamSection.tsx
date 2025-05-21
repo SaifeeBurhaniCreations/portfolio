@@ -6,14 +6,16 @@ import GitHub from "../icons/GitHub";
 import { getColor } from "../../constants/colors";
 import Typography from "../typography/Typography";
 import { VStack } from "../layout/VStack";
+import sadiq from '../../assets/images/png/sadiq.png'
+import aliasger from '../../assets/images/png/aliasger.png'
 import Gradient from "./Gradient";
-import CustomImage from "./CustomImage";
+
 
 const teamMembers = [
     {
-        name: "Vin Diesel",
-        role: "Senior App Developer",
-        image: "https://1.bp.blogspot.com/-8c7QTLoyajs/YLjr2V6KYRI/AAAAAAAACO8/ViVPQpLWVM0jGh3RZhh-Ha1-1r3Oj62wQCNcBGAsYHQ/s16000/team-1-3.jpg",
+        name: "Ali asger",
+        role: "Front End Developer",
+        image: aliasger,
         socials: {
             linkedin: "#",
             instagram: "#",
@@ -21,15 +23,15 @@ const teamMembers = [
         },
     },
     {
-        name: "David Corner",
-        role: "Front End Developer",
-        image: "https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg",
+        name: "Jafar Us Sadiq",
+        role: "CEO",
+        image: sadiq,
         socials: {
             linkedin: "#",
             instagram: "#",
             github: "#",
         },
-    }
+    },
 ];
 
 export const TeamSection: React.FC = () => {

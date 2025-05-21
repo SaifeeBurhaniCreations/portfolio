@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+ import React, { useState, useEffect, useRef } from 'react';
 import { CustomImageProps } from "../../types";
 import Loader from './Loader';
 import '../../assets/styles/CustomImage.css';
@@ -68,6 +68,7 @@ const CustomImage: React.FC<CustomImageProps> = ({
                     setImageError(true);
                 }}
                 alt=""
+                loading='lazy'
             />
         </div>
     );

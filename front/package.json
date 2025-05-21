@@ -11,11 +11,10 @@
   },
   "dependencies": {
     "@studio-freight/react-lenis": "^0.0.47",
-    "animejs": "^4.0.2",
+    "front": "file:",
     "gsap": "^3.12.7",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-icons": "^5.5.0"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",

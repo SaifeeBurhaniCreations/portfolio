@@ -5,7 +5,7 @@ import { ButtonProps } from '../../../types';
 
 const Button: React.FC<ButtonProps> = ({
     children,
-    height = 10, 
+    height = 12, 
     width = 24,  
     radius = 16,
     bg = getColor("purple", 600),

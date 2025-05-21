@@ -1,5 +1,6 @@
 import { FC, useState, useEffect } from 'react'
 import { getColor } from '../../constants/colors'
+import Typography from './Typography';
 
 
 interface TypewriterTextProps {
@@ -8,6 +9,7 @@ interface TypewriterTextProps {
     erasingSpeed?: number;
     delayBetweenWords?: number;
     color?: string;
+    variant?: "span" | "h2"
 }
 
 const TypewriterText: FC<TypewriterTextProps> = ({
@@ -15,7 +17,8 @@ const TypewriterText: FC<TypewriterTextProps> = ({
     typingSpeed = 100,
     erasingSpeed = 50,
     color = getColor('purple'),
-    delayBetweenWords = 2000
+    delayBetweenWords = 2000,
+    variant = "span"
 }) => {
     const [currentWordIndex, setCurrentWordIndex] = useState(0);
     const [currentText, setCurrentText] = useState('');
@@ -23,7 +26,7 @@ const TypewriterText: FC<TypewriterTextProps> = ({
     const [isWaiting, setIsWaiting] = useState(false);
 
     useEffect(() => {
-        let timeout: NodeJS.Timeout;
+        let timeout: NodeJs.Timeout;
 
         if (isWaiting) {
             timeout = setTimeout(() => {
@@ -55,12 +58,26 @@ const TypewriterText: FC<TypewriterTextProps> = ({
         return () => clearTimeout(timeout);
     }, [currentText, currentWordIndex, isDeleting, isWaiting, words, typingSpeed, erasingSpeed, delayBetweenWords]);
 
-    return (
+    if(variant === "span") {
+        return (
             <span style={{ color }}>
                 {currentText}
                 <span className="cursor">|</span>
             </span>
     );
+    } else if(variant === "h2") {
+        return (
+            <Typography variant='h2' family='p' style={{fontWeight: 400}} color={getColor('light')}>{currentText}<Typography variant='h2' family='p' style={{fontWeight: 400}} color={getColor('light')} className="cursor">|</Typography></Typography>
+    );
+    } else {
+        return (
+            <span style={{ color }}>
+                {currentText}
+                <span className="cursor">|</span>
+            </span>
+    );
+    }
+   
 };
 
 export default TypewriterText

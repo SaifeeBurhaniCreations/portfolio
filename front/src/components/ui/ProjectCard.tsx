@@ -33,7 +33,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, banner, heading, descr
   return (
     <>
         <HStack justify="start" align="center" gap={10} style={containerStyle} ref={cardRef} >
-            <CustomImage borderRadius={0} width={115} height={115} src={banner} />
+            <CustomImage borderRadius={0} width={115} height={115} src={banner} imgStyle={{mixBlendMode: "lighten"}} />
             <VStack align='start' justify='center' gap={10} maxW={'90%'}>
                 <Typography variant='b1' family='jk' color={getColor('light')}>{heading}</Typography>
                 <Typography variant='b5' family='jk' color={getColor('light')} isAnimate={true} >{description}</Typography>
