@@ -12,8 +12,10 @@ import card_img_3 from './assets/images/png/card-3.png'
 import card_img_4 from './assets/images/png/card-4.png'
 import TechStackSvg from './components/svgComponents/TechStackSvg'
 import WorkDetailCard from './components/ui/WorkDetailCard'
-import project_img from "./assets/images/project-img.jpg"
-import work_img_1 from "./assets/images/png/work-2.png"
+import work_img_1 from "./assets/images/png/work-1.png"
+import work_img_2 from "./assets/images/png/work-2.png"
+import work_img_3 from "./assets/images/png/work-3.png"
+import work_img_4 from "./assets/images/png/work-4.png"
 import { HStack } from './components/layout/HStack'
 import MainWrapper from './components/layout/MainWrapper'
 import Gradient from './components/ui/Gradient'
@@ -30,8 +32,6 @@ import QuestionMark from './components/svgComponents/QuestionMark'
 import Accordion from './components/ui/Accordian/Accordion'
 import Footer from './components/ui/Footer'
 import Header from './components/ui/Header'
-
-
 
 const tools = [
   {
@@ -63,14 +63,19 @@ const projects = [
     banner: work_img_1
   },
   {
-    projectName : "Example Project", 
+    projectName : "Cleanora", 
     description: "A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.", 
-    banner: project_img
+    banner: work_img_2
   },
   {
-    projectName : "Example Project", 
+    projectName : "ZippyKeys", 
     description: "A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.", 
-    banner: project_img
+    banner: work_img_3
+  },
+  {
+    projectName : "RentIt", 
+    description: "A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.", 
+    banner: work_img_4
   },
 ]
 
@@ -146,7 +151,6 @@ const services = [
   // Add more items as needed
 ];
 
-
 const App = () => {
 
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
@@ -215,7 +219,7 @@ const App = () => {
 
             {
               tools?.map((value, index) => (
-                <ProjectCard banner={value.banner} heading={value.heading} description={value.description} index={index} />
+                <ProjectCard key={index} banner={value.banner} heading={value.heading} description={value.description} index={index} />
               ))
             }
           </AutoLayout>

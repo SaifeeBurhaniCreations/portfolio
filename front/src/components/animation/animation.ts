@@ -2,23 +2,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { getColor } from '../../constants/colors';
 
-export const startRowAnimation = (element, direction) => {
-    const startX = direction === 'left' ? '0%' : '-50%';
-    const endX = direction === 'left' ? '-50%' : '0%';
-
-    return gsap.fromTo(element,
-        { x: startX },
-        {
-            x: endX,
-            duration: 15,
-            ease: "none",
-            repeat: -1,
-            runBackwards: false
-        }
-    );
-};
-
-export const startCardAnimation = (element, index) => {
+export const startCardAnimation = (element:  any, index: number) => {
     gsap.registerPlugin(ScrollTrigger);
 
     // Different y offset based on index
@@ -40,7 +24,7 @@ export const startCardAnimation = (element, index) => {
     });
 };
 
-export const textBlurAnimation = (spanRef) => {
+export const textBlurAnimation = (spanRef:  any) => {
     gsap.registerPlugin(ScrollTrigger);
     gsap.fromTo(spanRef.current,
         { opacity: 0, scale: 0.8, filter: "blur(10px)" },
@@ -59,7 +43,29 @@ export const textBlurAnimation = (spanRef) => {
     );
 }
 
-export const textSplitAnimation = (spanRef) => {
+export const FooterFadeInAnimation = (sectionRef:  any) => {
+    gsap.registerPlugin(ScrollTrigger)
+
+        gsap.fromTo(sectionRef.current,
+            {
+                opacity: 0,
+                y: 50
+            },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "top bottom",
+                    end: "bottom top",
+                    toggleActions: "play none none reverse"
+                }
+            }
+        )
+}
+
+export const textSplitAnimation = (spanRef:  any) => {
     gsap.registerPlugin(ScrollTrigger);
     // Split the text into individual letters
     const letters = spanRef.current.textContent?.split("") || [];
@@ -68,7 +74,7 @@ export const textSplitAnimation = (spanRef) => {
     spanRef.current.textContent = "";
 
     // Add each letter one by one
-    letters.forEach((letter, index) => {
+    letters.forEach((letter: string, index: number) => {
         const letterSpan = document.createElement("span");
         letterSpan.textContent = letter;
         spanRef.current?.appendChild(letterSpan);
@@ -137,7 +143,7 @@ export const sbLogoAnimation = (pathRefs: React.RefObject<SVGPathElement[]>, isA
     }
 }
 
-export const imageFadeAnimation = (imgRef, direction) => {
+export const imageFadeAnimation = (imgRef: any, direction: "left" | "right" | "top" |"bottom") => {
     gsap.registerPlugin(ScrollTrigger);
 
     let x = 0, y = 0;

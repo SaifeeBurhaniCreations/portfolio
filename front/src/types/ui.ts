@@ -58,3 +58,8 @@ export interface ProjectCardProps {
     description: string;
     // other props
 }
+
+export interface IconProps {
+    color?: string;
+    size?: number;
+}

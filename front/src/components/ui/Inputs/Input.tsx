@@ -27,7 +27,7 @@ const InputField: React.FC<InputFieldProps> = ({
     ...props
 }) => {
 
-    const inputRef = useRef(null)
+    const inputRef = useRef<HTMLInputElement>(null);
 
     const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
         onFocusChange?.(true);

@@ -14,7 +14,7 @@ import Gradient from "./Gradient";
 const teamMembers = [
     {
         name: "Ali asger",
-        role: "Front End Developer",
+        role: "Founder",
         image: aliasger,
         socials: {
             linkedin: "#",
@@ -24,7 +24,7 @@ const teamMembers = [
     },
     {
         name: "Jafar Us Sadiq",
-        role: "CEO",
+        role: "Founder",
         image: sadiq,
         socials: {
             linkedin: "#",
@@ -44,7 +44,7 @@ export const TeamSection: React.FC = () => {
 
                 <HStack justify="center" align="center" gap={32} style={{minHeight: '350px'}}>
                     {teamMembers.map((member, index) => (
-                        <div className="position-rel">
+                        <div className="position-rel" key={index}>
                             <Gradient width={300} position={{ left: '50%', top: '50%', transform: `translate(-50%, -50%)` }} />
                             <div key={index} style={{background: getColor('overlay', 300)}} className="profile-card">
                                 <div className="img">

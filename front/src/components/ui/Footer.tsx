@@ -1,13 +1,12 @@
 import { useEffect, useRef } from 'react'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import gsap from 'gsap'
 import AutoLayout from '../layout/AutoLayout'
 import { VStack } from '../layout/VStack'
 import Typography from '../typography/Typography'
 import { getColor } from '../../constants/colors'
 import { HStack } from '../layout/HStack'
-import Home from '../icons/Home'
+import AnchorArrow from '../icons/AnchorArrow'
 import Button from './Buttons/Button'
+import { FooterFadeInAnimation } from '../animation/animation'
 
 const Footer = () => {
 
@@ -15,25 +14,7 @@ const Footer = () => {
 
 
     useEffect(() => {
-        gsap.registerPlugin(ScrollTrigger)
-
-        gsap.fromTo(sectionRef.current,
-            {
-                opacity: 0,
-                y: 50
-            },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top bottom",
-                    end: "bottom top",
-                    toggleActions: "play none none reverse"
-                }
-            }
-        )
+        FooterFadeInAnimation(sectionRef)
     }, [])
 
     return (
@@ -49,25 +30,25 @@ const Footer = () => {
                                 <ul>
                                     <li>
                                         <HStack align='center' justify='center' gap={6}>
-                                            <Home />
+                                            <AnchorArrow />
                                             <Typography family='jk' variant='b4' color={getColor('light')}>Home</Typography>
                                         </HStack>
                                     </li>
                                     <li>
                                         <HStack align='center' justify='center' gap={6}>
-                                            <Home />
+                                            <AnchorArrow />
                                             <Typography family='jk' variant='b4' color={getColor('light')}>About</Typography>
                                         </HStack>
                                     </li>
                                     <li>
                                         <HStack align='center' justify='center' gap={6}>
-                                            <Home />
+                                            <AnchorArrow />
                                             <Typography family='jk' variant='b4' color={getColor('light')}>Projects</Typography>
                                         </HStack>
                                     </li>
                                     <li>
                                         <HStack align='center' justify='center' gap={6}>
-                                            <Home />
+                                            <AnchorArrow />
                                             <Typography family='jk' variant='b4' color={getColor('light')}>Blogs</Typography>
                                         </HStack>
                                     </li>
@@ -85,7 +66,7 @@ const Footer = () => {
                             <Typography family='jk' variant='h2' color={getColor('light')}>(+91) 83193 21198</Typography>
                             <Typography family='jk' variant='h2' color={getColor('light')}>info@sbcreations.com</Typography>
                         </VStack>
-                        <Button><HStack gap={4}>Let's Connect <Home /></HStack></Button>
+                        <Button><HStack gap={4}>Let's Connect <AnchorArrow /></HStack></Button>
                     </VStack>
 
                     <VStack justify='between' align='end' style={{ height: "100%" }} >
@@ -96,25 +77,25 @@ const Footer = () => {
                                 <ul>
                                     <li>
                                         <HStack align='center' justify='center' gap={6}>
-                                            <Home />
+                                            <AnchorArrow />
                                             <Typography family='jk' variant='b4' color={getColor('light')}>Instagram</Typography>
                                         </HStack>
                                     </li>
                                     <li>
                                         <HStack align='center' justify='center' gap={6}>
-                                            <Home />
+                                            <AnchorArrow />
                                             <Typography family='jk' variant='b4' color={getColor('light')}>Github</Typography>
                                         </HStack>
                                     </li>
                                     <li>
                                         <HStack align='center' justify='center' gap={6}>
-                                            <Home />
+                                            <AnchorArrow />
                                             <Typography family='jk' variant='b4' color={getColor('light')}>LinkedIn</Typography>
                                         </HStack>
                                     </li>
                                     <li>
                                         <HStack align='center' justify='center' gap={6}>
-                                            <Home />
+                                            <AnchorArrow />
                                             <Typography family='jk' variant='b4' color={getColor('light')}>Twitter</Typography>
                                         </HStack>
                                     </li>
