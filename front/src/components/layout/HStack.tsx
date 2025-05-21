@@ -1,7 +1,7 @@
-import React, { Children } from "react";
+import React, { Children, forwardRef } from "react";
 import { HStackProps } from "../../types";
 
-export const HStack: React.FC<HStackProps> = ({
+export const HStack = forwardRef<HTMLDivElement, HStackProps>(({
     justify = "start",
     align = "center",
     gap = 0,
@@ -10,7 +10,7 @@ export const HStack: React.FC<HStackProps> = ({
     children,
     style,
     ...props
-}) => {
+}, ref) => {
   const justifyStyles: Record<NonNullable<HStackProps["justify"]>, string> = {
     start: "flex-start",
     center: "center",
@@ -42,7 +42,7 @@ export const HStack: React.FC<HStackProps> = ({
   };
 
   return (
-    <div style={containerStyle} {...props}>
+    <div ref={ref} style={containerStyle} {...props}>
         {childArray.map((child, index) => (
             <div
                 key={index}
@@ -52,4 +52,7 @@ export const HStack: React.FC<HStackProps> = ({
         ))}
     </div>
   );
-};
+});
+
+// Add display name for better debugging
+HStack.displayName = "HStack";

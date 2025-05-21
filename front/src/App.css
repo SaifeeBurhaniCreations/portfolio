@@ -20,7 +20,7 @@ html {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 30px 0px;
+    padding: 25px 0px;
 }
 
 .navlinks {
@@ -28,12 +28,14 @@ html {
     ul {
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
+        justify-content: flex-end;
+        gap: 56px;
         margin: 0;
         padding: 0;
         list-style: none;
         li {
             color: #FFF;
+            cursor: pointer;
             text-align: center;
             font-family: "Plus Jakarta Sans";
             font-size: 20px;
@@ -41,6 +43,10 @@ html {
             font-weight: 600;
             line-height: normal;
             letter-spacing: 0.4px;
+            transition: 0.3s ease;
+            :hover {
+                color: #9857D3 !important;
+            }
         }
     }
 }
@@ -104,3 +110,10 @@ html {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
 }
+
+
+.rotating-gradient-circle {
+    filter: drop-shadow(0 0 10px rgba(120, 64, 173, 0.5));
+  }
+
+

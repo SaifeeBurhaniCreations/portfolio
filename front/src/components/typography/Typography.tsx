@@ -1,6 +1,7 @@
-import { memo, CSSProperties } from "react";
+import { memo, CSSProperties, useEffect, useRef } from "react";
+import { textBlurAnimation } from "../animation/animation";
 
-// Define typography styles
+
 const typographyStyles: Record<string, CSSProperties> = {
   h1: { fontSize: '50px', fontWeight: "bold", lineHeight: '61px', letterSpacing: '0.4px' },
   h2: { fontSize: '40px', fontWeight: "700", lineHeight: '50px', letterSpacing: '0.4px' },
@@ -21,8 +22,7 @@ const typographyStyles: Record<string, CSSProperties> = {
 const familyMapping: Record<string, string> = {
   p: "Preahvihear",
   jk: "Plus Jakarta Sans",
-} as const
-
+} as const;
 
 type FamilyVariant = keyof typeof familyMapping;
 type TypographyVariant = keyof typeof typographyStyles;
@@ -34,18 +34,39 @@ interface TypographyProps {
   style?: CSSProperties;
   family?: FamilyVariant;
   children: React.ReactNode;
-  className?: any;
+  isAnimate?: boolean;
 }
 
-const Typography = memo(({ variant, color, align, style, children, family, className }: TypographyProps) => {
+const Typography = memo(({
+  variant,
+  color,
+  align,
+  style,
+  children,
+  family,
+  isAnimate = false
+}: TypographyProps) => {
+  const spanRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (isAnimate && spanRef.current) {
+      textBlurAnimation(spanRef)
+    }
+  }, [isAnimate]);
+
   const textStyle: CSSProperties = {
     ...typographyStyles[variant],
+    transition: '0.3s ease',
     color: color || 'dark',
     textAlign: align || "left",
-    fontFamily: family && familyMapping[family] || familyMapping["jk"],
+    fontFamily: family ? familyMapping[family] : familyMapping["jk"],
   };
 
-    return <span className={className}  style={{ ...textStyle, ...style }}>{children}</span>;
+  return (
+    <span ref={spanRef} style={{ ...textStyle, ...style }}>
+      {children}
+    </span>
+  );
 });
 
 export default Typography;

@@ -1,18 +1,5 @@
 import { FC } from 'react';
-
-interface Position {
-    left?: string;
-    top?: string;
-    right?: string;
-    bottom?: string;
-    transform?: string;
-}
-
-interface GradientProps {
-    width?: number;
-    size?: number;
-    position?: Position;
-}
+import { GradientProps } from '../../types';
 
 const Gradient: FC<GradientProps> = ({ 
     width = 600, 
