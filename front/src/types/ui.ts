@@ -43,11 +43,11 @@ export interface Position {
 export interface GradientProps {
     width?: number;
     size?: number;
-    position?: Position;
+    coordinates?: React.CSSProperties;
 }
 
 export interface AnimatedLogoProps {
-    position?: Position;
+    position?: Partial<React.CSSProperties>;
     isAnimate?: boolean
 }
 

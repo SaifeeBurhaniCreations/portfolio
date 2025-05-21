@@ -26,7 +26,7 @@ const TypewriterText: FC<TypewriterTextProps> = ({
     const [isWaiting, setIsWaiting] = useState(false);
 
     useEffect(() => {
-        let timeout: NodeJs.Timeout;
+        let timeout: NodeJS.Timeout;
 
         if (isWaiting) {
             timeout = setTimeout(() => {

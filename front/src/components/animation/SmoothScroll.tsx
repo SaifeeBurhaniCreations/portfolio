@@ -57,7 +57,7 @@ const SmoothScrolling: FC<SmoothScrollingProps> = ({ children }) => {
                 root
                 options={DEFAULT_LENIS_OPTIONS}
             >
-                {children}
+                {children as any}
             </ReactLenis>
         </>
     );

@@ -43,7 +43,7 @@ export const VStack: React.FC<VStackProps> = ({
 
     return (
         <div style={containerStyle} {...props}>
-            {childArray.map((child, index) => (
+            {childArray.map((child) => (
                 child
             ))}
         </div>

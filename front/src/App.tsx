@@ -26,7 +26,6 @@ import TeamSection from './components/ui/TeamSection'
 import Input from './components/ui/Inputs/Input'
 import { useState } from 'react'
 import TextArea from './components/ui/Inputs/TextArea'
-import Button from './components/ui/Buttons/Button'
 import Send from './components/icons/Send'
 import QuestionMark from './components/svgComponents/QuestionMark'
 import Accordion from './components/ui/Accordian/Accordion'
@@ -162,7 +161,7 @@ const App = () => {
       <MainWrapper>
         <HStack align='end' justify='start' gap={50} style={{position: "relative"}}>
           <div className="width-100">
-            <Gradient width={500} position={{ left: '12%', top: '55%', transform: `translate(-50%, -50%)` }} />
+            <Gradient width={500} coordinates={{ left: '12%', top: '55%', transform: `translate(-50%, -50%)` }} />
             <BannerSvg />
             <CustomImage style={{position: 'absolute', top: '-40%', left: '16%'}} width={180} borderRadius={0} src={arrow_img} />
             <Typography 
@@ -215,7 +214,7 @@ const App = () => {
         <VStack align='start' justify='center' gap={30}>
           <Typography variant='h2' family='p' style={{fontWeight: 400}} color={getColor('light')}>SBC Tools & Systems</Typography>
           <AutoLayout className='position-rel' columns={2} align='center' gap={30}>
-          <Gradient width={650} position={{ left: '50%', top: '38%', transform: `translate(-50%, -50%)` }} />
+          <Gradient width={650} coordinates={{ left: '50%', top: '38%', transform: `translate(-50%, -50%)` }} />
 
             {
               tools?.map((value, index) => (

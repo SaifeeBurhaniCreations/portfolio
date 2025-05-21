@@ -32,6 +32,7 @@ interface TypographyProps {
   color?: string;
   align?: "left" | "center" | "right";
   style?: CSSProperties;
+  className?: string;
   family?: FamilyVariant;
   children: React.ReactNode;
   isAnimate?: boolean;
@@ -44,6 +45,7 @@ const Typography = memo(({
   style,
   children,
   family,
+  className,
   isAnimate = false
 }: TypographyProps) => {
   const spanRef = useRef<HTMLSpanElement>(null);
@@ -63,7 +65,7 @@ const Typography = memo(({
   };
 
   return (
-    <span ref={spanRef} style={{ ...textStyle, ...style }}>
+    <span ref={spanRef} className={className} style={{ ...textStyle, ...style }}>
       {children}
     </span>
   );

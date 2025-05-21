@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
-import anime from 'animejs';
-
+import * as anime from 'animejs';
 
 interface AnimatedHeadlineProps {
   children: string;
@@ -20,8 +19,7 @@ export default function AnimatedText({ children }: AnimatedHeadlineProps) {
       )
       .join('');
 
-    anime
-      ?.timeline({ loop: true })
+      (anime as any).timeline({ loop: true })
       ?.add({
         targets: '.letter',
         opacity: [0, 1],
@@ -29,7 +27,7 @@ export default function AnimatedText({ children }: AnimatedHeadlineProps) {
         scaleX: [0.3, 1],
         easing: 'easeOutExpo',
         duration: 800,
-        delay: (el, i) => 150 + 25 * i,
+        delay: (_el: HTMLElement, i: number) => 150 + 25 * i,
       })
       .add({
         targets: textRef.current,
@@ -45,13 +43,6 @@ export default function AnimatedText({ children }: AnimatedHeadlineProps) {
       <h1 ref={textRef} className="animated-headline">
         {children}
       </h1>
-
-      <style jsx>{`
-        .animated-headline .letter {
-          display: inline-block;
-          line-height: 1em;
-        }
-      `}</style>
     </>
   );
 }

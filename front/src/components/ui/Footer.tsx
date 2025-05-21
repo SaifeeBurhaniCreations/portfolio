@@ -5,7 +5,6 @@ import Typography from '../typography/Typography'
 import { getColor } from '../../constants/colors'
 import { HStack } from '../layout/HStack'
 import AnchorArrow from '../icons/AnchorArrow'
-import Button from './Buttons/Button'
 import { FooterFadeInAnimation } from '../animation/animation'
 import HoverButton from './Buttons/HoverButton'
 
