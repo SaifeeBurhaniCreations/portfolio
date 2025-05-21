@@ -6,6 +6,7 @@ import { VStack } from "../layout/VStack"
 import Typography from "../typography/Typography"
 import Button from "./Buttons/Button"
 import CustomImage from "./CustomImage"
+import Gradient from "./Gradient"
 
 interface ProjectCardProps {
     projectName: string;
@@ -21,8 +22,8 @@ interface CardContentProps {
 
 const ProjectDescriptionCard: React.FC<CardContentProps> = ({ children, index }) => {
     const cardStyle: React.CSSProperties = {
-        borderRadius: '14px',
-        background: 'radial-gradient(151.92% 127.02% at 15.32% 21.04%, rgba(105, 59, 147, 0.20) 0%, rgba(110, 191, 244, 0.04) 77.08%, rgba(70, 144, 212, 0.00) 100%)',
+        borderRadius: '16px',
+        background: getColor('overlay'),
         backgroundBlendMode: 'overlay, normal',
         backdropFilter: 'blur(40px)',
         padding: '30px',
@@ -127,6 +128,10 @@ const WorkDetailCard: React.FC<ProjectCardProps> = ({ projectName, description, 
         order: !isEvenIndex ? [2, 1] : undefined
     }
 
+    const gredientStyle = isEvenIndex ? 
+        { left: '35%', top: '50%', transform: `translate(-50%, -50%)` } :
+        { right: '35%', top: '50%', transform: `translate(50%, -50%)` }
+
     return (
         <AutoLayout 
             custom={layoutConfig.custom} 
@@ -139,10 +144,13 @@ const WorkDetailCard: React.FC<ProjectCardProps> = ({ projectName, description, 
                 description={description} 
                 index={index} 
             />
-            <ProjectBanner 
-                banner={banner} 
-                index={index} 
-            />
+            <div className="position-rel">
+                <Gradient width={550} position={gredientStyle} />
+                <ProjectBanner 
+                    banner={banner} 
+                    index={index} 
+                />
+            </div>
         </AutoLayout>
     )
 }

@@ -5,6 +5,7 @@
 
 body {
     background-color: #11071F;
+    background-image: url('./assets/images/png/logo-bg.png');
 }  
 
 html {
@@ -15,12 +16,27 @@ html {
     position: relative !important;
 }
 .header {
-    box-shadow: 0px 6px 22px -3px rgba(0, 0, 0, 0.10);
+    /* box-shadow: 0px 6px 22px -3px rgba(0, 0, 0, 0.10); */
     display: flex;
+    position: sticky;
+    top: 20px;
+    z-index: 9999;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     padding: 25px 0px;
+
+    .layout {
+        display: grid;
+        grid-template-columns: auto max-content auto;
+        align-items: center;
+        justify-content: center;
+        width: max-content;
+        margin: 0 auto;
+        padding: 16px 48px;
+        border-radius: 48px;
+        gap: 24px;
+    }
 }
 
 .navlinks {
@@ -28,6 +44,7 @@ html {
     ul {
         display: flex;
         align-items: center;
+        gap: 32px;
         justify-content: space-evenly;
         margin: 0;
         padding: 0;
@@ -48,10 +65,30 @@ html {
             }
         }
     }
+
+    &.revert {
+        ul {
+            flex-direction: column;
+            gap: 6px;
+            align-items: start;
+        }
+
+        &.right {
+            ul {
+                align-items: end;
+            }   
+        }
+    }
+}
+
+.footer {
+    padding: 60px 100px;
+    height: 400px;
+    margin-top: 150px;
 }
 
 .pt-cs {
-    padding-top: 120px;
+    padding-top: 150px;
 }
 
 
@@ -116,3 +153,83 @@ html {
   }
 
 
+
+
+
+  
+  .profile-card {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    /* background: #fff; */
+    padding: 30px;
+    border-radius: 50%;
+    box-shadow: 0 0 22px #3336;
+    transition: 0.6s;
+    margin: 25px;
+  }
+  
+  .profile-card:hover {
+    border-radius: 10px;
+    height: 260px;
+  }
+  
+  .profile-card .img {
+    position: relative;
+    width: 100%;
+    height: 95%;
+    transition: 0.6s;
+    z-index: 99;
+  }
+  
+  .profile-card:hover .img {
+    transform: translateY(-60px);
+  }
+  
+  .img img {
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 0 22px #3336;
+    transition: 0.6s;
+  }
+  
+  .profile-card:hover img {
+    border-radius: 10px;
+  }
+  
+  .caption {
+    text-align: center;
+    transform: translateY(-80px);
+    opacity: 0;
+    transition: 0.6s;
+  }
+  
+  .profile-card:hover .caption {
+    opacity: 1;
+  }
+
+    .input-wrapper {
+        height: 50px;
+        width: 100%;
+        border-radius: 8px;
+        padding: 10px 12px;
+        transition: all 0.2s ease;
+    }
+    .custom-input {
+        background-color: transparent;
+        width: 100%;
+        font-size: 16px;
+        font-family: 'Plus Jakarta Sans';
+        border-radius: 8px;
+        box-shadow: none;
+        border: none;
+        outline: none;
+    }
+    
+    .custom-input:focus-visible {
+        outline: none;
+        box-shadow: none;
+        border: none;
+    }
+  
+  

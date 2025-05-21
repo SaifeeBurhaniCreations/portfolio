@@ -14,6 +14,7 @@ const CustomImage: React.FC<CustomImageProps> = ({
     borderRadius = 16,
     fallback = "https://via.placeholder.com/150",
     loadingIndicator = true,
+    className,
     isAnimate = false,
     direction = 'left',
     onZoom = false
@@ -56,6 +57,7 @@ const CustomImage: React.FC<CustomImageProps> = ({
 
             <img
                 ref={imgRef}
+                className={className}
                 src={source}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}

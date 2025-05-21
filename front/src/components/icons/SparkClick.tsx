@@ -1,8 +1,8 @@
 
-const SparkClick = () => {
+const SparkClick = ({ size = 32 }) => {
     return (
         <>
-            <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" viewBox="0 0 31 31" fill="none">
+            <svg xmlns="http://www.w3.org/2000/svg" width={`${size}px`} height={`${size}px`} viewBox="0 0 31 31" fill="none">
                 <mask id="mask0_2_263" style={{maskType: 'alpha'}} maskUnits="userSpaceOnUse" x="0" y="0" width="30" height="30">
                     <path d="M15.5 2.58325V7.74992" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M14.2083 14.2083L27.125 16.7916L23.25 19.3749L27.125 23.2499L23.25 27.1249L19.375 23.2499L16.7916 27.1249L14.2083 14.2083Z" fill="white" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>

@@ -1,19 +1,24 @@
 export const colors = {
   purple: {
-    100: "#CCD6F6",
+    100: "#CCD6F6", // Lightest
+    200: "#B999E6", // Added (between 100 and 300)
     300: "#9857D3",
     400: "#693B93",
     500: "#7127BA",
     600: "#2C1250",
     700: "#2B0B3A",
     800: "#1A0B2E",
-    900: "#11071F",
+    900: "#11071F", // Darkest
   },
   light: {
     500: "#FFFFFF",
   },
+  overlay: {
+    300: 'radial-gradient(circle at center, rgba(48, 16, 128, 0.6) 20%, rgba(140, 87, 190, 0.36) 80%)',
+    500: 'radial-gradient(151.92% 127.02% at 15.32% 21.04%, rgba(105, 59, 147, 0.20) 0%, rgba(110, 191, 244, 0.04) 77.08%, rgba(70, 144, 212, 0.00) 100%)'
+  },
   gradients: {
-    purple: ["#130428", "#251043", "#38126D", "#261045", "#190634"],
+    500: ["#130428", "#251043", "#38126D", "#261045", "#190634"]
   }
 } as const;
 // Type definitions

@@ -7,7 +7,7 @@ const Button: React.FC<ButtonProps> = ({
     children,
     height = 10, 
     width = 24,  
-    radius = 14,
+    radius = 16,
     bg = getColor("purple", 600),
     border = `1px solid ${getColor("purple", 400)}`,
     onClick,

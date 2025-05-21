@@ -1,18 +1,35 @@
-import { Children, FC, useEffect, useState } from "react";
-import { GridProps } from "../../types";
+import {
+  Children,
+  useEffect,
+  useState,
+  CSSProperties,
+  forwardRef,
+  useImperativeHandle,
+  useRef,
+} from "react";
+import { GridProps, VStackProps } from "../../types";
 
-const AutoLayout: FC<GridProps> = ({ 
-  children, 
-  columns, 
-  align = 'center', 
-  gap = 0, 
-  className = "", 
+const AutoLayout = forwardRef<HTMLDivElement, GridProps>(({
+  children,
+  columns,
+  align = "center",
+  justify = "center",
+  gap = 0,
+  className = "",
   custom,
-  order 
-}) => {
+  style = {},
+  order,
+}, ref) => {
   const childArray = Children.toArray(children);
   const itemCount = childArray.length;
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1200
+  );
+
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Expose the ref to parent
+  useImperativeHandle(ref, () => containerRef.current as HTMLDivElement);
 
   const alignStyles: Record<NonNullable<GridProps["align"]>, string> = {
     start: "flex-start",
@@ -20,6 +37,15 @@ const AutoLayout: FC<GridProps> = ({
     end: "flex-end",
     stretch: "stretch",
     baseline: "baseline",
+  };
+
+  const justifyStyles: Record<NonNullable<VStackProps["justify"]>, string> = {
+    start: "flex-start",
+    center: "center",
+    end: "flex-end",
+    between: "space-between",
+    around: "space-around",
+    evenly: "space-evenly",
   };
 
   useEffect(() => {
@@ -36,24 +62,37 @@ const AutoLayout: FC<GridProps> = ({
     else columnCount = Math.min(itemCount, 2);
   }
 
-  const containerStyle: React.CSSProperties = {
-    gap,
+  const gridTemplate = custom
+    ? custom
+        .split("-")
+        .map((v) => `${parseInt(v)}fr`)
+        .join(" ")
+    : `repeat(${columnCount}, minmax(0, 1fr))`;
+
+  const containerStyle: CSSProperties = {
+    display: "grid",
+    gridTemplateColumns: gridTemplate,
+    gap: typeof gap === "number" ? `${gap}px` : gap,
     alignItems: alignStyles[align],
+    justifyContent: justifyStyles[justify],
+    ...style,
   };
 
-  // Apply order to children if order prop is provided
-  const orderedChildren = order 
+  const orderedChildren = order
     ? order.map((index) => childArray[index - 1])
     : childArray;
 
   return (
-    <div style={containerStyle} className={`d-grid grid-cols-${custom ? custom : columnCount} ${className}`}>
+    <div ref={containerRef} style={containerStyle} className={className}>
       {orderedChildren}
     </div>
   );
-};
+});
+
+AutoLayout.displayName = "AutoLayout"; // Necessary for forwardRef
 
 export default AutoLayout;
+
 
 
 // usage example

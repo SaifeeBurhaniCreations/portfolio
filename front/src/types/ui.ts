@@ -4,6 +4,7 @@ export interface CustomImageProps {
     height?: string | number;
     style?: React.CSSProperties;
     imgStyle?: React.CSSProperties;
+    className?: string;
     borderRadius?: number;
     fallback?: string;
     loadingIndicator?: boolean;

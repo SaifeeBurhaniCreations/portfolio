@@ -5,8 +5,10 @@ export interface GridProps {
     children: ReactNode;
     gap?: number;
     align?: "start" | "center" | "end" | "stretch" | "baseline";
+    justify?: "start" | "center" | "end" | "between" | "around" | "evenly";
     className?: string;
     custom?: string;
+    style?: any;
     order?: number[];
 }
 

@@ -1,0 +1,193 @@
+/* Google Fonts Import */
+/* @import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Staatliches&display=swap"); */
+
+/* Root Variables */
+:root {
+  --primary-color: #7127BA;
+  --secondary-color: #2B0B3A;
+  --light-color: #CCD6F6;
+}
+
+/* Global Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Wrapper Styles */
+.wrapper {
+  position: relative;
+  margin: 0 auto;
+  /* padding: 1.5rem 0; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+/* Title */
+.title {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  font-family: 'Preahvihear';
+  font-weight: 400;
+  color: var(--light-color);
+}
+
+/* Accordion Container */
+.accordion {
+  width: 100%;
+  margin-bottom: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+/* Accordion Item */
+.accordion__item {
+  position: relative;
+  padding: 1rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 32px;
+  background-color: var(--primary-color);
+  transition: background-color 0.3s ease;
+}
+
+.accordion__item.active .label {
+  grid-template-columns: 1fr auto 1fr;
+
+  .title {
+    white-space: inherit;
+    color: var(--secondary-color);
+  }
+} 
+
+/* Accordion Label */
+.label {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  color: var(--light-color);
+  display: grid;
+  grid-template-columns: max-content 4fr 1fr;
+  align-items: center;
+  justify-content: start;
+  transition: color 0.3s ease;
+}
+
+.label .number,
+.label .title,
+.label .open__accordion,
+.label .close__accordion {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.label .number {
+  margin-right: 2rem;
+  font-family: 'Preahvihear';
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.label .title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Accordion Buttons */
+.open__accordion,
+.close__accordion {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 1.5rem;
+  aspect-ratio: 1 / 1;
+  transform: translateY(-50%);
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    transform 0.3s cubic-bezier(0.68, -0.6, 0.32, 1.6),
+    opacity 0.2s ease;
+}
+
+.close__accordion {
+  color: var(--secondary-color);
+  background-color: var(--light-color);
+}
+
+
+/* Accordion Content */
+.content {
+  overflow: hidden;
+  will-change: height;
+  transition: none; /* Controlled via JS */
+}
+
+.paragraph {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: var(--secondary-color);
+  font-size: 0.875rem;
+  line-height: 1.3125rem;
+}
+
+.paragraph > div {
+  overflow: hidden;
+}
+
+.paragraph span {
+  display: inline-block;
+  transform-origin: left bottom;
+  font-family: "Plus Jakarta Sans";
+  will-change: transform, opacity;
+}
+
+/* Animations */
+@keyframes bounceIn {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  70% {
+    transform: translateY(-15%);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+/* Utility Class */
+.hidden {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+  pointer-events: none;
+}
