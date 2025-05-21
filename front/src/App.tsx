@@ -32,6 +32,7 @@ import QuestionMark from './components/svgComponents/QuestionMark'
 import Accordion from './components/ui/Accordian/Accordion'
 import Footer from './components/ui/Footer'
 import Header from './components/ui/Header'
+import HoverButton from './components/ui/Buttons/HoverButton'
 
 const tools = [
   {
@@ -59,22 +60,22 @@ const tools = [
 const projects = [
   {
     projectName : "OddiVille", 
-    description: "A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.", 
+    description: "Odiiville is a frozen warehousing and production company specializing in high-quality frozen foods. From farm-fresh frozen corn and peas to ready-to-eat frozen momos, Odiiville ensures freshness, taste, and convenience in every bite. Discover efficient cold storage, reliable supply chains, and a wide range of frozen products crafted for households and businesses alike.", 
     banner: work_img_1
   },
   {
     projectName : "Cleanora", 
-    description: "A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.", 
+    description: "Cleanora is a professional cleaning service company specializing in deep cleaning for terraces, rooms, halls, and offices. Whether it's a one-time refresh or regular maintenance, Cleanora ensures spotless spaces with eco-friendly products and trained staff. Enjoy a cleaner, healthier environment with fast, reliable, and affordable services tailored to your needs.", 
     banner: work_img_2
   },
   {
     projectName : "ZippyKeys", 
-    description: "A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.", 
+    description: "ZippyKeys is a typing test website designed for both mobile and desktop practice. Improve your speed and accuracy with customizable tests, unique typing sounds, over 50+ vibrant themes, and multilingual support. Track your progress, challenge friends, and make typing fun and engaging wherever you are.", 
     banner: work_img_3
   },
   {
     projectName : "RentIt", 
-    description: "A web app for visualizing personalized Spotify data. View your top artists, top tracks, recently played tracks, and detailed audio information about each track. Create and save new playlists of recommended tracks based on your existing playlists and more.", 
+    description: "RentIt is a rental platform that connects you with trusted providers to rent anything you need—homes, offices, furniture like almirahs, cars, clothes, and more. Whether short-term or long-term, RentIt makes renting easy, affordable, and secure, all in one convenient place.", 
     banner: work_img_4
   },
 ]
@@ -122,33 +123,32 @@ const services = [
     id: '1',
     number: '01',
     title: 'What makes your agency different from competitors?',
-    content: 'Animal endoscopy is a minimally invasive procedure that allows veterinarians to examine internal organs without surgery. Using a flexible tube with a camera, they can diagnose conditions, collect biopsies, and remove foreign objects, improving pet care with less discomfort.'
+    content: 'What sets our agency apart is our commitment to quality and adaptability. We continuously learn and work with a diverse range of technologies, including cutting-edge tools used by leading tech giants. Our team is passionate about delivering high-quality results and staying ahead of industry trends to provide innovative and reliable solutions for our clients'
   },
   {
     id: '2',
     number: '02',
     title: 'What happens after a project is completed? Do you offer ongoing support?',
-    content: 'Animal diagnostics involve tests and procedures that help veterinarians detect diseases early. By analyzing blood, tissue, or other samples, they can identify health issues before symptoms appear, improving treatment success and animal well-being.'
+    content: 'Yes, we do offer ongoing support after project completion. The support period depends on the size and scope of the project—typically, we provide up to 3 months of support for smaller projects, and between 6 months to 1 year for larger or more complex projects. We’re committed to ensuring everything runs smoothly even after delivery.'
   },
   {
     id: '3',
     number: '03',
     title: 'What information do you need from a client to get started?',
-    content: 'Animal diagnostics involve tests and procedures that help veterinarians detect diseases early. By analyzing blood, tissue, or other samples, they can identify health issues before symptoms appear, improving treatment success and animal well-being.'
+    content: 'To get started, we need a clear and detailed document outlining all the tasks and requirements, or a meeting where everything can be discussed thoroughly. We’ll also need your company logo, any branding or customization guidelines, and any content you’d like to include—such as copy, images, or other media assets.'
   },
   {
     id: '4',
     number: '04',
     title: 'What industries do you specialize in, if any?',
-    content: 'Animal diagnostics involve tests and procedures that help veterinarians detect diseases early. By analyzing blood, tissue, or other samples, they can identify health issues before symptoms appear, improving treatment success and animal well-being.'
+    content: 'We specialize in building solutions across a wide range of technologies including React.js, AngularJS, Next.js, Remix, Node.js, Express, SQL and NoSQL databases, Redis, Kafka, Docker, and Python. We also work with mobile technologies like React Native, tools like Postman, and AI/chatbot integrations. Additionally, we have experience with Webflow, WordPress, and other modern web platforms. This versatility allows us to serve clients across various industries with tailored, high-quality solutions.'
   },
   {
     id: '5',
     number: '05',
     title: 'How do you typically structure your pricing? (e.g., project-based, retainer, hourly)',
-    content: 'Animal diagnostics involve tests and procedures that help veterinarians detect diseases early. By analyzing blood, tissue, or other samples, they can identify health issues before symptoms appear, improving treatment success and animal well-being.'
+    content: 'We typically structure our pricing based on milestones. The project is divided into 2 to 4 key milestones, depending on its size and complexity. After each milestone is completed and approved, the corresponding payment is received. This approach ensures transparency, accountability, and smooth progress throughout the project.'
   },
-  // Add more items as needed
 ];
 
 const App = () => {
@@ -321,7 +321,9 @@ const App = () => {
                 </VStack>     
 
                 <VStack align='end' justify='center' style={{width: '100%'}}>
-                  <Button>Send Message &nbsp; <Send /></Button>
+                <HoverButton>
+                Send Message &nbsp; <Send />
+                </HoverButton>
                 </VStack>
 
               </VStack>

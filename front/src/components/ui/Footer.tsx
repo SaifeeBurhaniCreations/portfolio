@@ -7,6 +7,7 @@ import { HStack } from '../layout/HStack'
 import AnchorArrow from '../icons/AnchorArrow'
 import Button from './Buttons/Button'
 import { FooterFadeInAnimation } from '../animation/animation'
+import HoverButton from './Buttons/HoverButton'
 
 const Footer = () => {
 
@@ -66,7 +67,9 @@ const Footer = () => {
                             <Typography family='jk' variant='h2' color={getColor('light')}>(+91) 83193 21198</Typography>
                             <Typography family='jk' variant='h2' color={getColor('light')}>info@sbcreations.com</Typography>
                         </VStack>
-                        <Button><HStack gap={4}>Let's Connect <AnchorArrow /></HStack></Button>
+                        <HoverButton>
+                            <HStack gap={4}>Let's Connect <AnchorArrow /></HStack>
+                        </HoverButton>
                     </VStack>
 
                     <VStack justify='between' align='end' style={{ height: "100%" }} >

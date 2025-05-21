@@ -197,7 +197,7 @@ const Accordion: React.FC<AccordionProps> = ({ items, title, className = '' }) =
               onClick={() => toggleAccordion(item.id)}
               style={{
                 color: activeId === item.id ? 'var(--secondary-color)' : 'var(--light-color)',
-                transition: 'color 0.3s ease',
+                transition: 'color 0.3s ease', marginBottom: "8px"
               }}
             >
               <span className="number">{item.number}</span>
@@ -223,7 +223,11 @@ const Accordion: React.FC<AccordionProps> = ({ items, title, className = '' }) =
             </div>
             <div
               className="content"
-              ref={el => (contentRefs.current[item.id] = el)}
+              ref={el => {
+                if (el !== null) {
+                  contentRefs.current[item.id] = el;
+                }
+              }}              
               style={{ display: 'none', overflow: 'hidden', padding: '0px 40px' }}
             >
               <p className="paragraph" style={{ color: 'var(--secondary-color)' }}>
