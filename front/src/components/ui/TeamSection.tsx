@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HStack } from "../layout/HStack";
 import Instagram from "../icons/Instagram";
 import LinkedIn from "../icons/LinkedIn";
@@ -35,6 +35,19 @@ const teamMembers = [
 ];
 
 export const TeamSection: React.FC = () => {
+
+    const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 767);
+        };
+
+        checkMobile(); // Initial check
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
   return (
         <>
             <VStack justify="center" align="center" style={{position: 'relative'}} gap={24}>
@@ -42,7 +55,7 @@ export const TeamSection: React.FC = () => {
                     Our Team
                 </Typography>
 
-                <HStack justify="center" align="center" gap={32} style={{minHeight: '350px'}}>
+                <HStack justify="center" direction={isMobile ? 'column' : 'row'} align="center" gap={32} style={{minHeight: '350px'}}>
                     {teamMembers.map((member, index) => (
                         <div className="position-rel" key={index}>
                             <Gradient width={300} coordinates={{ left: '50%', top: '50%', transform: `translate(-50%, -50%)` }} />

@@ -1,13 +1,15 @@
-import { getColor } from "../../constants/colors"
-import SparkClick from "../icons/SparkClick"
-import AutoLayout from "../layout/AutoLayout"
-import { HStack } from "../layout/HStack"
-import { VStack } from "../layout/VStack"
-import Typography from "../typography/Typography"
-import Button from "./Buttons/Button"
-import CustomImage from "./CustomImage"
-import Gradient from "./Gradient"
+import { useEffect, useState, ReactNode } from "react";
+import { getColor } from "../../constants/colors";
+import SparkClick from "../icons/SparkClick";
+import AutoLayout from "../layout/AutoLayout";
+import { HStack } from "../layout/HStack";
+import { VStack } from "../layout/VStack";
+import Typography from "../typography/Typography";
+import Button from "./Buttons/Button";
+import CustomImage from "./CustomImage";
+import Gradient from "./Gradient";
 
+// Props for main component
 interface ProjectCardProps {
     projectName: string;
     description: string;
@@ -15,150 +17,195 @@ interface ProjectCardProps {
     index: number;
 }
 
+// Props for description card
 interface CardContentProps {
-    children: React.ReactNode;
-    index: boolean;
+    children: ReactNode;
+    index: number;
+    element?: ReactNode;
 }
 
-const ProjectDescriptionCard: React.FC<CardContentProps> = ({ children, index }) => {
+// Props for banner image
+interface ProjectBannerProps {
+    banner: string;
+    index: number;
+    isMobile?: boolean;
+}
+
+// Enhanced ProjectDescriptionCard
+const ProjectDescriptionCard: React.FC<CardContentProps> = ({ children, index, element }) => {
     const cardStyle: React.CSSProperties = {
-        borderRadius: '16px',
-        background: getColor('overlay'),
-        backgroundBlendMode: 'overlay, normal',
-        backdropFilter: 'blur(40px)',
-        padding: '30px',
-        width: '110%',
-        position: 'relative',
+        borderRadius: "16px",
+        background: getColor("overlay"),
+        backgroundBlendMode: "overlay, normal",
+        backdropFilter: "blur(40px)",
+        padding: "30px",
+        width: "110%",
+        position: "relative",
         zIndex: 6,
-        marginLeft: !index ? '-10%' : '0'
-    };
+        marginLeft: index % 2 !== 0 ? "-10%" : "0"
+  };
 
     return (
         <div style={cardStyle}>
-            <Typography 
-                variant='b3' 
-                family='jk' 
-                style={{ fontWeight: 500 }} 
-                color={getColor('purple', 100)}
-                isAnimate={true}
-            >
-                {children}
-            </Typography>
+            <VStack gap={16}>
+                {element}
+                <Typography
+                    variant={element ? "b4" : "b3"}
+                    family="jk"
+                    style={{ fontWeight: 500 }}
+                    color={getColor("purple", 100)}
+                    isAnimate={true}
+                >
+                    {children}
+                </Typography>
+            </VStack>
+    </div>
+  );
+};
+
+// Enhanced ProjectContent
+const ProjectContent: React.FC<
+    Pick<ProjectCardProps, "projectName" | "description" | "index"> & {
+        children?: ReactNode;
+    }
+> = ({ projectName, description, index, children }) => {
+    const isEvenIndex = index % 2 === 0;
+    const alignment = isEvenIndex ? "start" : "end";
+
+    return (
+            <VStack justify="between" align={alignment} gap={30}>
+                <VStack justify="center" align={alignment} gap={0}>
+                    <Typography
+                        variant={children ? "b5" : "b4"}
+                        family="jk"
+                        style={{ fontWeight: 600 }}
+                        color={getColor("purple", 300)}
+                    >
+                        Featured Project
+                    </Typography>
+                    <Typography
+                        variant={children ? "h3" : "h2"}
+                        family="jk"
+                        style={{ fontWeight: 600 }}
+                        color={getColor("purple", 100)}
+                    >
+                        {projectName}
+                    </Typography>
+                </VStack>
+
+                <ProjectDescriptionCard index={index} element={children}>
+                    {description}
+                </ProjectDescriptionCard>
+
+                <HStack align="center" justify="center">
+                    {[...Array(2)].map((_, i) => (
+                        <Button key={i} height={12} width={12} border="none" bg="transparent">
+                            <SparkClick />
+                        </Button>
+                ))}
+                </HStack>
+            </VStack>
+        );
+    };
+
+// Enhanced ProjectBanner
+const ProjectBanner: React.FC<ProjectBannerProps> = ({ banner, index, isMobile = false }) => {
+    const isEvenIndex = index % 2 === 0;
+
+    const imageStyle: React.CSSProperties = {
+        borderRadius: isEvenIndex ? "10px 0 10px 0" : "0 10px 0 10px"
+    };
+
+    const padding = isMobile
+        ? 0
+        : isEvenIndex
+            ? "30px 0 0 30px"
+            : "30px 30px 0 0";
+
+    const containerStyle: React.CSSProperties = {
+        backgroundColor: getColor("purple", 700),
+        overflow: "hidden",
+        padding,
+        height: "100%",
+        borderRadius: "10px"
+  };
+
+    return (
+        <div style={containerStyle}>
+            <CustomImage
+                borderRadius={0}
+                style={{
+                    display: "flex",
+                    justifyContent: isEvenIndex ? "flex-end" : "flex-start"
+                }}
+                imgStyle={imageStyle}
+                src={banner}
+                direction={isEvenIndex ? "right" : "left"}
+                isAnimate
+                onZoom
+                width={isMobile ? "100%" : "90%"}
+            />
         </div>
     );
 };
 
-const ProjectContent: React.FC<Pick<ProjectCardProps, 'projectName' | 'index' | 'description'>> = ({ projectName, description, index }) => {
-    const isEvenIndex = index % 2 === 0
-    const alignment = isEvenIndex ? 'start' : 'end'
+// Main Component: WorkDetailCard
+const WorkDetailCard: React.FC<ProjectCardProps> = ({
+    projectName,
+    description,
+    banner,
+    index
+}) => {
+    const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 767);
 
-    return (
-        <VStack justify='between' align={alignment} gap={30}>
-            <VStack justify='center' align={alignment} gap={0}>
-                <Typography 
-                    variant='b4' 
-                    family='jk' 
-                    style={{ fontWeight: 600 }} 
-                    color={getColor('purple', 300)}
-                >
-                    Featured Project
-                </Typography>
-                <Typography 
-                    variant='h2' 
-                    family='jk' 
-                    style={{ fontWeight: 600 }} 
-                    color={getColor('purple', 100)}
-                >
-                    {projectName}
-                </Typography>
-            </VStack>
-            <ProjectDescriptionCard index={isEvenIndex}>
-                {description}
-            </ProjectDescriptionCard>
-            <HStack align="center" justify="center">
-                <Button height={12} border="none" bg="transparent" width={12} >
-                    <SparkClick />
-                </Button>
-                <Button height={12} border="none" bg="transparent" width={12} >
-                    <SparkClick />
-                </Button>
-            </HStack>
-        </VStack>
-    )
-}
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 767);
+        };
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
-const ProjectBanner: React.FC<Pick<ProjectCardProps, 'banner' | 'index'>> = ({ banner, index }) => {
-    const isEvenIndex = index % 2 === 0
-    
-    const imageStyle: React.CSSProperties = {
-        borderRadius: isEvenIndex 
-            ? '10px 0 0 10px' 
-            : '0 10px 10px 0'
-    }
-
-    const containerStyle: React.CSSProperties = {
-        backgroundColor: getColor("purple", 700),
-        overflow: 'hidden',
-        padding: isEvenIndex 
-            ? '30px 0 0 30px' 
-            : '30px 30px 0 0',
-        height: '100%',
-        borderRadius: '10px'
-    }
-
-    return (
-        <div style={containerStyle}>
-            <CustomImage 
-                borderRadius={0} 
-                style={{
-                    display: "flex",
-                    justifyContent: isEvenIndex 
-                    ? 'flex-end' 
-                    : 'flex-start',
-                }} 
-                imgStyle={imageStyle} 
-                src={banner} 
-                direction={isEvenIndex ? 'right' : 'left'}
-                isAnimate={true}
-                onZoom={true}
-                width={"90%"}
-            />
-        </div>
-    )
-}
-
-const WorkDetailCard: React.FC<ProjectCardProps> = ({ projectName, description, banner, index }) => {
-    const isEvenIndex = index % 2 === 0
+    const isEvenIndex = index % 2 === 0;
     const layoutConfig = {
         custom: isEvenIndex ? "2-1" : "1-2",
         order: !isEvenIndex ? [2, 1] : undefined
-    }
+    };
 
-    const gredientStyle = isEvenIndex ? 
-        { left: '35%', top: '50%', transform: `translate(-50%, -50%)` } :
-        { right: '35%', top: '50%', transform: `translate(50%, -50%)` }
+    const gradientStyle = isEvenIndex
+        ? { left: "35%", top: "50%", transform: "translate(-50%, -50%)" }
+        : { right: "35%", top: "50%", transform: "translate(50%, -50%)" };
 
     return (
-        <AutoLayout 
-            custom={layoutConfig.custom} 
-            order={layoutConfig.order} 
-            align='center' 
-            gap={0}
-        >
-            <ProjectContent 
-                projectName={projectName} 
-                description={description} 
-                index={index} 
-            />
-            <div className="position-rel">
-                <Gradient width={550} coordinates={gredientStyle} />
-                <ProjectBanner 
-                    banner={banner} 
-                    index={index} 
+      <>
+        {!isMobile ? (
+            <AutoLayout custom={layoutConfig.custom} order={layoutConfig.order} align="center" gap={0}>
+                <ProjectContent
+                    projectName={projectName}
+                    description={description}
+                    index={index}
                 />
-            </div>
-        </AutoLayout>
-    )
-}
+                <div className="position-rel">
+                    <Gradient width={550} coordinates={gradientStyle} />
+                    <ProjectBanner banner={banner} index={index} />
+                </div>
+            </AutoLayout>
+        ) : (
+            <AutoLayout columns={1} align="center" gap={0}>
+                <ProjectContent
+                    projectName={projectName}
+                    description={description}
+                    index={index}
+                >
+                    <div className="position-rel">
+                        <Gradient width={550} coordinates={gradientStyle} />
+                        <ProjectBanner banner={banner} index={index} isMobile />
+                    </div>
+                </ProjectContent>
+            </AutoLayout>
+            )}
+        </>
+    );
+};
 
-export default WorkDetailCard
+export default WorkDetailCard;

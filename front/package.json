@@ -10,13 +10,21 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.8.2",
     "@studio-freight/react-lenis": "^0.0.47",
     "animejs": "^4.0.2",
+    "axios": "^1.9.0",
+    "dotenv": "^16.5.0",
+    "formik": "^2.4.6",
+    "framer-motion": "^12.12.1",
     "front": "file:",
     "gsap": "^3.12.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "splitting": "^1.1.0"
+    "react-redux": "^9.2.0",
+    "react-router-dom": "^6.30.1",
+    "splitting": "^1.1.0",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",

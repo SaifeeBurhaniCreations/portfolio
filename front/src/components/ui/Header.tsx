@@ -132,7 +132,7 @@ const Header = () => {
 
     const logoWrapperStyle: React.CSSProperties = {
         position: "absolute",
-        left: "50%",
+        left: isMobile ? '48%' : "50%",
         top: "50%",
         transform: "translate(-50%, -50%)",
         width: isMobile ? '80px' : "100px",
@@ -157,7 +157,7 @@ const Header = () => {
                                 className="navlinks-left"
                                 style={{ ...navStyle, left: isMobile ? "4%" : "10%", transform: "translateX(-100%)" }}
                             >
-                                <ul style={{ display: "flex", gap: "1.5rem" }}>
+                                <ul style={{ display: "flex", gap: isMobile ? '14px' : '24px' }}>
                                     <li><Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>Home</Typography></li>
                                     <li><Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>About</Typography></li>
                                 </ul>
@@ -178,9 +178,9 @@ const Header = () => {
                             <div
                                 ref={navRightRef}
                                 className="navlinks-right"
-                                style={{ ...navStyle, right: isMobile ? "4%" : "10%", transform: "translateX(100%)" }}
+                                style={{ ...navStyle, right: isMobile ? "4%" : "8%", transform: "translateX(100%)" }}
                             >
-                                <ul style={{ display: "flex", gap: "1.5rem" }}>
+                                <ul style={{ display: "flex", gap: isMobile ? '14px' : '24px' }}>
                                     <li><Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>Projects</Typography></li>
                                     <li><Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>Blogs</Typography></li>
                                 </ul>

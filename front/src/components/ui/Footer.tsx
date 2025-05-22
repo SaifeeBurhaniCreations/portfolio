@@ -64,7 +64,7 @@ const Footer = () => {
                         <Typography family='jk' variant='b4' color={getColor('light')}>REACH OUT US</Typography>
                         <VStack>
                             <Typography family='jk' variant='h2' color={getColor('light')}>(+91) 83193 21198</Typography>
-                            <Typography family='jk' variant='h2' color={getColor('light')}>info@sbcreations.com</Typography>
+                            <Typography family='jk' variant='h2' color={getColor('light')}>info@sbcws.com</Typography>
                         </VStack>
                         <HoverButton>
                             <HStack gap={4}>Let's Connect <AnchorArrow /></HStack>

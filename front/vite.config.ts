@@ -23,7 +23,7 @@ export default defineConfig({
 //     cors: true,
 //     hmr: {
 //       protocol: 'ws',
-//       host: '1d59-49-43-6-52.ngrok-free.app', // ngrok hostname only (without https)
+//       host: '7325-49-43-6-241.ngrok-free.app', // ngrok hostname only (without https)
 //     },
 //   },
 // })

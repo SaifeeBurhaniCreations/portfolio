@@ -1,0 +1,92 @@
+.orbit-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 1000;
+}
+
+.central-ball:hover {
+    box-shadow: 0 0 28px rgba(185, 153, 230, 0.6);
+}
+
+.logo-img {
+    width: 60%;
+    height: 60%;
+    object-fit: contain;
+}
+
+.orbit-wrapper {
+    position: fixed;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px;
+    height: 200px;
+    z-index: 1000;
+}
+
+.central-ball {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-left: -52px;
+    /* semi-hidden peek */
+    background: radial-gradient(circle at center, #693B93, #2C1250);
+    transform: translateY(-50%);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px #9857D3;
+    transition: background 0.3s ease;
+    overflow: hidden;
+}
+
+.central-ball.pulse {
+    animation: pulseHighlight 1s ease-in-out;
+}
+
+@keyframes pulseHighlight {
+    0% {
+        transform: translateX(4%) scale(1);
+        box-shadow: 0 0 0px #9857D3;
+    }
+
+    50% {
+        transform: translateX(4%) scale(1.1);
+        box-shadow: 0 0 20px #B999E6;
+    }
+
+    100% {
+        transform: translateX(4%) scale(1);
+        box-shadow: 0 0 10px #9857D3;
+    }
+}
+
+.logo-img {
+    width: 60%;
+    height: 60%;
+}
+
+.planet-icon {
+    position: absolute;
+    top: 56%;
+    left: 35px;
+    transform: translate(-50%, -50%);
+    /* background-color: #2C1250; */
+    width: 40px;
+    scale: 1;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 0 8px rgba(140, 87, 190, 0.6);
+}
+

@@ -141,8 +141,8 @@
   flex-direction: column;
   gap: 0.5rem;
   color: var(--secondary-color);
-  font-size: 0.875rem;
-  line-height: 1.3125rem;
+  font-size: 16px;
+  line-height: normal;
 }
 
 .paragraph > div {
@@ -190,4 +190,33 @@
   visibility: hidden;
   transform: scale(0.8);
   pointer-events: none;
+}
+
+@media screen and (max-width: 767px) {
+  .label .number {
+    margin-right: 1rem;
+    font-size: 12px;
+  }
+  .title {
+  font-size: 14px;
+  }
+  .accordion {
+    margin-bottom: 0;
+  }
+  .accordion__item {
+    position: relative;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 32px;
+    background-color: var(--primary-color);
+    transition: background-color 0.3s ease;
+  }
+  .paragraph {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--secondary-color);
+    font-size: 12px;
+    line-height: normal;
+  }
 }

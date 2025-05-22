@@ -21,7 +21,7 @@ const Accordion: React.FC<AccordionProps> = ({ items, title, className = '' }) =
   const [offsets, setOffsets] = useState<number[]>([]);
   const contentRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const animationRefs = useRef<Record<string, Animation[]>>({});
-
+  
   useEffect(() => {
     const newOffsets = items.map((_, i) => i * 12);
     setOffsets(newOffsets);
