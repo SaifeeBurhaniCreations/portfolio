@@ -22,6 +22,7 @@ export interface HStackProps {
     justify?: "start" | "center" | "end" | "between" | "around" | "evenly";
     align?: "start" | "center" | "end" | "stretch" | "baseline";
     gap?: number;
+    direction?: 'row' | 'column' | 'column-reverse';
     w?: number | `${number}%` | "auto";
     maxW?: number | `${number}%` | "auto";
     children: ReactNode;
@@ -32,6 +33,7 @@ export interface VStackProps {
     justify?: "start" | "center" | "end" | "between" | "around" | "evenly";
     align?: "start" | "center" | "end" | "stretch" | "baseline";
     gap?: number;
+    direction?: 'row' | 'column' | 'column-reverse';
     w?: number | `${number}%` | "auto";
     maxW?: number | `${number}%` | "auto";
     children: ReactNode;

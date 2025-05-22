@@ -48,7 +48,9 @@ export interface GradientProps {
 
 export interface AnimatedLogoProps {
     position?: Partial<React.CSSProperties>;
-    isAnimate?: boolean
+    isAnimate?: boolean;
+    height?: number;
+    width?: number;
 }
 
 export interface ProjectCardProps {

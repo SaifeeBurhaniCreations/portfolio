@@ -257,9 +257,8 @@ html {
         box-shadow: none;
         border: none;
     }
-  
-  
+
     .animated-headline .letter {
         display: inline-block;
         line-height: 1em;
-      }
+    }

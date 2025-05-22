@@ -10,7 +10,6 @@ import card_img_1 from './assets/images/png/card-1.png'
 import card_img_2 from './assets/images/png/card-2.png'
 import card_img_3 from './assets/images/png/card-3.png'
 import card_img_4 from './assets/images/png/card-4.png'
-import TechStackSvg from './components/svgComponents/TechStackSvg'
 import WorkDetailCard from './components/ui/WorkDetailCard'
 import work_img_1 from "./assets/images/png/work-1.png"
 import work_img_2 from "./assets/images/png/work-2.png"
@@ -24,7 +23,7 @@ import BannerSvg from './components/svgComponents/BannerSvg'
 import SBLogo from './components/svgComponents/SBLogo'
 import TeamSection from './components/ui/TeamSection'
 import Input from './components/ui/Inputs/Input'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import TextArea from './components/ui/Inputs/TextArea'
 import Send from './components/icons/Send'
 import QuestionMark from './components/svgComponents/QuestionMark'
@@ -32,6 +31,7 @@ import Accordion from './components/ui/Accordian/Accordion'
 import Footer from './components/ui/Footer'
 import Header from './components/ui/Header'
 import HoverButton from './components/ui/Buttons/HoverButton'
+import TechStackV2 from './components/svgComponents/TechStackV2'
 
 const tools = [
   {
@@ -153,20 +153,32 @@ const services = [
 const App = () => {
 
   const [focusedIndex, setFocusedIndex] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const checkMobile = () => {
+        setIsMobile(window.innerWidth <= 767);
+    };
+
+    checkMobile(); // Initial check
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
 
   return (
     <>
       <Header />
 
       <MainWrapper>
-        <HStack align='end' justify='start' gap={50} style={{position: "relative"}}>
+        <HStack align={isMobile ? 'start' : 'end'} direction={isMobile ? 'column' : 'row'}  justify='start' gap={50} style={{position: "relative"}}>
           <div className="width-100">
             <Gradient width={500} coordinates={{ left: '12%', top: '55%', transform: `translate(-50%, -50%)` }} />
-            <BannerSvg />
-            <CustomImage style={{position: 'absolute', top: '-40%', left: '16%'}} width={180} borderRadius={0} src={arrow_img} />
+            <BannerSvg height={isMobile ? 160 : 300} width={isMobile ? 230 : 308} />
+            <CustomImage style={{position: 'absolute', top: '-40%', left: isMobile ? '30%' : '16%'}} width={isMobile ? 140 : 180} borderRadius={0} src={arrow_img} />
             <Typography 
-              style={{ position: 'absolute', top: '-28%', left: '28%' }} 
-              variant='b2' 
+              style={{ position: 'absolute', top: isMobile ? '-30%' :'-28%', left: isMobile ? '62%' : '28%' }} 
+              variant={isMobile ? 'caption' : 'b2'} 
               family='p' 
               color={getColor('light')}
             >
@@ -184,7 +196,7 @@ const App = () => {
             <Typography variant='b3' family='p' color={getColor('light')}>
               We’re a creative
             </Typography>
-            <Typography variant='h1' family='p' style={{ fontWeight: 400 }} color={getColor('light')}>
+            <Typography variant={isMobile ? 'h3' : 'h1'} family='p' style={{ fontWeight: 400 }} color={getColor('light')}>
               Tech agency that <br /> <span style={{ color: getColor('purple') }}>builds</span> ideas into impact
             </Typography>
             <Typography variant='b5' family='p' color={getColor('light')}>
@@ -196,24 +208,24 @@ const App = () => {
       </MainWrapper>
 
       <MainWrapper>
-        <VStack justify='between' align='start' gap={50}>
-          <VStack justify='center' align='start' gap={10}>
-            <Typography variant='h2' family='p' style={{ fontWeight: 400 }} color={getColor('light')}>We design and develop digital experiences that feel as good as they look|</Typography>
-            <Typography variant='b2' family='p' style={{ fontWeight: 400 }} color={getColor('light')}>
+        <VStack justify='between' align='start' gap={isMobile ? 28 : 48}>
+          <VStack justify='center' align='start' gap={32}>
+            <Typography variant={isMobile ? 'h4' : 'h2'} family='p' style={{ fontWeight: 400 }} color={getColor('light')}>We design and develop digital experiences that feel as good as they look</Typography>
+            <Typography variant={isMobile ? 'b4' : 'b2'} family='jk' style={{ fontWeight: 400 }} color={getColor('light')}>
               Aliasger & Jafar us Sadiq lead a creative tech studio turning bold concepts into <span style={{ color: getColor('purple') }}>striking interfaces</span>, blending pixel-perfect design with robust, scalable code.
             </Typography>
 
           </VStack>
 
-          <Typography variant='b2' family='p' style={{ fontWeight: 400 }} color={getColor('light')}>We partner with ambitious brands to transform complex ideas into beautifully designed, high-performance digital experiences.
+          <Typography variant={isMobile ? 'b4' : 'b2'} family='jk' style={{ fontWeight: 400 }} color={getColor('light')}>We partner with ambitious brands to transform complex ideas into beautifully designed, high-performance digital experiences.
             From strategy and design to scalable development, we build solutions that are not only functional and intuitive—but also ready to grow with your business.</Typography>
         </VStack>
       </MainWrapper>
 
       <MainWrapper>
-        <VStack align='start' justify='center' gap={30}>
-          <Typography variant='h2' family='p' style={{fontWeight: 400}} color={getColor('light')}>SBC Tools & Systems</Typography>
-          <AutoLayout className='position-rel' columns={2} align='center' gap={30}>
+        <VStack align='start' justify='center' gap={isMobile ? 0 : 30}>
+          <Typography variant={isMobile ? 'h3' : 'h2'} family='p' style={{fontWeight: 400}} color={getColor('light')}>SBC Tools & Systems</Typography>
+          <AutoLayout className='position-rel' columns={isMobile ? 1 : 2} align='center' gap={isMobile ? 18 :30}>
           <Gradient width={650} coordinates={{ left: '50%', top: '38%', transform: `translate(-50%, -50%)` }} />
 
             {
@@ -228,11 +240,16 @@ const App = () => {
       <MainWrapper>
         <VStack justify='center' align='center' style={{position: 'relative'}} gap={30}>
           <VStack justify='center' align='center' gap={10}>
-            <Typography variant='h3' family='p' style={{fontWeight: 400}} color={getColor('light')}>I'm currently looking to join a <span style={{color: getColor("purple")}}>cross-functional</span> team</Typography>
-            <Typography variant='h6' family='p' style={{fontWeight: 400}} color={getColor('light')}>that values improving people's lives through accessible design </Typography>
+            <Typography variant='h3' family='p' style={{ fontWeight: 400 }} color={getColor('light')}>
+              Driving innovation through <span style={{color: getColor('purple')}} >modern technology</span>
+            </Typography>
+            <Typography variant={isMobile? 'b5' : 'h6'} family='p' style={{ fontWeight: 400 }} color={getColor('light')}>
+              A carefully selected tech stack enables scalable, accessible, and high-performance digital solutions.
+            </Typography>
           </VStack>
-          <TechStackSvg />
-          <SBLogo isAnimate={true} position={{ transform: 'translate(-50%, -50%)', top: '71%', left: '49.4%', position: 'absolute' }} />
+          {/* <TechStackSvg /> */}
+          <TechStackV2 width={isMobile ? 500 : 895} height={isMobile ? 400 : 657} />
+          <SBLogo isAnimate={true} height={isMobile ? 50 : 70} width={isMobile ? 60 : 85} position={{ transform: 'translate(-50%, -50%)', top: isMobile ? '74.5%' : '71%', left: '49.4%', position: 'absolute' }} />
         </VStack>
       </MainWrapper>
 

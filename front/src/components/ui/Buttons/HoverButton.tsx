@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Typography from '../../typography/Typography';
 import { getColor } from '../../../constants/colors';
 
@@ -17,6 +17,19 @@ const HoverButton: React.FC<ButtonProps> = ({
   radius = 14,
   onClick,
 }) => {
+
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 767);
+        };
+
+        checkMobile(); // Initial check
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
   const buttonStyle: React.CSSProperties = {
     borderRadius: radius,
     padding: `${height}px ${width}px`,
@@ -25,7 +38,7 @@ const HoverButton: React.FC<ButtonProps> = ({
     position: 'relative',
     overflow: 'hidden',
     cursor: 'pointer',
-    minWidth: 150
+    minWidth: isMobile ? 100 : 150
   };
 
     const buttonClassName = 'hover-button';
@@ -65,7 +78,7 @@ const HoverButton: React.FC<ButtonProps> = ({
         onClick={onClick}
       >
         <span className="animated-btn-text" style={spanStyle}>
-          <Typography variant='b5' color={getColor('light')} family='jk'>
+          <Typography variant={isMobile ? 'caption' : 'b5'} color={getColor('light')} family='jk'>
             {children}
           </Typography>
         </span>

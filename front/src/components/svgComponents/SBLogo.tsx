@@ -3,7 +3,7 @@ import { AnimatedLogoProps } from "../../types";
 import { sbLogoAnimation } from "../animation/animation";
 
 
-const SBLogo: FC<AnimatedLogoProps> = ({ position, isAnimate }) => {
+const SBLogo: FC<AnimatedLogoProps> = ({ position, isAnimate, height = 70, width = 85 }) => {
   if(!isAnimate) return ;
   const pathRefs = useRef<SVGPathElement[]>([]);
 
@@ -18,8 +18,8 @@ const SBLogo: FC<AnimatedLogoProps> = ({ position, isAnimate }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="85"
-      height="70"
+      width={width}
+      height={height}
       viewBox="0 0 85 70"
       style={svgStyle}
     >

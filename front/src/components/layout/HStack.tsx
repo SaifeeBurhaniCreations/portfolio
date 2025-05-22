@@ -8,6 +8,7 @@ export const HStack = forwardRef<HTMLDivElement, HStackProps>(({
     w,
     maxW,
     children,
+    direction = 'row',
     style,
     ...props
 }, ref) => {
@@ -33,7 +34,7 @@ export const HStack = forwardRef<HTMLDivElement, HStackProps>(({
   const containerStyle: React.CSSProperties = {
     display: "flex",
     gap,
-    flexDirection: "row",
+    flexDirection: direction,
     justifyContent: justifyStyles[justify],
     alignItems: alignStyles[align],
     width: w,

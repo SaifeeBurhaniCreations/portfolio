@@ -15,7 +15,8 @@
     "front": "file:",
     "gsap": "^3.12.7",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "splitting": "^1.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",

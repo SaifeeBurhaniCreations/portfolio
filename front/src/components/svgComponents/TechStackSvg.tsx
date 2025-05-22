@@ -63,46 +63,54 @@ const TechStackSvg = () => {
     <>
       <svg width="895" height="657" viewBox="0 0 895 657" fill="none" xmlns="http://www.w3.org/2000/svg">
         <ellipse cx="452" cy="492" rx="271" ry="165" fill="url(#paint0_radial_44_197)" />
-        <circle className="icon" cx="277" cy="22" r="22" fill="#251C31" />
-        <circle className="icon" cx="332" cy="22" r="22" fill="#251C31" />
-        <circle className="icon" cx="387" cy="22" r="22" fill="#251C31" />
-        <circle className="icon" cx="445" cy="22" r="22" fill="#251C31" />
-        <circle className="icon" cx="552" cy="22" r="22" fill="#251C31" />
-        <circle className="icon" cx="607" cy="22" r="22" fill="#251C31" />
-        <circle className="icon" cx="497" cy="22" r="22" fill="#251C31" />
-        <path className="stem" d="M365 95C408.667 142.5 437.2 297 430 405" stroke="url(#paint1_linear_44_197)" />
-        <circle className="icon" cx="365" cy="83" r="22" fill="#251C31" />
-        <g style={{ mixBlendMode: 'lighten' }}>
-          <rect className="icon" x="348" y="75" width="33" height="15" fill="url(#pattern0_44_197)" />
+        <path className="stem" d="M584 85.5C540.333 133 454.8 255 462 363M627.5 102.5C583.833 150 465.3 255 472.5 363" stroke="url(#paint0_linear_157_117)"></path>
+        <path className="stem" d="M522.5 102.5C478.833 150 445.8 264.5 453 372.5" stroke="url(#paint1_linear_157_117)"/>
+        <path className="stem" d="M471 101C452 167 436.5 338.5 436.5 392.5" stroke="url(#paint2_linear_157_117)"/>
+        <path className="stem" d="M303.5 95C347.167 142.5 428.2 287.5 421 395.5" stroke="url(#paint3_linear_157_117)"/>
+        <path className="stem" d="M255 107C298.667 154.5 412.7 289.5 405.5 397.5" stroke="url(#paint4_linear_157_117)"/>
+        <path className="stem" d="M365 95C408.667 142.5 437.2 297 430 405" stroke="url(#paint5_linear_157_117)"/>
+        <path className="stem" d="M414 98C433.253 170.332 435 351.819 435 411" stroke="url(#paint6_linear_157_117)"/>
+        <ellipse cx="452" cy="492" rx="271" ry="165" fill="url(#paint7_radial_157_117)"/>
+        <circle className="icon" cx="365" cy="83" r="22" fill="#251C31"/>
+        <g style={{mixBlendMode: "lighten"}}>
+        <rect className="icon" x="348" y="75" width="33" height="15" fill="url(#pattern0_157_117)"/>
         </g>
-        <rect className="icon" x="267" y="8" width="21" height="28" fill="url(#pattern1_44_197)" />
-        <rect className="icon" x="316" y="8" width="32" height="28" fill="url(#pattern2_44_197)" />
-        <rect className="icon" x="371" y="7" width="32" height="31" fill="url(#pattern3_44_197)" />
-        <path className="stem" d="M303.5 95C347.167 142.5 428.2 287.5 421 395.5" stroke="url(#paint2_linear_44_197)" />
-        <circle className="icon" cx="305" cy="83" r="22" fill="#251C31" />
-        <rect className="icon" x="292" y="71" width="26" height="25" fill="url(#pattern4_44_197)" />
-        <rect className="icon" x="539" y="10" width="26" height="25" fill="url(#pattern5_44_197)" />
-        <rect className="icon" x="594" y="10" width="26" height="25" fill="url(#pattern6_44_197)" />
-        <rect className="icon" x="484" y="8" width="26" height="25" fill="url(#pattern7_44_197)" />
-        <path className="stem" d="M414 98C433.253 170.332 435 351.819 435 411" stroke="url(#paint3_linear_44_197)" />
-        <circle className="icon" cx="417" cy="83" r="22" fill="#251C31" />
-        <rect className="icon" x="404" y="70" width="26" height="26" fill="url(#pattern8_44_197)" />
-        <path className="stem" d="M471 101C452 167 436.5 338.5 436.5 392.5" stroke="url(#paint4_linear_44_197)" />
-        <circle className="icon" cx="472" cy="83" r="22" fill="#251C31" />
-        <rect className="icon" x="459" y="71" width="26" height="25" fill="url(#pattern9_44_197)" />
-        <path className="stem" d="M522.5 102.5C478.833 150 445.8 264.5 453 372.5" stroke="url(#paint5_linear_44_197)" />
-        <circle className="icon" cx="531" cy="83" r="22" fill="#251C31" />
-        <g style={{ mixBlendMode: 'lighten' }}>
-          <rect className="icon" x="512" y="78" width="39" height="11" fill="url(#pattern10_44_197)" />
+        <circle className="icon" cx="277" cy="22" r="22" fill="#251C31"/>
+        <rect className="icon" x="267" y="8" width="21" height="28" fill="url(#pattern1_157_117)"/>
+        <circle className="icon" cx="332" cy="22" r="22" fill="#251C31"/>
+        <rect className="icon" x="316" y="8" width="32" height="28" fill="url(#pattern2_157_117)"/>
+        <circle className="icon" cx="305" cy="83" r="22" fill="#251C31"/>
+        <rect className="icon" x="292" y="71" width="26" height="25" fill="url(#pattern3_157_117)"/>
+        <circle className="icon" cx="552" cy="22" r="22" fill="#251C31"/>
+        <rect className="icon" x="539" y="10" width="26" height="25" fill="url(#pattern4_157_117)"/>
+        <circle className="icon" cx="607" cy="22" r="22" fill="#251C31"/>
+        <rect className="icon" x="594" y="10" width="26" height="25" fill="url(#pattern5_157_117)"/>
+        <circle className="icon" cx="497" cy="22" r="22" fill="#251C31"/>
+        <rect className="icon" x="481" y="6" width="32" height="32" fill="url(#pattern6_157_117)"/>
+        <circle className="icon" cx="472" cy="83" r="22" fill="#251C31"/>
+        <rect className="icon" x="459" y="71" width="26" height="25" fill="url(#pattern7_157_117)"/>
+        <circle className="icon" cx="531" cy="83" r="22" fill="#251C31"/>
+        <g style={{mixBlendMode: "lighten"}}>
+        <rect className="icon" x="512" y="78" width="39" height="11" fill="url(#pattern8_157_117)"/>
         </g>
-        <path className="stem" d="M584 85.5C540.333 133 454.8 255 462 363" stroke="url(#paint6_linear_44_197)" />
-        <circle className="icon" cx="586" cy="83" r="22" fill="#251C31" />
-        <g style={{ mixBlendMode: 'lighten' }}>
-          <rect className="icon" x="569" y="78" width="37" height="9" fill="url(#pattern11_44_197)" />
+        <circle className="icon" cx="586" cy="83" r="22" fill="#251C31"/>
+        <g style={{mixBlendMode: "lighten"}}>
+        <rect className="icon" x="567" y="78" width="37" height="9" fill="url(#pattern9_157_117)"/>
         </g>
-        <g style={{ mixBlendMode: 'lighten' }}>
-          <rect className="icon" x="429" y="12" width="32" height="21" fill="url(#pattern12_44_197)" />
-        </g>
+        <circle className="icon" cx="387" cy="22" r="22" fill="#251C31"/>
+        <rect className="icon" x="371" y="6" width="32" height="32" fill="url(#pattern10_157_117)"/>
+        <circle className="icon" cx="445" cy="22" r="22" fill="#251C31"/>
+        <rect className="icon" x="429" y="6" width="32" height="32" fill="url(#pattern11_157_117)"/>
+        <circle className="icon" cx="417" cy="83" r="22" fill="#251C31"/>
+        <rect className="icon" x="401" y="67" width="32" height="32" fill="url(#pattern12_157_117)"/>
+        <circle className="icon" cx="656" cy="34" r="22" fill="#251C31"/>
+        <rect className="icon" x="638" y="21" width="36" height="26" fill="url(#pattern13_157_117)"/>
+        <circle className="icon" cx="225" cy="34" r="22" fill="#251C31"/>
+        <rect className="icon" x="210" y="22" width="30" height="23" fill="url(#pattern14_157_117)"/>
+        <circle className="icon" cx="247" cy="89" r="22" fill="#251C31"/>
+        <rect className="icon" x="230" y="72" width="34" height="34" fill="url(#pattern15_157_117)"/>
+        <circle className="icon" cx="638" cy="89" r="22" fill="#251C31"/>
+        <rect className="icon" x="624" y="75" width="28" height="29" fill="url(#pattern16_157_117)"/>
         <circle
           className="rotating-gradient-circle"
           cx="440"

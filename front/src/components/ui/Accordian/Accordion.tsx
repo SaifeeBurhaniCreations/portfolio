@@ -42,7 +42,8 @@ const Accordion: React.FC<AccordionProps> = ({ items, title, className = '' }) =
       delete animationRefs.current[element.id];
     }
 
-    const sentences = text.split('. ').filter(Boolean);
+    // const sentences = text.split('. ').filter(Boolean);
+    const sentences = [text];
     const animations: Animation[] = [];
 
     sentences.forEach((sentence, index) => {

@@ -1,7 +1,12 @@
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 
-const BannerSvg = () => {
+interface BannerProps {
+    height: number;
+    width: number;
+}
+
+const BannerSvg = ({ height = 300, width = 308 }: BannerProps) => {
 
     const containerRef = useRef<HTMLDivElement>(null);
     const svgRef = useRef<SVGSVGElement>(null);
@@ -57,8 +62,8 @@ const BannerSvg = () => {
         <div
             ref={containerRef}
             style={{
-                width: "308px",
-                height: "300px",
+                width: `${width}px`,
+                height: `${height}px`,
                 perspective: "1000px",
                 display: "flex",
                 alignItems: "center",
@@ -73,7 +78,7 @@ const BannerSvg = () => {
             fill="none" 
             xmlns="http://www.w3.org/2000/svg" 
         >
-            <rect width="308" height="300" fill="url(#pattern0_55_34)"/>
+            <rect width='308px' height='300px' fill="url(#pattern0_55_34)"/>
             <defs>
                 <pattern id="pattern0_55_34" patternContentUnits="objectBoundingBox" width="1" height="1">
                     <use href="#image0_55_34" transform="matrix(0.00245098 0 0 0.00251889 0 -0.0806045)"/>

@@ -14,31 +14,53 @@ const Header = () => {
 
     const capsuleTl = useRef(gsap.timeline({ paused: true }));
     const navTl = useRef(gsap.timeline({ paused: true }));
+    const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
     useEffect(() => {
-        if (!capsuleRef.current || !navLeftRef.current || !navRightRef.current) return;
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 767);
+        };
+    
+        checkMobile(); // Initial check
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+    
 
-        capsuleTl.current
-            .to(capsuleRef.current, {
-                width: "50%",
+    useEffect(() => {
+        if (
+            isMobile === null || // 👈 skip until isMobile is known
+            !capsuleRef.current ||
+            !navLeftRef.current ||
+            !navRightRef.current
+        ) return;
+    
+        capsuleTl.current = gsap.timeline({ paused: true }).to(
+            capsuleRef.current,
+            {
+                width: isMobile ? '100%' : "50%",
                 paddingInline: "3rem",
                 borderRadius: "40px",
                 ease: "power3.inOut",
                 duration: 0.6,
-            }, 0)
-            .reverse();
-
-        navTl.current
-            .to([navLeftRef.current, navRightRef.current], {
+            },
+            0
+        ).reverse();
+    
+        navTl.current = gsap.timeline({ paused: true }).to(
+            [navLeftRef.current, navRightRef.current],
+            {
                 x: 0,
                 opacity: 1,
                 pointerEvents: "auto",
                 duration: 0.5,
                 ease: "power2.out",
                 stagger: 0.05,
-            })
-            .reverse();
-    }, []);
+            }
+        ).reverse();
+    
+    }, [isMobile]); // 👈 Only run after isMobile is calculated
+    
 
     useEffect(() => {
         const onScroll = () => {
@@ -85,8 +107,8 @@ const Header = () => {
         border: `1px solid ${getColor("purple", 100, 0.2)}`,
         borderRadius: "50%",
         padding: "0.5rem",
-        width: "100px",
-        height: "100px",
+        width: isMobile ? '80px' : "100px",
+        height: isMobile ? '80px' : "100px",
         margin: "0 auto",
         display: "flex",
         alignItems: "center",
@@ -113,8 +135,8 @@ const Header = () => {
         left: "50%",
         top: "50%",
         transform: "translate(-50%, -50%)",
-        width: "100px",
-        height: "100px",
+        width: isMobile ? '80px' : "100px",
+        height: isMobile ? '80px' : "100px",
         zIndex: 2,
         borderRadius: "50%",
         display: "flex",
@@ -133,11 +155,11 @@ const Header = () => {
                             <div
                                 ref={navLeftRef}
                                 className="navlinks-left"
-                                style={{ ...navStyle, left: "10%", transform: "translateX(-100%)" }}
+                                style={{ ...navStyle, left: isMobile ? "4%" : "10%", transform: "translateX(-100%)" }}
                             >
                                 <ul style={{ display: "flex", gap: "1.5rem" }}>
-                                    <li><Typography variant="b2" color={getColor("light")}>Home</Typography></li>
-                                    <li><Typography variant="b2" color={getColor("light")}>About</Typography></li>
+                                    <li><Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>Home</Typography></li>
+                                    <li><Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>About</Typography></li>
                                 </ul>
                             </div>
 
@@ -156,11 +178,11 @@ const Header = () => {
                             <div
                                 ref={navRightRef}
                                 className="navlinks-right"
-                                style={{ ...navStyle, right: "10%", transform: "translateX(100%)" }}
+                                style={{ ...navStyle, right: isMobile ? "4%" : "10%", transform: "translateX(100%)" }}
                             >
                                 <ul style={{ display: "flex", gap: "1.5rem" }}>
-                                    <li><Typography variant="b2" color={getColor("light")}>Projects</Typography></li>
-                                    <li><Typography variant="b2" color={getColor("light")}>Blogs</Typography></li>
+                                    <li><Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>Projects</Typography></li>
+                                    <li><Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>Blogs</Typography></li>
                                 </ul>
                             </div>
                         </div>
