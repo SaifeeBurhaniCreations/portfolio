@@ -135,9 +135,9 @@ const Footer = () => {
     }, []);
 
 
-    // useEffect(() => {
-    //     FooterFadeInAnimation(sectionRef)
-    // }, [])
+    useEffect(() => {
+        FooterFadeInAnimation(sectionRef)
+    }, [])
 
     return (
         <>
