@@ -241,7 +241,7 @@ const Home = () => {
             </MainWrapper>
 
             <MainWrapper>
-                <VStack justify='center' align='center' style={{ position: 'relative' }} gap={30}>
+                <VStack justify='center' align='center' style={{ position: 'relative', overflowX: 'hidden' }} gap={30}>
                     <VStack justify='center' align='center' gap={10}>
                         <Typography variant='h3' family='p' style={{ fontWeight: 400 }} color={getColor('light')}>
                             Driving innovation through <span style={{ color: getColor('purple') }} >modern technology</span>
