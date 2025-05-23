@@ -33,7 +33,7 @@ const OrbitSocialHub: React.FC<OrbitSocialHubProps> = ({ open = false, setOpen }
 
     const socialLinks = useMemo(() =>
         socialMedia.map((value, index) => {
-            const angle = -90 + index * 45;
+            const angle = 90 + index * 45;
             const rad = (angle * Math.PI) / 180;
             const radius = 80;
             return {
@@ -59,7 +59,7 @@ const OrbitSocialHub: React.FC<OrbitSocialHubProps> = ({ open = false, setOpen }
                 <motion.div
                     className={`central-ball ${highlight ? 'pulse' : ''}`}
                     onClick={() => setOpen?.(!open)}
-                    animate={{ x: open ? '80%' : '0%' }}
+                    animate={{ x: open ? '-80%' : '0%' }}
                     transition={{ type: 'spring', stiffness: 260, damping: 20 }}
                 >
                     <img src={logo} alt="Logo" className="logo-img" />

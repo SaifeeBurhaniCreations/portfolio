@@ -26,6 +26,7 @@ export interface HStackProps {
     w?: number | `${number}%` | "auto";
     maxW?: number | `${number}%` | "auto";
     children: ReactNode;
+    className?: string;
     style?: CSSProperties;
 }
 

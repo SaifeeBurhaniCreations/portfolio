@@ -8,6 +8,7 @@ export const HStack = forwardRef<HTMLDivElement, HStackProps>(({
     w,
     maxW,
     children,
+    className,
     direction = 'row',
     style,
     ...props
@@ -43,7 +44,7 @@ export const HStack = forwardRef<HTMLDivElement, HStackProps>(({
   };
 
   return (
-    <div ref={ref} style={containerStyle} {...props}>
+    <div ref={ref} style={containerStyle} className={className} {...props}>
         {childArray.map((child, index) => (
             <div
                 key={index}

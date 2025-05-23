@@ -166,6 +166,10 @@ html {
     animation: blink 1s infinite;
 }
 
+a {
+    text-decoration: none !important;
+}
+
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
@@ -261,6 +265,29 @@ html {
     .animated-headline .letter {
         display: inline-block;
         line-height: 1em;
+    }
+
+    .page-title-badge {
+        width: max-content;
+        padding: 10px 16px;
+        border-radius: 24px;
+    }
+
+    .badge {
+        height: 10px;
+        display: block !important;
+        padding: 5px;
+        width: 10px;
+        border-radius: 50%;
+
+        &.blink {
+            animation: blink-badge 2s infinite;
+        }
+    }
+
+    @keyframes blink-badge {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
     }
 
 @media screen and (max-width: 767px) {

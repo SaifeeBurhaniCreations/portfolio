@@ -3,6 +3,7 @@ import { textBlurAnimation } from "../animation/animation";
 
 
 const typographyStyles: Record<string, CSSProperties> = {
+  xl: { fontSize: '70px', fontWeight: "bold", lineHeight: '81px', letterSpacing: '0.4px' },
   h1: { fontSize: '50px', fontWeight: "bold", lineHeight: '61px', letterSpacing: '0.4px' },
   h2: { fontSize: '40px', fontWeight: "700", lineHeight: '50px', letterSpacing: '0.4px' },
   h3: { fontSize: '24px', fontWeight: "600", lineHeight: '32px', letterSpacing: '0.4px' },

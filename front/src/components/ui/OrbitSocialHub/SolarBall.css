@@ -1,10 +1,4 @@
-.orbit-wrapper {
-    position: fixed;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    z-index: 1000;
-}
+
 
 .central-ball:hover {
     box-shadow: 0 0 28px rgba(185, 153, 230, 0.6);
@@ -18,7 +12,7 @@
 
 .orbit-wrapper {
     position: fixed;
-    left: 0;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
     width: 200px;
@@ -28,9 +22,9 @@
 
 .central-ball {
     position: absolute;
-    left: 0;
+    right: 0;
     top: 50%;
-    margin-left: -52px;
+    margin-right: -52px;
     /* semi-hidden peek */
     background: radial-gradient(circle at center, #693B93, #2C1250);
     transform: translateY(-50%);
@@ -75,7 +69,7 @@
 .planet-icon {
     position: absolute;
     top: 56%;
-    left: 35px;
+    right: 35px;
     transform: translate(-50%, -50%);
     /* background-color: #2C1250; */
     width: 40px;

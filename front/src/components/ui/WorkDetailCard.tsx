@@ -1,4 +1,4 @@
-import { useEffect, useState, ReactNode } from "react";
+import { ReactNode } from "react";
 import { getColor } from "../../constants/colors";
 import SparkClick from "../icons/SparkClick";
 import AutoLayout from "../layout/AutoLayout";
@@ -8,6 +8,7 @@ import Typography from "../typography/Typography";
 import Button from "./Buttons/Button";
 import CustomImage from "./CustomImage";
 import Gradient from "./Gradient";
+import useResize from "../../hooks/useResize";
 
 // Props for main component
 interface ProjectCardProps {
@@ -156,15 +157,7 @@ const WorkDetailCard: React.FC<ProjectCardProps> = ({
     banner,
     index
 }) => {
-    const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth <= 767);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= 767);
-        };
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
+    const isMobile = useResize()
 
     const isEvenIndex = index % 2 === 0;
     const layoutConfig = {

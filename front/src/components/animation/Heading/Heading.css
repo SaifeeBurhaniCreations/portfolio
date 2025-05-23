@@ -1,0 +1,11 @@
+.heading-container {
+    perspective: 1000px;
+    /* Adds depth to the 3D space */
+}
+
+.line {
+    display: inline-block;
+    /* Each line is a block element */
+    transform-style: preserve-3d;
+    /* Maintain 3D space */
+}

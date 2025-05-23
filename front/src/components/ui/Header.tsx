@@ -4,6 +4,7 @@ import { getColor } from "../../constants/colors";
 import Typography from "../typography/Typography";
 import CustomImage from "./CustomImage";
 import logo from "../../assets/images/svg/sbc.svg";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -158,13 +159,22 @@ const Header = () => {
                                 style={{ ...navStyle, left: isMobile ? "4%" : "10%", transform: "translateX(-100%)" }}
                             >
                                 <ul style={{ display: "flex", gap: isMobile ? '14px' : '24px' }}>
-                                    <li><Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>Home</Typography></li>
-                                    <li><Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>About</Typography></li>
+                                    <li>
+                                        <NavLink to={`/`}>
+                                            <Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>Home</Typography>
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to={`/about`}>
+                                            <Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>About</Typography>
+                                        </NavLink>
+                                    </li>
                                 </ul>
                             </div>
 
                             {/* Logo — Fixed and Centered */}
                             <div style={logoWrapperStyle}>
+                                <NavLink to={`/`}>
                                 <CustomImage
                                     borderRadius={0}
                                     onZoom={true}
@@ -172,6 +182,7 @@ const Header = () => {
                                     style={{ justifyContent: "center", display: "flex" }}
                                     imgStyle={{ objectFit: "contain", width: "100%" }}
                                 />
+                                </NavLink>
                             </div>
 
                             {/* Right Nav */}
@@ -181,7 +192,11 @@ const Header = () => {
                                 style={{ ...navStyle, right: isMobile ? "4%" : "8%", transform: "translateX(100%)" }}
                             >
                                 <ul style={{ display: "flex", gap: isMobile ? '14px' : '24px' }}>
-                                    <li><Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>Projects</Typography></li>
+                                    <li>
+                                        <NavLink to={`/projects`}>
+                                            <Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>Projects</Typography>
+                                        </NavLink>
+                                    </li>
                                     <li><Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>Blogs</Typography></li>
                                 </ul>
                             </div>

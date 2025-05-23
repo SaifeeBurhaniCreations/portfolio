@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import AutoLayout from '../layout/AutoLayout'
 import { VStack } from '../layout/VStack'
 import Typography from '../typography/Typography'
@@ -7,6 +7,7 @@ import { HStack } from '../layout/HStack'
 import AnchorArrow from '../icons/AnchorArrow'
 import { FooterFadeInAnimation } from '../animation/animation'
 import HoverButton from './Buttons/HoverButton'
+import useResize from '../../hooks/useResize'
 
 const Pages = ({ isMobile = false }:{isMobile: boolean}) => {
     return (
@@ -108,10 +109,10 @@ const ContactInfo = ({ isMobile = false }:{isMobile: boolean}) => {
             <VStack justify='center' align='center' gap={isMobile ? 16 : 24}>
                 <Typography family='jk' variant={isMobile ? 'caption' : 'b4'} color={getColor('light')}>REACH OUT US</Typography>
                 <VStack>
-                    <Typography family='jk' variant='h2' color={getColor('light')}>(+91) 83193 21198</Typography>
-                    <Typography family='jk' variant='h2' color={getColor('light')}>info@sbcws.com</Typography>
+                    <Typography family='jk' variant={isMobile ? 'h3' : 'h2'} color={getColor('light')}>(+91) 83193 21198</Typography>
+                    <Typography family='jk' variant={isMobile ? 'h3' : 'h2'} color={getColor('light')}>info@sbcws.com</Typography>
                 </VStack>
-                <HoverButton>
+                <HoverButton height={isMobile ? 8 : 10} width={isMobile ? 16 : 24}>
                     <HStack gap={4}>Let's Connect <AnchorArrow /></HStack>
                 </HoverButton>
             </VStack>
@@ -122,17 +123,7 @@ const ContactInfo = ({ isMobile = false }:{isMobile: boolean}) => {
 const Footer = () => {
 
     const sectionRef = useRef(null)
-    const [isMobile, setIsMobile] = useState<boolean>(false);
-
-    useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth <= 767);
-        };
-
-        checkMobile(); // Initial check
-        window.addEventListener("resize", checkMobile);
-        return () => window.removeEventListener("resize", checkMobile);
-    }, []);
+    const isMobile = useResize()
 
 
     useEffect(() => {

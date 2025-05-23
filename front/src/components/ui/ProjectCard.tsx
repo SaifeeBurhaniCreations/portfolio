@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { HStack } from "../layout/HStack"
 import CustomImage from './CustomImage';
 import { VStack } from '../layout/VStack';
@@ -7,23 +7,14 @@ import { getColor } from '../../constants/colors';
 import HoverButton from './Buttons/HoverButton';
 import { startCardAnimation } from '../animation/animation';
 import { ProjectCardProps } from '../../types';
+import useResize from '../../hooks/useResize';
 
 
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ index, banner, heading, description }) => {
 
     const cardRef = useRef(null);
-    const [isMobile, setIsMobile] = useState<boolean | null>(null);
-
-    useEffect(() => {
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth <= 767);
-        };
-
-        checkMobile(); // Initial check
-        window.addEventListener("resize", checkMobile);
-        return () => window.removeEventListener("resize", checkMobile);
-    }, []);
+    const isMobile = useResize()
 
     useEffect(() => {
         startCardAnimation(cardRef.current, index);
