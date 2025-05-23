@@ -39,7 +39,7 @@ const ProjectDescriptionCard: React.FC<CardContentProps> = ({ children, index, e
         backgroundBlendMode: "overlay, normal",
         backdropFilter: "blur(40px)",
         padding: "30px",
-        width: "110%",
+        width: element ? "100%" : "110%",
         position: "relative",
         zIndex: 6,
         marginLeft: index % 2 !== 0 ? "-10%" : "0"

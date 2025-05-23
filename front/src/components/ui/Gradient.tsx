@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { GradientProps } from '../../types';
 
 const Gradient: FC<GradientProps> = ({
@@ -6,6 +6,19 @@ const Gradient: FC<GradientProps> = ({
   size = 50,
   coordinates = { left: '0', top: '0' }  
 }) => {
+
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 767);
+        };
+
+        checkMobile(); // Initial check
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
   const gradientStyle: React.CSSProperties = {
     borderRadius: '700px',
     width: `${width}px`,
@@ -16,6 +29,8 @@ const Gradient: FC<GradientProps> = ({
     position: 'absolute',
     ...coordinates, 
   };
+
+  if(isMobile) return null
 
   return <div style={gradientStyle} />;
 };

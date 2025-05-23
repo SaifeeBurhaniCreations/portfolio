@@ -264,6 +264,9 @@ html {
     }
 
 @media screen and (max-width: 767px) {
+    body {
+        overflow-x: hidden;
+    }
     .footer {
         padding: 40px 20px;
         min-height: 400px;
