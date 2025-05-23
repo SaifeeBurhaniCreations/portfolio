@@ -33,7 +33,7 @@ import work_img_4 from "../assets/images/png/work-4.png"
 import arrow_img from "../assets/images/png/arrow-img.png"
 import Send from "../components/icons/Send";
 import StickyFooter from "../components/ui/StickyFooter";
-import { SolarBall } from "../components/ui/SolarBall/SolarBall";
+import { useScrollToTop } from "../hooks/scrollHook";
 
 const tools = [
     {
@@ -167,11 +167,11 @@ const Home = () => {
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
 
+    useScrollToTop()
+
     return (
         <>
             <Header />
-
-            <SolarBall />
 
             <MainWrapper>
                 <HStack align={isMobile ? 'start' : 'end'} direction={isMobile ? 'column' : 'row'} justify='start' gap={50} style={{ position: "relative" }}>
@@ -361,10 +361,9 @@ const Home = () => {
             <MainWrapper>
                 <TeamSection />
             </MainWrapper>
-
-
+            
             <Footer />
-            <StickyFooter />
+            {!isMobile && <StickyFooter />}
         </>
     )
 }
