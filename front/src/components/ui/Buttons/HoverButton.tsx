@@ -7,11 +7,13 @@ interface ButtonProps {
   height?: number;
   width?: number;
   radius?: number;
+  style?: React.CSSProperties
   onClick?: () => void;
 }
 
 const HoverButton: React.FC<ButtonProps> = ({
   children,
+  style,
   height = 10,
   width = 24,
   radius = 14,
@@ -38,7 +40,8 @@ const HoverButton: React.FC<ButtonProps> = ({
     position: 'relative',
     overflow: 'hidden',
     cursor: 'pointer',
-    minWidth: isMobile ? 100 : 150
+    minWidth: isMobile ? 100 : 150,
+    ...style
   };
 
     const buttonClassName = 'hover-button';

@@ -122,8 +122,8 @@ const ContactInfo = ({ isMobile = false }:{isMobile: boolean}) => {
 
 const Footer = () => {
 
-    const sectionRef = useRef(null)
     const isMobile = useResize()
+    const sectionRef = useRef(null)
 
 
     useEffect(() => {

@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from "react";
+import { CSSProperties, ReactNode, MouseEvent } from "react";
 
 export interface GridProps {
     columns?: number;
@@ -33,12 +33,16 @@ export interface HStackProps {
 export interface VStackProps {
     justify?: "start" | "center" | "end" | "between" | "around" | "evenly";
     align?: "start" | "center" | "end" | "stretch" | "baseline";
-    gap?: number;
-    direction?: 'row' | 'column' | 'column-reverse';
-    w?: number | `${number}%` | "auto";
-    maxW?: number | `${number}%` | "auto";
-    children: ReactNode;
+    gap?: number | string;
+    w?: string | number;
+    maxW?: string | number;
+    children?: React.ReactNode;
     style?: CSSProperties;
+    className?: string;
+    onClick?: (event: MouseEvent<HTMLDivElement>) => void;
+    onMouseEnter?: (event: MouseEvent<HTMLDivElement>) => void;
+    onMouseLeave?: (event: MouseEvent<HTMLDivElement>) => void;
+    [key: string]: any; // For additional HTML div props
 }
 
 export type StackWrapperProps = {

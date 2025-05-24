@@ -13,8 +13,8 @@ import useResize from '../../hooks/useResize';
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ index, banner, heading, description }) => {
 
-    const cardRef = useRef(null);
     const isMobile = useResize()
+    const cardRef = useRef(null);
 
     useEffect(() => {
         startCardAnimation(cardRef.current, index);

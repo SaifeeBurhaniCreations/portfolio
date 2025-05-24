@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './SolarBall.css'; // Rename this to OrbitSocialHub.css if possible
 import { getColor } from '../../../constants/colors';
@@ -8,7 +8,7 @@ import LinkedIn from '../../icons/LinkedIn';
 import GitHub from '../../icons/GitHub';
 import Facebook from '../../icons/Facebook';
 import Twitter from '../../icons/Twitter';
-import { instagramUrl, twitterUrl } from '../../../utils/common';
+import { inactiveTime, instagramUrl, twitterUrl } from '../../../utils/common';
 
 interface SocialMediaLink {
     icon: JSX.Element;
@@ -22,6 +22,8 @@ interface OrbitSocialHubProps {
 
 const OrbitSocialHub: React.FC<OrbitSocialHubProps> = ({ open = false, setOpen }) => {
     const [highlight, setHighlight] = useState(false);
+    const closeTimerRef = useRef<NodeJS.Timeout | null>(null);
+    const isHoveringRef = useRef(false);
 
     const socialMedia: SocialMediaLink[] = useMemo(() => [
         { icon: <Instagram color={getColor('purple', 100)} size={24} />, link: instagramUrl },
@@ -44,6 +46,24 @@ const OrbitSocialHub: React.FC<OrbitSocialHubProps> = ({ open = false, setOpen }
     );
 
     useEffect(() => {
+        if (closeTimerRef.current) {
+            clearTimeout(closeTimerRef.current);
+        }
+
+        if (open && !isHoveringRef.current) {
+            closeTimerRef.current = setTimeout(() => {
+                setOpen?.(false);
+            }, inactiveTime);
+        }
+
+        return () => {
+            if (closeTimerRef.current) {
+                clearTimeout(closeTimerRef.current);
+            }
+        };
+    }, [open, setOpen, inactiveTime]);
+
+    useEffect(() => {
         const interval = setInterval(() => {
             if (!open) {
                 setHighlight(true);
@@ -53,12 +73,30 @@ const OrbitSocialHub: React.FC<OrbitSocialHubProps> = ({ open = false, setOpen }
         return () => clearInterval(interval);
     }, [open]);
 
+    const handleMouseEnter = () => {
+        isHoveringRef.current = true;
+        if (closeTimerRef.current) {
+            clearTimeout(closeTimerRef.current);
+            closeTimerRef.current = null;
+        }
+    };
+
+    const handleMouseLeave = () => {
+        isHoveringRef.current = false;
+        if (open) {
+            closeTimerRef.current = setTimeout(() => {
+                setOpen?.(false);
+            }, inactiveTime);
+        }
+    };
+
     return (
-        <div className="orbit-wrapper">
+        <div className="orbit-wrapper" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <div className="central-wrapper">
                 <motion.div
                     className={`central-ball ${highlight ? 'pulse' : ''}`}
                     onClick={() => setOpen?.(!open)}
+                    onMouseEnter={() => setOpen?.(true)}
                     animate={{ x: open ? '-80%' : '0%' }}
                     transition={{ type: 'spring', stiffness: 260, damping: 20 }}
                 >

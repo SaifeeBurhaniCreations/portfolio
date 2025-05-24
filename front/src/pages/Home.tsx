@@ -7,7 +7,7 @@ import TypewriterText from "../components/typography/TypewriterText";
 import Typography from "../components/typography/Typography";
 import CustomImage from "../components/ui/CustomImage";
 import Gradient from "../components/ui/Gradient";
-import ProjectCard from "../components/ui/ProjectCard";
+import ProjectCard from "../components/ui/FeaturedProjectCard";
 import TeamSection from "../components/ui/TeamSection";
 import { getColor } from "../constants/colors";
 

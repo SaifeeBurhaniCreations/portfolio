@@ -5,6 +5,7 @@ import Typography from "../typography/Typography";
 import CustomImage from "./CustomImage";
 import logo from "../../assets/images/svg/sbc.svg";
 import { NavLink } from "react-router-dom";
+import { inactiveTime } from "../../utils/common";
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -97,7 +98,7 @@ const Header = () => {
         openHeader();
         inactivityTimer.current = setTimeout(() => {
             closeHeader();
-        }, 3000); // Adjustable
+        }, inactiveTime); // Adjustable
     };
 
     const capsuleStyle: React.CSSProperties = {

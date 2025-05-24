@@ -27,6 +27,7 @@ export interface ButtonProps {
     width?: number;
     radius?: number;
     bg?: string;
+    style?: React.CSSProperties;
     border?: string;
     onClick?: () => void;
 }
@@ -61,7 +62,40 @@ export interface ProjectCardProps {
     // other props
 }
 
+export interface BadgeLabelProps {
+    children: React.ReactNode;
+    size?: 'md' | 'sm' | 'xs' | 'lg';
+    isBlink?: boolean;
+    badge?: boolean;
+    color?: string;
+    bg?: string;
+}
+
 export interface IconProps {
     color?: string;
     size?: number;
+}
+
+/** Single project data object */
+export interface Project {
+    projectName: string;
+    description: string;
+    technologies?: string[];
+    href: string;
+    banner: string;
+}
+
+/** Props for StackCard component */
+export interface StackCardProps {
+    data: Project[];
+}
+
+/** Props for individual Card */
+export interface CardProps {
+    type: 'even' | 'odd' | 'mob';
+    heading: string;
+    description: string;
+    technologies?: string[];
+    button: string;
+    image: string;
 }

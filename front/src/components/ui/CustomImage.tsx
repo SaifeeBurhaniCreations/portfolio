@@ -52,7 +52,7 @@ const CustomImage: React.FC<CustomImageProps> = ({
     };
 
     return (
-        <div style={{ ...style }}>
+        <div style={{ ...style, borderRadius: borderRadius }}>
             {loading && loadingIndicator && <Loader />}
 
             <img

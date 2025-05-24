@@ -5,6 +5,7 @@ import { ButtonProps } from '../../../types';
 
 const Button: React.FC<ButtonProps> = ({
     children,
+    style,
     height = 12, 
     width = 24,  
     radius = 16,
@@ -31,6 +32,7 @@ const Button: React.FC<ButtonProps> = ({
         backgroundColor: bg,
         border,
         cursor: 'pointer', // Indicate that the element is clickable
+        ...style
     };
 
   return (

@@ -1,7 +1,7 @@
-import React, { Children } from "react";
+import React, { Children, forwardRef, ForwardedRef } from "react";
 import { VStackProps } from "../../types";
 
-export const VStack: React.FC<VStackProps> = ({
+export const VStack = forwardRef<HTMLDivElement, VStackProps>(({
     justify = "start",
     align = "center",
     gap = 0,
@@ -9,8 +9,12 @@ export const VStack: React.FC<VStackProps> = ({
     maxW,
     children,
     style,
+    className,
+    onClick,
+    onMouseEnter,
+    onMouseLeave,
     ...props
-}) => {
+}, ref: ForwardedRef<HTMLDivElement>) => {
     const justifyStyles: Record<NonNullable<VStackProps["justify"]>, string> = {
         start: "flex-start",
         center: "center",
@@ -34,18 +38,34 @@ export const VStack: React.FC<VStackProps> = ({
         display: "flex",
         gap,
         flexDirection: "column",
-        justifyContent: justifyStyles[justify],
-        alignItems: alignStyles[align],
+        justifyContent: justifyStyles[justify as keyof typeof justifyStyles],
+        alignItems: alignStyles[align as keyof typeof alignStyles],
         width: w,
         maxWidth: maxW,
         ...style,
     };
 
     return (
-        <div style={containerStyle} {...props}>
-            {childArray.map((child) => (
-                child
+        <div
+            ref={ref}
+            style={containerStyle}
+            className={className}
+            onClick={onClick}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
+            {...props}
+        >
+            {childArray.map((child, index) => (
+                <React.Fragment key={index}>
+                    {child}
+                </React.Fragment>
             ))}
         </div>
     );
-};
+});
+
+// Add display name for better debugging
+VStack.displayName = "VStack";
+
+// Export the component
+export default VStack;
