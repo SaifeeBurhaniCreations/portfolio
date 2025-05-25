@@ -1,4 +1,3 @@
-import AutoLayout from "../components/layout/AutoLayout";
 import { HStack } from "../components/layout/HStack";
 import MainWrapper from "../components/layout/MainWrapper";
 import { VStack } from "../components/layout/VStack";
@@ -7,7 +6,6 @@ import TypewriterText from "../components/typography/TypewriterText";
 import Typography from "../components/typography/Typography";
 import CustomImage from "../components/ui/CustomImage";
 import Gradient from "../components/ui/Gradient";
-import ProjectCard from "../components/ui/FeaturedProjectCard";
 import TeamSection from "../components/ui/TeamSection";
 import { getColor } from "../constants/colors";
 
@@ -21,25 +19,34 @@ import useResize from "../hooks/useResize";
 import Contact from "../components/ui/Contact";
 import FeaturedProjects from "../components/ui/FeaturedProjects";
 import TechStack from "../components/ui/TechStack";
+import LightenCardGrid from "../components/ui/LightenCardGrid";
 
 const tools = [
     {
         banner: card_img_1,
+        button: 'LEARN MORE',
+        href: '/',
         heading: "SBC-Deploy",
         description: "Seamless in-house app deployment platform. Automate delivery with ease. Get 1 month free for real client deployment.",
     },
     {
         banner: card_img_2,
+        button: 'LEARN MORE',
+        href: '/',
         heading: "SBC-UtilX",
         description: "Smart utility monitoring and analytics. Optimize usage, reduce costs, and gain insights instantly. Get started with a 1-month free trial for real-time data tracking.",
     },
     {
         banner: card_img_3,
+        button: 'LEARN MORE',
+        href: '/',
         heading: "SBC-ERP",
         description: "All-in-one ERP solution for growing businesses. Manage operations, finance, and inventory with ease. Start with a 1-month free trial and streamline your workflow today.",
     },
     {
         banner: card_img_4,
+        button: 'LEARN MORE',
+        href: '/',
         heading: "SBC-Toolset",
         description: "A complete dev kit with hooks, design & icon libraries, and prebuilt frameworks. Build faster with our optimized starter kits. Try it free for 1 month.",
     }
@@ -105,20 +112,9 @@ const Home = () => {
                 </VStack>
             </MainWrapper>
 
-            <MainWrapper>
-                <VStack align='start' justify='center' gap={isMobile ? 0 : 30}>
-                    <Typography variant={isMobile ? 'h3' : 'h2'} family='p' style={{ fontWeight: 400 }} color={getColor('light')}>SBC Tools & Systems</Typography>
-                    <AutoLayout className='position-rel' columns={isMobile ? 1 : 2} align='center' gap={isMobile ? 18 : 30}>
-                        <Gradient width={650} coordinates={{ left: '50%', top: '38%', transform: `translate(-50%, -50%)` }} />
-
-                        {
-                            tools?.map((value, index) => (
-                                <ProjectCard key={index} banner={value.banner} heading={value.heading} description={value.description} index={index} />
-                            ))
-                        }
-                    </AutoLayout>
-                </VStack>
-            </MainWrapper>
+            <LightenCardGrid data={tools}>
+                SBC Tools & Systems
+            </LightenCardGrid>
 
             <TechStack />
 

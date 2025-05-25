@@ -15,6 +15,7 @@ export const colors = {
   },
   overlay: {
     300: 'radial-gradient(circle at center, rgba(48, 16, 128, 0.6) 20%, rgba(140, 87, 190, 0.36) 80%)',
+    400: 'linear-gradient(#130428 19.95%, #251043 67.64%, #38126D 107.08%, #261045 156.61%, #190634 183.21%)',
     500: 'radial-gradient(151.92% 127.02% at 15.32% 21.04%, rgba(105, 59, 147, 0.20) 0%, rgba(110, 191, 244, 0.04) 77.08%, rgba(70, 144, 212, 0.00) 100%)'
   },
   gradients: {

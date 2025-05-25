@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface CustomImageProps {
     src: string;
     width?: string | number;
@@ -59,6 +61,8 @@ export interface ProjectCardProps {
     banner: string;
     heading: string;
     description: string;
+    button?: string;
+    href?: string;
     // other props
 }
 
@@ -87,7 +91,8 @@ export interface Project {
 
 /** Props for StackCard component */
 export interface StackCardProps {
-    data: Project[];
+    children: ReactNode;
+
 }
 
 /** Props for individual Card */

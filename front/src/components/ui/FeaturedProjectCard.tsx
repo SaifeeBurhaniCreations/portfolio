@@ -8,13 +8,15 @@ import HoverButton from './Buttons/HoverButton';
 import { startCardAnimation } from '../animation/animation';
 import { ProjectCardProps } from '../../types';
 import useResize from '../../hooks/useResize';
+import { useNavigate } from 'react-router-dom';
 
 
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ index, banner, heading, description }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ index, banner, heading, description, button, href }) => {
 
     const isMobile = useResize()
     const cardRef = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         startCardAnimation(cardRef.current, index);
@@ -25,7 +27,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, banner, heading, descr
     const degree = degrees[index % degrees.length];
 
     const containerStyle: React.CSSProperties = {
-        borderRadius: 15,
+        borderRadius: 16,
         background: `linear-gradient(${degree}deg, #130428 19.95%, #251043 67.64%, #38126D 107.08%, #261045 156.61%, #190634 183.21%)`,
         boxShadow: '4px 7px 26px 0px rgba(0, 0, 0, 0.12)',
         padding: isMobile ? 18 : 30,
@@ -39,9 +41,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ index, banner, heading, descr
             <VStack align='start' justify='center' gap={10} maxW={'90%'}>
                 <Typography variant={isMobile ? 'b2' : 'b1'} family='jk' color={getColor('light')}>{heading}</Typography>
                 <Typography variant={isMobile ? 'caption' : 'b5'} family='jk' color={getColor('light')} isAnimate={true} >{description}</Typography>
-                <HoverButton>
-                    LEARN MORE
-                </HoverButton>
+                {
+                    button && 
+                    <HoverButton onClick={()=>navigate(`${href}`)}>
+                        {button}
+                    </HoverButton>
+                }
             </VStack>
         </HStack>
     </>

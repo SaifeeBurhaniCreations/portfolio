@@ -21,6 +21,7 @@ import work_img_2 from "../assets/images/png/work-2.png"
 import work_img_3 from "../assets/images/png/work-3.png"
 import work_img_4 from "../assets/images/png/work-4.png"
 import ProjectsGrid from "../components/ui/ProjectsGrid"
+import CustomCard from "../components/ui/CustomCard"
 
 const featuredProjects = [
     {
@@ -85,8 +86,8 @@ const projects = [
 
 const Projects = () => {
 
-    const isMobile = useResize();
     const aboutRef = useRef(null)
+    const isMobile = useResize();
     const sectionRef = useRef(null)
 
 
@@ -102,7 +103,7 @@ const Projects = () => {
     return (
         <>
             <MainWrapper>
-                <VStack ref={sectionRef} align="center" justify="center" gap={24}>
+                <VStack ref={sectionRef} align="center" justify="center" gap={isMobile ? 12 : 24}>
                     <PageTitleBadge>
                         Our Work
                     </PageTitleBadge>
@@ -110,16 +111,16 @@ const Projects = () => {
                     <Typography variant={isMobile ? "h2" : "xl"} align="center" family="jk" color={getColor('purple', 200)}>
                         Showcasing Our Projects
                     </Typography>
-                    <Typography variant={isMobile ? "h2" : "h3"} align="center" family="jk" color={getColor('purple', 100)}>
+                    <Typography variant={isMobile ? "h5" : "h3"} align="center" family="jk" color={getColor('purple', 100)}>
                         Explore our portfolio of innovative digital solutions crafted with precision and passion
                     </Typography>
                 </VStack>
             </MainWrapper>
 
             <MainWrapper>
-                <AutoLayout columns={2} gap={24} align="stretch">
-                    <CustomImage src={about_project} isAnimate={true} style={{ height: `300px` }} width={`100%`} imgStyle={{ objectFit: 'cover' }} />
-                    <VStack ref={aboutRef} align="start" justify="between" gap={24} style={{ height: '100%' }}>
+                <AutoLayout columns={isMobile ? 1 : 2} gap={24} align="stretch">
+                    <CustomImage src={about_project} isAnimate={true} style={{ height: `${isMobile ? '250px' : '300px'}` }} width={`100%`} imgStyle={{ objectFit: 'cover' }} />
+                    <VStack ref={aboutRef} align="start" justify="between" gap={isMobile ? 12 : 24} style={{ height: '100%' }}>
                         <Typography
                             variant={isMobile ? "h3" : "h2"}
                             align="left"
@@ -129,7 +130,7 @@ const Projects = () => {
                         >
                             How We Work & What We Do
                         </Typography>
-                        <Typography variant="b2" family="jk" color={getColor('purple', 100)} >
+                        <Typography variant={isMobile ? 'b4' : 'b2'} family="jk" color={getColor('purple', 100)} >
                             At Safiee Burhani Creations, we specialize in delivering reliable, scalable, and high-quality IT solutions. Whether it's custom software, web applications, or full-stack product development, we combine modern technology with a commitment to quality—no compromises. From startups to enterprises, we partner to turn ideas into robust digital products that scale with your vision.
                         </Typography>
                         <HoverButton style={{ alignSelf: 'end' }} height={isMobile ? 8 : 10} width={isMobile ? 16 : 24}>
@@ -152,7 +153,23 @@ const Projects = () => {
                     >
                         Featured Projects
                     </Typography>
-                    <StackCard data={featuredProjects} />
+                    <StackCard>
+                        {
+                            featuredProjects?.map((item, index) => {
+                                const type = (index + 1) % 2 === 0 ? 'even' : 'odd';
+                                return (
+                                    <CustomCard
+                                        type={type}
+                                        heading={item.projectName}
+                                        description={item.description}
+                                        technologies={item.technologies}
+                                        button={item.href}
+                                        image={item.banner}
+                                    />
+                                )
+                            })
+                        }
+                    </StackCard>
                 </VStack>
             </MainWrapper>
 
