@@ -1,14 +1,14 @@
 import { ContentInfo } from "../types";
 import webdev_v2 from '../assets/images/png/services/webdev-v2.png'
-import ai_v2 from '../assets/images/png/services/ai-v2.png'
-import backdev_v2 from '../assets/images/png/services/backdev-v2.png'
-import bulb_v2 from '../assets/images/png/services/bulb-v2.png'
-import performance_v2 from '../assets/images/png/services/performance-v2.png'
-import mobile_v2 from '../assets/images/png/services/mobile-v2.png'
-import design_v2 from '../assets/images/png/services/design-v2.png'
-import devops_v2 from '../assets/images/png/services/devops-v2.png'
-import seo_v2 from '../assets/images/png/services/seo-v2.png'
-import graphics_v2 from '../assets/images/png/services/graphics-v2.png'
+// import ai_v2 from '../assets/images/png/services/ai-v2.png'
+// import backdev_v2 from '../assets/images/png/services/backdev-v2.png'
+// import bulb_v2 from '../assets/images/png/services/bulb-v2.png'
+// import performance_v2 from '../assets/images/png/services/performance-v2.png'
+// import mobile_v2 from '../assets/images/png/services/mobile-v2.png'
+// import design_v2 from '../assets/images/png/services/design-v2.png'
+// import devops_v2 from '../assets/images/png/services/devops-v2.png'
+// import seo_v2 from '../assets/images/png/services/seo-v2.png'
+// import graphics_v2 from '../assets/images/png/services/graphics-v2.png'
 
 // Initial manual services
 export const serviceContent: ContentInfo[] = [
