@@ -1,15 +1,15 @@
 import { NavLink } from "react-router-dom";
-import { getColor } from "../../constants/colors";
-import useResize from "../../hooks/useResize";
-import { CardProps } from "../../types"
-import AutoLayout from "../layout/AutoLayout";
-import { HStack } from "../layout/HStack";
-import VStack from "../layout/VStack";
-import Typography from "../typography/Typography";
-import CustomImage from "./CustomImage";
-import PageTitleBadge from "./PageTitleBadge";
-import HoverButton from "./Buttons/HoverButton";
-import AnchorArrow from '../icons/AnchorArrow'
+import AnchorArrow from '../../icons/AnchorArrow'
+import { CardProps } from "../../../types";
+import useResize from "../../../hooks/useResize";
+import AutoLayout from "../../layout/AutoLayout";
+import { getColor } from "../../../constants/colors";
+import CustomImage from "../CustomImage";
+import VStack from "../../layout/VStack";
+import Typography from "../../typography/Typography";
+import { HStack } from "../../layout/HStack";
+import PageTitleBadge from "../PageTitleBadge";
+import HoverButton from "../Buttons/HoverButton";
 
 const CustomCard: React.FC<CardProps> = ({
     type,

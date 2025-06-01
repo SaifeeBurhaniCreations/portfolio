@@ -1,6 +1,7 @@
 import AboutUs from "../../pages/AboutUs"
 import Home from "../../pages/Home"
 import Projects from "../../pages/Projects"
+import Service from "../../pages/Service"
 
 const rootRoutes = [
     {
@@ -14,6 +15,10 @@ const rootRoutes = [
     {
         path : 'about',
         element : <AboutUs />
+    },
+    {
+        path : 'service/:id/:name',
+        element : <Service />
     }
 ]
 

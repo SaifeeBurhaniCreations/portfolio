@@ -1,11 +1,11 @@
 import MainWrapper from "../layout/MainWrapper"
 import { VStack } from "../layout/VStack"
-import WorkDetailCard from "./WorkDetailCard"
 import work_img_1 from "../../assets/images/png/work-1.png"
 import work_img_2 from "../../assets/images/png/work-2.png"
 import work_img_3 from "../../assets/images/png/work-3.png"
 import work_img_4 from "../../assets/images/png/work-4.png"
 import useResize from "../../hooks/useResize"
+import WorkDetailCard from "./Cards/WorkDetailCard"
 
 const projects = [
     {

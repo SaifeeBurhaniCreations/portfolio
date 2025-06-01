@@ -6,11 +6,11 @@ import Typography from '../typography/Typography';
 import CustomImage from './CustomImage';
 import { Parallax } from 'react-scroll-parallax';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import FlipCard from './FlipCard';
 import { HStack } from '../layout/HStack';
 import HoverButton from './Buttons/HoverButton'
 import AnchorArrow from '../icons/AnchorArrow';
 import useResize from '../../hooks/useResize';
+import FlipCard from './Cards/FlipCard';
 
 const OurStorySection = () => {
 

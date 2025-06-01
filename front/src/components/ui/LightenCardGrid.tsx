@@ -4,7 +4,7 @@ import AutoLayout from "../layout/AutoLayout"
 import MainWrapper from "../layout/MainWrapper"
 import VStack from "../layout/VStack"
 import Typography from "../typography/Typography"
-import ProjectCard from "./FeaturedProjectCard"
+import ProjectCard from "./Cards/FeaturedProjectCard"
 import Gradient from "./Gradient"
 import React, { ReactNode } from "react"
 

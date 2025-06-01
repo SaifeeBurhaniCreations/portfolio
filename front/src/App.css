@@ -5,6 +5,7 @@
 
 body {
     background-color: #11071F;
+    overflow-x: hidden;
     background-image: url('./assets/images/png/logo-bg.png');
 }  
 
@@ -432,7 +433,8 @@ a {
     background-size: cover;
     background-position: center;
     border-radius: 8px;
-    min-height: 475px;
+    height: 100%;
+        width: 100%;
     -ms-transition: transform 0.7s cubic-bezier(.4, .2, .2, 1);
     transition: transform 0.7s cubic-bezier(.4, .2, .2, 1);
     -webkit-transition: transform 0.7s cubic-bezier(.4, .2, .2, 1);
@@ -485,7 +487,7 @@ a {
     position: absolute;
     left: 0;
     width: 100%;
-    padding: 60px;
+    /* padding: 60px; */
     outline: 1px solid transparent;
     -webkit-perspective: inherit;
     perspective: inherit;
@@ -526,10 +528,61 @@ a {
     border-radius: 16px;
     padding: 42px 60px
 }
+.whatwedo-card {
+    box-shadow: 4px 7px 26px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 16px;
+    transition: all 0.4s;
+    overflow: hidden;
+    cursor: pointer;
+}
 .icon-badge {
     height: 100px;
     width: 100px;
     aspect-ratio: 1;
     border-radius: 50%;
     padding: 24px
+}
+.tablist {
+    position: relative;
+    margin: 0 auto;
+    padding: 12px;
+    width: 50%;
+    border-radius: 16px;
+}
+
+.hover-underline {
+    font-size: 2rem;
+    color: #ffffff;
+    position: relative;
+    display: inline-block;
+}
+
+.hover-underline::after,
+.hover-underline::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #B999E6, #693B93);
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease-out;
+}
+
+.hover-underline::before {
+    top: -5px;
+    transform-origin: left;
+}
+
+.hover-underline:hover::after,
+.hover-underline:hover::before {
+    transform: scaleX(1);
+}
+
+.robot-3d{
+    position: absolute;
+    top: 0;
+    right: -45%; 
 }

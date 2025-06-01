@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import projectReducer from './slices/projectSlice'
+import ServiceReducer from './slices/ServiceSlice'
 
 const rootReducer = combineReducers({
-    projectReducer
+    projectReducer,
+    ServiceReducer
 });
 
 export const store = configureStore({

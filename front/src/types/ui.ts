@@ -1,18 +1,32 @@
 import { ReactNode } from "react";
 
 export interface CustomImageProps {
-    src: string;
+    src: string | undefined;
     width?: string | number;
     height?: string | number;
     style?: React.CSSProperties;
     imgStyle?: React.CSSProperties;
     className?: string;
-    borderRadius?: number;
+    borderRadius?: string | number;
     fallback?: string;
     loadingIndicator?: boolean;
     isAnimate?: boolean;
     onZoom?: boolean;
     direction?: 'left' | 'right' | 'top' | 'bottom';
+}
+
+// Service type
+export type ContentInfo = {
+    title: string;
+    url?: string;
+    content: string;
+    icon: string;
+    id?: number;
+    points: string[];
+};
+
+export interface Icons {
+    icon?: 'code' | 'responsive' | 'stack' | 'light' | 'setting' | 'shield'
 }
 
 
@@ -104,3 +118,27 @@ export interface CardProps {
     button: string;
     image: string;
 }
+
+export interface MapIconProps {
+    [key: string]: string | undefined;
+    code?: string;
+    stack?: string;
+    responsive?: string;
+    light?: string;
+    setting?: string;
+    shield?: string;
+    ai?: string;
+    backdev?: string;
+    bulb?: string;
+    performance?: string;
+    mobile?: string;
+    design?: string;
+    devops?: string;
+    seo?: string;
+    graphics?: string;
+    webdev?: string;
+    rocket?: string;
+    users?: string;
+    goal?: string;
+}
+  

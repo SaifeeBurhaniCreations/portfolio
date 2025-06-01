@@ -13,7 +13,6 @@ import innovation from '../assets/images/png/innovation.png'
 import excellence from '../assets/images/png/excellence.png'
 import collaboration from '../assets/images/png/collaboration.png'
 import growth from '../assets/images/png/growth-2.png'
-import StackCard from "../components/ui/StackCard";
 import CustomImage from "../components/ui/CustomImage";
 import { HStack } from "../components/layout/HStack";
 import Verified from "../components/icons/Verified";
@@ -24,6 +23,12 @@ import star from '../assets/images/png/star.png'
 import experience from '../assets/images/png/experience.png'
 import AutoLayout from "../components/layout/AutoLayout";
 import CountUp from "../components/ui/CountUp";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/store";
+import { ContentInfo } from "../types";
+import StackCard from "../components/ui/Cards/StackCard";
+import InfoCard from "../components/ui/Cards/InfoCard";
+import { useNavigate } from "react-router-dom";
 
 const tools = [
     {
@@ -75,12 +80,6 @@ const impactsInNumbers = [
     },
 ]
 
-type ContentInfo = {
-    title: string;
-    content: string;
-    icon?: string;
-    points: string[];
-};
 
 const contentInfo: ContentInfo[] = [
     {
@@ -105,7 +104,7 @@ const contentInfo: ContentInfo[] = [
     }
 ];
 
-type CardProps = ContentInfo;
+type CardProps = ContentInfo & { index?: number };
 
 const Card: React.FC<CardProps> = ({ title, icon, content, points }) => {
     
@@ -135,6 +134,9 @@ const Card: React.FC<CardProps> = ({ title, icon, content, points }) => {
 
 const AboutUs = () => {
 
+    const services = useSelector((state: RootState) => state.ServiceReducer.data);
+    const navigate = useNavigate()
+
     const isMobile = useResize();
     const sectionRef = useRef(null)
 
@@ -156,7 +158,7 @@ const AboutUs = () => {
                     <Typography variant={isMobile ? "h2" : "xl"} align="center" family="jk" color={getColor('purple', 200)}>
                         Welcome to Our World
                     </Typography>
-                    <Typography variant={isMobile ? "h5" : "h3"} align="center" family="jk" color={getColor('purple', 100)}>
+                    <Typography variant={isMobile ? "h5" : "b2"} align="center" family="p" color={getColor('purple', 100)}>
                         Where creativity meets technology to build digital experiences that matter
                     </Typography>
                 </VStack>
@@ -213,6 +215,26 @@ const AboutUs = () => {
             <LightenCardGrid data={tools} description="The fundamental principles that guide every decision we make and every solution we create">
                 Our Core Values
             </LightenCardGrid>
+
+            <MainWrapper>
+                <VStack align='center' justify='center' gap={32} className='w-100'>
+                    <VStack align='start' justify='center' gap={12} className='w-100'>
+                        <Typography variant="h2" family="p" color={getColor('light')}>
+                            What We Do
+                        </Typography>
+                        <Typography variant="b3" family="jk" color={getColor('light')}>
+                            From concept to deployment, we offer comprehensive digital solutions that drive growth and innovation
+                        </Typography>
+                    </VStack>
+                    <AutoLayout columns={isMobile ? 1 : 3} gap={32} align="stretch">
+                        {
+                            services?.map((value, index) => (
+                                <InfoCard {...value} onClick={()=>navigate(`/service/${value?.id}/${value?.url}`)} key={index} />
+                            ))
+                        }
+                    </AutoLayout>
+                </VStack>
+            </MainWrapper>
         </>
     )
 }

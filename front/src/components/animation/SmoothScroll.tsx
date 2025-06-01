@@ -1,11 +1,12 @@
-import { FC, ReactNode, useEffect } from 'react';
+import { FC, ReactNode, useEffect, useState } from 'react';
 import { ReactLenis } from '@studio-freight/react-lenis';
+import LoadingAnimation from '../ui/LoadingAnimation';
 // import LoadingAnimation from './LoadingAnimation';
 
 // Loader Component
-// const Loader = () => {
-//   return <LoadingAnimation />;
-// };
+const Loader = () => {
+    return <LoadingAnimation />;
+};
 
 interface SmoothScrollingProps {
     children: ReactNode;
@@ -26,39 +27,39 @@ const DEFAULT_LENIS_OPTIONS: LenisOptions = {
 };
 
 const SmoothScrolling: FC<SmoothScrollingProps> = ({ children }) => {
+    const [isLoading, setIsLoading] = useState(true);
+
     // Handle smooth scrolling behavior
     useEffect(() => {
         const html = document.documentElement;
         html.style.scrollBehavior = 'smooth';
 
+        // Simulate loading (e.g., 2 seconds). Replace with your real loading logic if needed.
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 300);
+
         return () => {
             html.style.scrollBehavior = 'auto';
+            clearTimeout(timer);
         };
     }, []);
 
     return (
         <>
-            {/* <Loader />
-            {!isLoading && (
-                <ReactLenis
-                    root
-                    options={{
-                        lerp: 0.08, // Adjusted smoothness for better Chrome compatibility
-                        duration: 1.5, // Adjusted duration for smoother transition
-                        smoothTouch: true, // Enables smooth scrolling on touch devices
-                        scrollDisabled: false, // Allows scrolling (set to true to disable)
-                        // syncTouch: true
-                    }}
-                >
-                    {children}
+            {isLoading ? (
+                <Loader />
+            ) : (
+                <ReactLenis root options={DEFAULT_LENIS_OPTIONS}>
+                    {children as any}
                 </ReactLenis>
-            )} */}
-            <ReactLenis
+            )}
+            {/* <ReactLenis
                 root
                 options={DEFAULT_LENIS_OPTIONS}
             >
                 {children as any}
-            </ReactLenis>
+            </ReactLenis> */}
         </>
     );
 };

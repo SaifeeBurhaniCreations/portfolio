@@ -37,6 +37,7 @@ interface TypographyProps {
   family?: FamilyVariant;
   children: React.ReactNode;
   isAnimate?: boolean;
+  isHeading?: boolean;
 }
 
 const Typography = memo(({
@@ -44,6 +45,7 @@ const Typography = memo(({
   color,
   align,
   style,
+  isHeading = false,
   children,
   family,
   className,
@@ -66,7 +68,7 @@ const Typography = memo(({
   };
 
   return (
-    <span ref={spanRef} className={className} style={{ ...textStyle, ...style }}>
+    <span ref={spanRef} className={`${className} ${isHeading && `hover-underline`}`} style={{ ...textStyle, ...style }}>
       {children}
     </span>
   );

@@ -20,6 +20,8 @@ import Contact from "../components/ui/Contact";
 import FeaturedProjects from "../components/ui/FeaturedProjects";
 import TechStack from "../components/ui/TechStack";
 import LightenCardGrid from "../components/ui/LightenCardGrid";
+import { useEffect, useState } from "react";
+import AutoLayout from "../components/layout/AutoLayout";
 
 const tools = [
     {
@@ -56,6 +58,38 @@ const Home = () => {
 
     const isMobile = useResize()
 
+    const [isSplineReady, setIsSplineReady] = useState(false);
+
+    useEffect(() => {
+        const scriptId = "spline-viewer-script";
+
+        // Only add if not already present
+        if (!document.getElementById(scriptId)) {
+            const script = document.createElement("script");
+            script.type = "module";
+            script.src = "https://unpkg.com/@splinetool/viewer@1.9.98/build/spline-viewer.js";
+            script.id = scriptId;
+
+            script.onload = () => {
+                setIsSplineReady(true); // mark as ready
+            };
+
+            document.body.appendChild(script);
+        } else {
+            setIsSplineReady(true);
+        }
+
+        return () => {
+            // Remove script and viewer on unmount
+            const script = document.getElementById(scriptId);
+            if (script) script.remove();
+
+            const viewer = document.querySelector("spline-viewer");
+            if (viewer) viewer.remove();
+        };
+    }, []);
+    
+
     useScrollToTop()
 
     return (
@@ -84,7 +118,7 @@ const Home = () => {
                     </div>
                     <VStack align='start' justify='center' gap={5}>
                         <Typography variant='b3' family='p' color={getColor('light')}>
-                            We’re a creative
+                            We're a creative
                         </Typography>
                         <Typography variant={isMobile ? 'h3' : 'h1'} family='p' style={{ fontWeight: 400 }} color={getColor('light')}>
                             Tech agency that <br /> <span style={{ color: getColor('purple') }}>builds</span> ideas into impact
@@ -98,18 +132,30 @@ const Home = () => {
             </MainWrapper>
 
             <MainWrapper>
-                <VStack justify='between' align='start' gap={isMobile ? 28 : 48}>
-                    <VStack justify='center' align='start' gap={32}>
-                        <Typography variant={isMobile ? 'h4' : 'h2'} family='p' style={{ fontWeight: 400 }} color={getColor('light')}>We design and develop digital experiences that feel as good as they look</Typography>
-                        <Typography variant={isMobile ? 'b4' : 'b2'} family='jk' style={{ fontWeight: 400 }} color={getColor('light')}>
-                            Aliasger & Jafar us Sadiq lead a creative tech studio turning bold concepts into <span style={{ color: getColor('purple') }}>striking interfaces</span>, blending pixel-perfect design with robust, scalable code.
-                        </Typography>
+                <AutoLayout custom="3-1" className="position-rel">
+                    <VStack justify='between' align='start' gap={isMobile ? 28 : 48}>
+                        <VStack justify='center' align='start' gap={32}>
+                            <Typography variant={isMobile ? 'h4' : 'h2'} family='p' style={{ fontWeight: 400 }} color={getColor('light')}>We design and develop digital experiences that feel as good as they look</Typography>
+                            <Typography variant={isMobile ? 'b4' : 'b2'} family='jk' style={{ fontWeight: 400 }} color={getColor('light')}>
+                                Aliasger & Jafar us Sadiq lead a creative tech studio turning bold concepts into <span style={{ color: getColor('purple') }}>striking interfaces</span>, blending pixel-perfect design with robust, scalable code.
+                            </Typography>
 
+                        </VStack>
+
+                        <Typography variant={isMobile ? 'b4' : 'b2'} family='jk' style={{ fontWeight: 400 }} color={getColor('light')}>We partner with ambitious brands to transform complex ideas into beautifully designed, high-performance digital experiences.
+                            From strategy and design to scalable development, we build solutions that are not only functional and intuitive—but also ready to grow with your business.</Typography>
                     </VStack>
+                    {isSplineReady && (
+                        <div style={{ width: '100%', height: '500px' }}>
+                            <spline-viewer
+                                class='robot-3d'
+                                url="https://prod.spline.design/qQlSj89U6sM951Cs/scene.splinecode"
+                                style={{ width: '100%', height: '100%' }}
+                            ></spline-viewer>
+                        </div>
+                    )}
 
-                    <Typography variant={isMobile ? 'b4' : 'b2'} family='jk' style={{ fontWeight: 400 }} color={getColor('light')}>We partner with ambitious brands to transform complex ideas into beautifully designed, high-performance digital experiences.
-                        From strategy and design to scalable development, we build solutions that are not only functional and intuitive—but also ready to grow with your business.</Typography>
-                </VStack>
+                </AutoLayout>
             </MainWrapper>
 
             <LightenCardGrid data={tools}>

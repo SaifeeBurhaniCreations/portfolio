@@ -15,13 +15,14 @@ import HoverButton from "../components/ui/Buttons/HoverButton"
 import { HStack } from "../components/layout/HStack"
 import AnchorArrow from '../components/icons/AnchorArrow'
 import { useScrollToTop } from "../hooks/scrollHook"
-import StackCard from "../components/ui/StackCard"
 import work_img_1 from "../assets/images/png/work-1.png"
 import work_img_2 from "../assets/images/png/work-2.png"
 import work_img_3 from "../assets/images/png/work-3.png"
 import work_img_4 from "../assets/images/png/work-4.png"
 import ProjectsGrid from "../components/ui/ProjectsGrid"
-import CustomCard from "../components/ui/CustomCard"
+import StackCard from "../components/ui/Cards/StackCard"
+import CustomCard from "../components/ui/Cards/CustomCard"
+
 
 const featuredProjects = [
     {
@@ -111,7 +112,7 @@ const Projects = () => {
                     <Typography variant={isMobile ? "h2" : "xl"} align="center" family="jk" color={getColor('purple', 200)}>
                         Showcasing Our Projects
                     </Typography>
-                    <Typography variant={isMobile ? "h5" : "h3"} align="center" family="jk" color={getColor('purple', 100)}>
+                    <Typography variant={isMobile ? "h5" : "h3"} align="center" family="p" color={getColor('purple', 100)}>
                         Explore our portfolio of innovative digital solutions crafted with precision and passion
                     </Typography>
                 </VStack>

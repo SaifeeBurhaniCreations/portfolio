@@ -1,14 +1,14 @@
 import { ReactNode } from "react";
-import { getColor } from "../../constants/colors";
-import SparkClick from "../icons/SparkClick";
-import AutoLayout from "../layout/AutoLayout";
-import { HStack } from "../layout/HStack";
-import { VStack } from "../layout/VStack";
-import Typography from "../typography/Typography";
-import Button from "./Buttons/Button";
-import CustomImage from "./CustomImage";
-import Gradient from "./Gradient";
-import useResize from "../../hooks/useResize";
+import { getColor } from "../../../constants/colors";
+import SparkClick from "../../icons/SparkClick";
+import AutoLayout from "../../layout/AutoLayout";
+import { HStack } from "../../layout/HStack";
+import { VStack } from "../../layout/VStack";
+import Typography from "../../typography/Typography";
+import Button from "../Buttons/Button";
+import CustomImage from "../CustomImage";
+import Gradient from "../Gradient";
+import useResize from "../../../hooks/useResize";
 
 // Props for main component
 interface ProjectCardProps {

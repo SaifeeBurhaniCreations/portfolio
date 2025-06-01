@@ -1,7 +1,7 @@
 // StackCard.tsx
 import React, { Children } from "react";
-import MainWrapper from "../layout/MainWrapper";
-import { StackCardProps } from "../../types";
+import { StackCardProps } from "../../../types";
+import MainWrapper from "../../layout/MainWrapper";
 
 
 
