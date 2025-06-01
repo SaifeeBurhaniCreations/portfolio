@@ -147,11 +147,13 @@ const Home = () => {
                     </VStack>
                     {isSplineReady && (
                         <div style={{ width: '100%', height: '500px' }}>
-                            <spline-viewer
+                            {/* @ts-ignore */}
+                            <spline-viewer 
                                 class='robot-3d'
                                 url="https://prod.spline.design/qQlSj89U6sM951Cs/scene.splinecode"
-                                style={{ width: '100%', height: '100%' }}
-                            ></spline-viewer>
+                            >
+                            {/* @ts-ignore */}
+                            </spline-viewer>
                         </div>
                     )}
 

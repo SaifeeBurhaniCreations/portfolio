@@ -63,7 +63,9 @@ const Tabs: React.FC<TabsProps> = ({ tabs, initialIndex = 0 }) => {
                 {tabs.map((tab, idx) => (
                     <button
                         key={tab.label}
-                        ref={(el) => (tabRefs.current[idx] = el)}
+                        ref={(el) => {
+                            tabRefs.current[idx] = el;
+                        }}
                         role="tab"
                         aria-selected={active === idx}
                         tabIndex={active === idx ? 0 : -1}
