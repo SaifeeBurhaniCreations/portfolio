@@ -46,7 +46,7 @@ const OurStorySection = () => {
                         backBg={getColor('purple', 600, 0.9)}
                     />
                     <VStack align='start' justify='center' gap={24}>
-                        <Typography variant='h2' family='p' color={getColor('light')}>
+                        <Typography isHeading variant='h2' family='p' color={getColor('light')}>
                             Our Story
                         </Typography>
                         <VStack align='center' justify='center' gap={16}>

@@ -37,7 +37,7 @@ const SmoothScrolling: FC<SmoothScrollingProps> = ({ children }) => {
         // Simulate loading (e.g., 2 seconds). Replace with your real loading logic if needed.
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 300);
+        }, 3500);
 
         return () => {
             html.style.scrollBehavior = 'auto';

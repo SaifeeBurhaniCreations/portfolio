@@ -15,6 +15,13 @@ export interface CustomImageProps {
     direction?: 'left' | 'right' | 'top' | 'bottom';
 }
 
+export interface IconMapProps {
+    lg: { height: string, width: string },
+    md: { height: string, width: string },
+    sm: { height: string, width: string },
+}
+
+
 // Service type
 export type ContentInfo = {
     title: string;

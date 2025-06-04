@@ -31,7 +31,7 @@ const LightenCardGrid: React.FC<LightenCardGridProps> = ({ children, data, descr
             <MainWrapper>
                 <VStack align='start' justify='center' gap={isMobile ? 0 : 30}>
                     <VStack align='start' justify='center' gap={isMobile ? 0 : 16}>
-                        <Typography variant={isMobile ? 'h3' : 'h2'} family='p' style={{ fontWeight: 400 }} color={getColor('light')}>{children}</Typography>
+                        <Typography isHeading variant={isMobile ? 'h3' : 'h2'} family='p' style={{ fontWeight: 400 }} color={getColor('light')}>{children}</Typography>
                         {description && <Typography variant={isMobile ? 'b5' : 'b3'} family='p' style={{ fontWeight: 400 }} color={getColor('light')}>{description}</Typography>}
                     </VStack>
                     <AutoLayout className='position-rel' columns={isMobile ? 1 : 2} align='center' gap={isMobile ? 18 : 30}>

@@ -147,6 +147,7 @@ const AboutUs = () => {
 
     useScrollToTop();
 
+
     return (
         <>
             <MainWrapper>
@@ -155,7 +156,7 @@ const AboutUs = () => {
                         About Us
                     </PageTitleBadge>
 
-                    <Typography variant={isMobile ? "h2" : "xl"} align="center" family="jk" color={getColor('purple', 200)}>
+                    <Typography isGradient variant={isMobile ? "h2" : "xl"} align="center" family="jk" color={getColor('purple', 200)}>
                         Welcome to Our World
                     </Typography>
                     <Typography variant={isMobile ? "h5" : "b2"} align="center" family="p" color={getColor('purple', 100)}>
@@ -165,6 +166,7 @@ const AboutUs = () => {
             </MainWrapper>
 
             <OurStorySection />
+
 
             <MainWrapper>
                 <VStack align='center' justify='center' gap={32} className='w-100 p-5' style={{ background: getColor('purple', 600, 0.6), border: `1px solid ${getColor("purple", 300, 0.8)}`, borderRadius: '16px' }}>
@@ -190,6 +192,7 @@ const AboutUs = () => {
             <MainWrapper>
                 <VStack align="start" justify="center" gap={32}>
                     <Typography
+                        isHeading
                         variant={isMobile ? "h3" : "h2"}
                         align="left"
                         family="p"
@@ -219,7 +222,7 @@ const AboutUs = () => {
             <MainWrapper>
                 <VStack align='center' justify='center' gap={32} className='w-100'>
                     <VStack align='start' justify='center' gap={12} className='w-100'>
-                        <Typography variant="h2" family="p" color={getColor('light')}>
+                        <Typography isHeading variant="h2" family="p" color={getColor('light')}>
                             What We Do
                         </Typography>
                         <Typography variant="b3" family="jk" color={getColor('light')}>

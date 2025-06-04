@@ -1,0 +1,137 @@
+/* Base styles */
+.canvas-wrapper {
+    height: 100%;
+}
+.canvas {
+    position: relative;
+    display: block;
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.canvas_border {
+    position: absolute;
+    top: 40px;
+    left: -40px;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+}
+
+.canvas_border svg {
+    height: 100%;
+    width: 100%;
+}
+
+.rect-gradient {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+}
+
+.canvas_img-wrapper {
+    position: absolute;
+    border-radius: 16px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: rotate(-10deg) skew(-10deg);
+    transition: all 0.25s ease-in-out;
+    overflow: hidden;
+}
+
+.canvas_img {
+    transform: scale3d(0.9, 0.9, 0.9);
+    opacity: 0.3;
+    max-width: 200px;
+    max-height: 200px;
+    transition: all 0.25s ease-in-out;
+}
+
+.canvas_copy {
+    position: absolute;
+    bottom: 0;
+    left: 85%;
+    text-transform: uppercase;
+    color: #dac527;
+    z-index: 100;
+}
+
+.canvas_copy--left {
+    left: -25%;
+}
+
+.canvas_copy_title {
+    display: block;
+    font-weight: 900;
+    transition: all 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.canvas_copy_subtitle {
+    display: block;
+    transform: rotate(0deg) translateY(200%) translateX(calc(-100% - 80px));
+    transform-origin: top left;
+    position: absolute;
+    left: 0;
+    top: 8px;
+    font-weight: 900;
+    transition: all 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.35s;
+    opacity: 0;
+}
+
+.canvas_copy_details {
+    display: block;
+    transition: all 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.14s;
+    opacity: 0;
+}
+
+/* Hover states */
+.canvas:hover .canvas_img {
+    transform: scale3d(1, 1, 1);
+    opacity: 1;
+}
+
+.canvas:hover .canvas_border,
+.canvas:hover .canvas_img-wrapper {
+    transform: rotate(-14deg) skew(-14deg) scale(0.96);
+}
+
+.canvas:hover .canvas_copy_subtitle {
+    transform: rotate(0deg) translateY(100%) translateX(-100%);
+    opacity: 1;
+}
+
+/* Animations */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .canvas-wrapper {
+        flex-direction: column;
+    }
+
+    .canvas-wrapper+.canvas-wrapper {
+        margin-left: 0;
+        margin-top: 40px;
+    }
+
+    .canvas {
+        width: 300px;
+        height: 300px;
+    }
+
+    .canvas_copy_title {
+        font-size: 42px;
+    }
+}

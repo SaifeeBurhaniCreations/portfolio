@@ -109,7 +109,7 @@ const Projects = () => {
                         Our Work
                     </PageTitleBadge>
                     
-                    <Typography variant={isMobile ? "h2" : "xl"} align="center" family="jk" color={getColor('purple', 200)}>
+                    <Typography isGradient variant={isMobile ? "h2" : "xl"} align="center" family="jk" color={getColor('purple', 200)}>
                         Showcasing Our Projects
                     </Typography>
                     <Typography variant={isMobile ? "h5" : "h3"} align="center" family="p" color={getColor('purple', 100)}>
@@ -151,6 +151,7 @@ const Projects = () => {
                         family="p"
                         style={{ fontWeight: 400 }}
                         color={getColor("light")}
+                        isHeading
                     >
                         Featured Projects
                     </Typography>

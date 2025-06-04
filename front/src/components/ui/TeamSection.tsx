@@ -44,7 +44,7 @@ export const TeamSection: React.FC = () => {
         <>
             <MainWrapper>
                 <VStack justify="center" align="center" style={{position: 'relative'}} gap={24}>
-                    <Typography variant="h2" family="jk" color={getColor('light')}>
+                    <Typography isHeading variant="h2" family="jk" color={getColor('light')}>
                         Our Team
                     </Typography>
 

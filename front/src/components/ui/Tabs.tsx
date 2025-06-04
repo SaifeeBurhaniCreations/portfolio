@@ -44,19 +44,15 @@ const Tabs: React.FC<TabsProps> = ({ tabs, initialIndex = 0 }) => {
     };
 
     return (
-        <div>
+        <>
             <HStack
                 aria-label="Tabs"
                 align="center"
                 justify="center"
+                gap={24}
                 className="glass-radio-group"
                 style={{
-                    position: "relative",
-                    background: getColor('purple', 700, 0.6),
-                    borderRadius: "1rem",
-                    backdropFilter: "blur(12px)",
-                    overflow: "hidden",
-                    padding: 0,
+                    background: getColor('overlay', 500),
                     border: `1px solid ${getColor('purple', 300, 0.4)}`,
                 }}
             >
@@ -74,8 +70,6 @@ const Tabs: React.FC<TabsProps> = ({ tabs, initialIndex = 0 }) => {
                         style={{
                             flex: 1,
                             minWidth: 80,
-                            fontSize: 14,
-                            fontWeight: 600,
                             padding: "0.8rem 1.6rem",
                             cursor: "pointer",
                             background: "none",
@@ -119,7 +113,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, initialIndex = 0 }) => {
             </HStack>
 
             {/* Tab content */}
-            <div style={{ minHeight: 120, position: "relative", marginTop: 16 }}>
+            <div style={{ minHeight: 120, position: "relative", marginTop: 16, width: '100%' }}>
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={active}
@@ -133,7 +127,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, initialIndex = 0 }) => {
                     </motion.div>
                 </AnimatePresence>
             </div>
-        </div>
+        </>
     );
 };
 

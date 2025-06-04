@@ -9,9 +9,74 @@ body {
     background-image: url('./assets/images/png/logo-bg.png');
 }  
 
+/* body:after{
+	content: '';
+	position: fixed;
+	width: 270px;
+	height: 270px;
+	top: 42.8%; 
+	right: 25%; 
+	background-color: #cc00ffd0;
+	border-radius: 100%;
+	-webkit-filter: blur(150px);
+	-o-filter: blur(150px);
+	filter: blur(150px);
+    backface-visibility: hidden;
+    pointer-events: none;
+	z-index: -1;
+}
+body:before{
+	content: '';
+	position: fixed;
+	width: 270px;
+	height: 270px;
+	top: 27.5%; 
+	left: 23.9%; 
+	background-color: #7127BA;
+	border-radius: 100%;
+	-webkit-filter: blur(150px);
+	-o-filter: blur(150px);
+	filter: blur(150px);
+    backface-visibility: hidden;
+    pointer-events: none;
+	z-index: -1;
+} */
 html {
     scroll-behavior: auto !important;
 }
+
+/* Hide the scrollbar track and only show a custom thumb */
+::-webkit-scrollbar {
+    width: 8px;
+    /* adjust as needed */
+    height: 8px;
+    /* for horizontal scrollbars */
+    background: transparent;
+    /* hide background/track */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    /* hide the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #7127BA;
+    /* your preferred color */
+    border-radius: 8px;
+    /* smooth rounded edges */
+    border: none;
+    /* no border around the thumb */
+}
+
+/* Optional: Firefox support */
+* {
+    scrollbar-width: thin;
+    /* "auto" or "thin" */
+    scrollbar-color: #7127BA transparent;
+    /* thumb color and transparent track */
+}
+
 
 .position-rel {
     position: relative !important;
@@ -587,4 +652,178 @@ a {
     right: -45%; 
     height: 100%;
     width: 100%;
+}
+/* Correctly define custom properties with type <color> */
+@property --color-1 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #7127BA;
+    /* purple-500 */
+}
+
+@property --color-2 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #9857D3;
+    /* purple-300 */
+}
+
+/* Animate the color variables */
+@keyframes theme-gradient {
+    to {
+        --color-1: #9857D3;
+        /* lighter purple */
+        --color-2: #CCD6F6;
+        /* lavender */
+    }
+}
+
+.gradient-text {
+    animation: theme-gradient 3s ease-in-out infinite alternate;
+
+    background: linear-gradient(to right,
+            var(--color-1),
+            var(--color-2));
+
+    /* For older browsers */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Modern syntax */
+    background-clip: text;
+    color: transparent;
+}
+
+.glass-radio-group {
+    position: relative;
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+:root {
+    --gap: 8px;
+    --base: clamp(2rem, 8cqi, 80px);
+    --easing: linear(0 0%,
+            0.1538 4.09%,
+            0.2926 8.29%,
+            0.4173 12.63%,
+            0.5282 17.12%,
+            0.6255 21.77%,
+            0.7099 26.61%,
+            0.782 31.67%,
+            0.8425 37%,
+            0.8887 42.23%,
+            0.9257 47.79%,
+            0.9543 53.78%,
+            0.9752 60.32%,
+            0.9883 67.11%,
+            0.9961 75%,
+            1 100%);
+    --speed: 0.6s;
+    --article-width: 300px;
+}
+
+
+.ui-cards-container {
+    padding-block: 2rem;
+}
+
+.ui-cards-grid {
+    display: grid;
+    container-type: inline-size;
+    gap: 8px;
+    list-style-type: none;
+    justify-content: center;
+    padding: 0;
+    height: clamp(300px, 40dvh, 474px);
+    margin: 0;
+    width: 100%;
+    /* max-width: calc(100% - 4rem); */
+    transition: grid-template-columns 0.3s ease;
+}
+
+.ui-card-item {
+    position: relative;
+    overflow: hidden;
+    min-width: var(--base);
+    border-radius: 8px;
+    border: 1px solid color-mix(in hsl, var(--card-text), transparent 50%);
+}
+
+.ui-card-article {
+    width: calc(var(--article-width) * 1px);
+    height: 100%;
+    position: absolute;
+    font-family: "Preahvihear";
+    top: 0;
+    left: 0;
+    padding-inline: calc(var(--base) * 0.5 - 9px);
+    padding-bottom: 16px;
+    overflow: hidden;
+}
+
+.ui-card-title {
+    position: absolute;
+    top: 1rem;
+    left: calc(var(--base) * 0.5);
+    transform-origin: 0 50%;
+    rotate: 90deg;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin: 0;
+    opacity: 0.6;
+    transition: opacity 0.4s ease;
+}
+
+.ui-card-icon {
+    width: 18px;
+    fill: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.ui-card-description {
+    text-wrap: balance;
+    line-height: 1.25;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    width: fit-content;
+}
+
+.ui-card-image {
+    position: absolute;
+    pointer-events: none;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mask: radial-gradient(100% 100% at 100% 0, #fff, #0000);
+    filter: grayscale(1) brightness(1.5);
+    scale: 1.1;
+    transition-property: filter, scale;
+    transition-duration: calc(var(--speed) * 1.2);
+    transition-timing-function: var(--easing);
+}
+
+
+/* Active state styles */
+.ui-card-item[data-active='true'] .ui-card-title,
+.ui-card-item[data-active='true'] .ui-card-icon {
+    opacity: 1;
+}
+
+.ui-card-item[data-active='true'] .ui-card-description {
+    opacity: 0.8;
+    transition-delay: calc(var(--speed) * 0.25);
+}
+
+.ui-card-item[data-active='true'] .ui-card-image {
+    filter: grayscale(0) brightness(1);
+    scale: 1;
+    transition-delay: calc(var(--speed) * 0.25);
 }

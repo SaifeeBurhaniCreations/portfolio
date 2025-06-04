@@ -17,6 +17,8 @@ import InfoCard from "../components/ui/Cards/InfoCard";
 import FlipCard from "../components/ui/Cards/FlipCard";
 import Tabs from "../components/ui/Tabs";
 import { detailedPageData } from "../constants/services";
+// import FeatureShowcase from "../components/ui/FeatureShowcase";
+import Timeline from "../components/ui/TimeLine/Timeline";
 
 // Utility types
 // interface ParsedCardData {
@@ -39,13 +41,9 @@ const ChooseUsComponent = ({ parsedChoose }: any) => (
     </VStack>
 );
 
-const ProcessComponent = ({ parsedChoose }: any) => (
+const ProcessComponent = ({ parsedProcess }: any) => (
     <VStack align="start" justify="center">
-        <AutoLayout columns={3} gap={24} align="stretch" className="w-100">
-            {parsedChoose.map((value: any, index: number) => (
-                <InfoCard key={index} iconSize="md" {...value} />
-            ))}
-        </AutoLayout>
+        <Timeline events={parsedProcess} />
     </VStack>
 );
 
@@ -74,9 +72,10 @@ const Service = () => {
         );
     }
 
-    const { flip, choose, head, offer } = serviceData;
-    const parsedOffer = parseDelimitedArray(offer, ["icon", "title", "content"]);
+    const { flip, choose, head, offer, process } = serviceData;
+    const parsedOffer = parseDelimitedArray(offer, ["image", "icon", "title", "content"]);
     const parsedChoose = parseDelimitedArray(choose, ["icon", "title", "content"]);
+    const parsedProcess = parseDelimitedArray(process, ["icon", "title", "description"]);
 
     return (
         <>
@@ -95,7 +94,7 @@ const Service = () => {
                                             borderRadius={0}
                                             imgStyle={{ objectFit: "cover" }}
                                             src={flip.icon}
-                                            style={{ height: "120px", width: "120px" }}
+                                            style={{ height: "150px", width: "150px" }}
                                             className="animate-float"
                                         />
                                     </Parallax>
@@ -134,6 +133,8 @@ const Service = () => {
                 </ParallaxProvider>
             </MainWrapper>
 
+            {/* <FeatureShowcase iconSize="md" cards={parsedOffer} /> */}
+
             <MainWrapper>
                 <VStack align="start" justify="center">
                     <Typography isHeading variant="h2" family="p" color={getColor("light")}>What We Offer</Typography>
@@ -146,13 +147,15 @@ const Service = () => {
             </MainWrapper>
 
             <MainWrapper>
-                <Tabs
-                    tabs={[
-                        { label: "Why Choose Us", content: <ChooseUsComponent parsedChoose={parsedChoose} /> },
-                        { label: "Our Process", content: <ProcessComponent parsedChoose={parsedChoose} /> },
-                        { label: "Technologies", content: <ChooseUsComponent parsedChoose={parsedChoose} /> },
-                    ]}
-                />
+                <VStack align='center' style={{width: '100%'}} justify='center'>
+                    <Tabs
+                        tabs={[
+                            { label: "Why Choose Us", content: <ChooseUsComponent parsedChoose={parsedChoose} /> },
+                            { label: "Our Process", content: <ProcessComponent parsedProcess={parsedProcess} /> },
+                            { label: "Technologies", content: <ChooseUsComponent parsedChoose={parsedChoose} /> },
+                        ]}
+                    />
+                </VStack>
             </MainWrapper>
         </>
     );

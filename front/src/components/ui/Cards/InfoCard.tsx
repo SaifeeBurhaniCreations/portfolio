@@ -7,7 +7,7 @@ import { getColor } from '../../../constants/colors';
 import VStack from '../../layout/VStack';
 import Typography from '../../typography/Typography';
 import Verified from '../../icons/Verified';
-import { mapIcon } from '../../../utils/mapIcon';
+import { iconSizeMap, mapIcon } from '../../../utils/mapper';
 
 interface InfoCardProps {
     title?: string;
@@ -20,18 +20,6 @@ interface InfoCardProps {
     banner?: string;
 }
 
-
-interface IconMapProps {
-    lg: { height: string, width: string },
-    md: { height: string, width: string },
-    sm: { height: string, width: string },
-}
-
-const iconSizeMap: IconMapProps = {
-    'lg': { height: '76px', width: '76px' },
-    'md': { height: '56px', width: '56px' },
-    'sm': { height: '36px', width: '36px' },
-}
 
 const InfoCard: React.FC<InfoCardProps> = ({
     title = '',
@@ -103,12 +91,12 @@ const InfoCard: React.FC<InfoCardProps> = ({
         }
         if (icon) {
             return (
-                <CustomImage
-                    style={iconSizeMap[iconSize]}
-                    imgStyle={{ objectFit: 'contain' }}
-                    src={extractIcon}
-                    borderRadius={0}
-                />
+                    <CustomImage
+                        style={iconSizeMap[iconSize]}
+                        imgStyle={{ objectFit: 'contain' }}
+                        src={extractIcon}
+                        borderRadius={0}
+                    />
             );
         }
         return null;

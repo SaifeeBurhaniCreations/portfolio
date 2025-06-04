@@ -141,15 +141,16 @@ const Home = () => {
                             </Typography>
 
                         </VStack>
-
                         <Typography variant={isMobile ? 'b4' : 'b2'} family='jk' style={{ fontWeight: 400 }} color={getColor('light')}>We partner with ambitious brands to transform complex ideas into beautifully designed, high-performance digital experiences.
                             From strategy and design to scalable development, we build solutions that are not only functional and intuitive—but also ready to grow with your business.</Typography>
                     </VStack>
+
                     {isSplineReady && (
                         <div style={{ width: '100%', height: '500px' }}>
                             {/* @ts-ignore */}
                             <spline-viewer 
                                 class='robot-3d'
+                                // url="https://prod.spline.design/uwFhijbrs1XRDoju/scene.splinecode"
                                 url="https://prod.spline.design/qQlSj89U6sM951Cs/scene.splinecode"
                             >
                             {/* @ts-ignore */}
@@ -165,6 +166,7 @@ const Home = () => {
             </LightenCardGrid>
 
             <TechStack />
+
 
             <FeaturedProjects />
 

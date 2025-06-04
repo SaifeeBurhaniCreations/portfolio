@@ -161,6 +161,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ projects }) => {
                     family="p"
                     style={{ fontWeight: 400 }}
                     color={getColor("light")}
+                    isHeading
                 >
                     All Projects
                 </Typography>

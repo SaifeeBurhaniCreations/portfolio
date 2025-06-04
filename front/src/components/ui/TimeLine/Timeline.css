@@ -1,0 +1,156 @@
+.timeline {
+    display: flex;
+    flex-direction: column;
+    margin: 20px auto;
+    position: relative;
+    width: 100%;
+}
+
+.timeline__event {
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    margin: 20px 0;
+    border-radius: 6px;
+    align-self: center;
+    width: 100%;
+    opacity: 1;
+}
+
+.timeline__event--odd {
+    flex-direction: row-reverse;
+}
+
+.timeline__event__title {
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.5rem;
+}
+
+.timeline__event__content {
+    padding: 20px;
+    box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+        0 18px 36px -18px rgba(0, 0, 0, 0.3),
+        0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+    width: calc(40vw - 84px);
+    border-radius: 0 6px 6px 0;
+    backdrop-filter: blur(8px);
+}
+
+.timeline__event--odd .timeline__event__content {
+    border-radius: 6px 0 0 6px;
+}
+
+.timeline__event__description p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+.timeline__event__date {
+    font-weight: 600;
+    white-space: nowrap;
+    padding: 0 20px;
+    border-radius: 6px 0 0 6px;
+}
+
+.timeline__event--odd .timeline__event__date {
+    border-radius: 0 6px 6px 0;
+}
+
+.timeline__event__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin: 0 20px;
+    border-radius: 100%;
+    width: 70px;
+    aspect-ratio: 1;
+    min-width: 40px;
+    height: 70px;
+    box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25),
+        0 18px 36px -18px rgba(0, 0, 0, 0.3),
+        0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+    position: relative;
+    z-index: 2;
+}
+
+/* Vertical connecting line */
+.timeline__event:not(:last-child) .timeline__event__icon::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    background: inherit;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: calc(100% + 40px);
+    /* Connects to next item */
+    z-index: -1;
+}
+
+
+/* Horizontal connecting line for odd items */
+.timeline__event--odd .timeline__event__icon::before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background: inherit;
+    width: 20px;
+    right: 100%;
+    top: 50%;
+    opacity: 0.3;
+}
+
+.timeline__event:not(.timeline__event--odd) .timeline__event__icon::before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background: inherit;
+    width: 20px;
+    left: 100%;
+    top: 50%;
+    opacity: 0.3;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .timeline__event {
+        flex-direction: column;
+        width: 90vw;
+    }
+
+    .timeline__event--odd {
+        flex-direction: column;
+    }
+
+    .timeline__event__content {
+        width: 100%;
+        border-radius: 0 0 6px 6px !important;
+    }
+
+    .timeline__event__icon {
+        border-radius: 6px 6px 0 0;
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+        margin-bottom: 20px;
+    }
+
+    .timeline__event:not(:last-child) .timeline__event__icon::after {
+        height: 20px;
+        top: auto;
+        bottom: -20px;
+        left: 50%;
+    }
+
+    .timeline__event--odd .timeline__event__icon::before {
+        display: none;
+    }
+
+    .timeline__event__date {
+        border-radius: 0 !important;
+        padding: 20px;
+    }
+}

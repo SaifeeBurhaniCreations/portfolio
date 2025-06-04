@@ -38,6 +38,7 @@ interface TypographyProps {
   children: React.ReactNode;
   isAnimate?: boolean;
   isHeading?: boolean;
+  isGradient?: boolean;
 }
 
 const Typography = memo(({
@@ -49,7 +50,8 @@ const Typography = memo(({
   children,
   family,
   className,
-  isAnimate = false
+  isAnimate = false,
+  isGradient = false
 }: TypographyProps) => {
   const spanRef = useRef<HTMLSpanElement>(null);
 
@@ -68,7 +70,7 @@ const Typography = memo(({
   };
 
   return (
-    <span ref={spanRef} className={`${className} ${isHeading && `hover-underline`}`} style={{ ...textStyle, ...style }}>
+    <span ref={spanRef} className={`${className ? className : ''} ${isHeading ? `hover-underline` : ''} ${isGradient ? `gradient-text` : ''}`} style={{ ...textStyle, ...style }}>
       {children}
     </span>
   );
