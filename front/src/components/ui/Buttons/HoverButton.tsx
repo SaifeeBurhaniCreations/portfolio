@@ -40,7 +40,7 @@ const HoverButton: React.FC<ButtonProps> = ({
     position: 'relative',
     overflow: 'hidden',
     cursor: 'pointer',
-    minWidth: isMobile ? 100 : 150,
+    minWidth: 'max-content',
     ...style
   };
 

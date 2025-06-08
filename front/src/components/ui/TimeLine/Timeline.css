@@ -85,7 +85,7 @@
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    height: calc(100% + 40px);
+    height: calc(100%);
     /* Connects to next item */
     z-index: -1;
 }

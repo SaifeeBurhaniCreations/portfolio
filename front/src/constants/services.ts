@@ -134,8 +134,8 @@ export const serviceContent: ContentInfo[] = [
     }
 ];
 
-export const detailedPageData = [
-    {
+export const detailedPageData = {
+    'web-development': {
         flip: {
             icon: webdev_v2,
             content: 'Building Digital Dreams into Reality'
@@ -218,7 +218,7 @@ export const detailedPageData = [
             
         ]
     },
-    {
+    'mobile-apps': {
         flip: {
             icon: mobile_v2,
             content: 'Turning Ideas into Mobile Experiences'
@@ -263,7 +263,7 @@ export const detailedPageData = [
             'Innovative Features',
             'Implement modern capabilities like geolocation, push notifications, and offline access to enhance user experience.',
             ';',
-            'customux',
+            'custom',
             'Custom Experiences',
             'Tailored interactions that feel native and intuitive to your audience.',
             ';',
@@ -298,7 +298,7 @@ export const detailedPageData = [
             'Play Store, App Store, crash monitoring, updates.'
         ]
     },
-    {
+    'ui-ux-design': {
         flip: {
             icon: design_v2,
             content: 'Designs That Speak and Perform'
@@ -314,7 +314,7 @@ export const detailedPageData = [
             'Deep understanding of your audience’s behavior and needs',
             ';',
             'wireframes',
-            'pencil',
+            'pen',
             'Wireframes & Prototypes',
             'Visual planning and interactive demos before development',
             ';',
@@ -339,15 +339,15 @@ export const detailedPageData = [
             'Designs built to be implemented seamlessly by developers'
         ],
         choose: [
-            'humanfirst',
+            'users',
             'Human-Centered Design',
             'Focus on intuitive interactions that anticipate user needs and behaviors.',
             ';',
-            'brandmatch',
+            'brand',
             'Brand Consistency',
             'Visually aligned with your identity, vision, and tone of voice.',
             ';',
-            'iterative',
+            'agileprocess',
             'Refined Iteration',
             'Incorporating feedback loops to ensure optimal user satisfaction.'
         ],
@@ -378,7 +378,7 @@ export const detailedPageData = [
             'A/B testing, surveys, interaction analytics.'
         ]
     },
-    {
+    'backend-solutions': {
         flip: {
             icon: backdev_v2,
             content: 'Powering Your Products Behind the Scenes'
@@ -419,17 +419,15 @@ export const detailedPageData = [
             'Deploy on AWS, GCP, or Azure with full monitoring and scaling'
         ],
         choose: [
-            'scalability',
+            'growth',
             'Scalable from Day One',
             'Designed to grow with your traffic and feature complexity.',
             ';',
-            'modularcode',
             'gear',
             'Modular & Maintainable',
             'Clean structure that’s easy to expand, refactor, and debug.',
             ';',
-            'reliableapi',
-            'plug',
+            'api',
             'Reliable APIs',
             'Your frontend always gets exactly the data it needs—nothing more, nothing less.'
         ],
@@ -460,7 +458,7 @@ export const detailedPageData = [
             'Monitoring alerts, logs, scaling policies, support.'
         ]
     },
-    {
+    'devops-automation': {
         flip: {
             icon: devops_v2,
             content: 'Deploy Faster. Operate Smarter.'
@@ -481,17 +479,17 @@ export const detailedPageData = [
             'Manage servers and networks through code with Terraform & Ansible',
             ';',
             'containerization',
-            'box',
+            'orchestration',
             'Containerization',
             'Dockerized environments for consistent deployment across platforms',
             ';',
             'orchestration',
-            'grid',
+            'layout',
             'Kubernetes Orchestration',
             'Automated scaling, self-healing, and deployment rollbacks',
             ';',
             'monitoring',
-            'eye',
+            'monitoring',
             'Monitoring & Logging',
             'Real-time tracking with tools like Prometheus, Grafana, and ELK Stack',
             ';',
@@ -501,18 +499,15 @@ export const detailedPageData = [
             'Best practices using Git, branching, and automation workflows'
         ],
         choose: [
-            'reduceddowntime',
             'clock',
             'Zero-Downtime Deployments',
             'Safely release updates with blue-green or rolling strategies.',
             ';',
-            'teamproductivity',
             'users',
             'Developer Productivity',
             'Faster feedback loops and safer shipping with automation.',
             ';',
-            'costefficiency',
-            'dollar-sign',
+            'dollar',
             'Cost Efficiency',
             'Automated scaling and infrastructure rightsizing to save costs.'
         ],
@@ -543,7 +538,7 @@ export const detailedPageData = [
             'Audit logs, dependency upgrades, scaling strategies.'
         ]
     },
-    {
+    'graphic-design-branding': {
         flip: {
             icon: graphics_v2,
             content: 'Crafting Brands That Resonate'
@@ -574,12 +569,12 @@ export const detailedPageData = [
             'Tailor-made artwork that enhances storytelling',
             ';',
             'motiongraphics',
-            'film',
+            'video',
             'Motion Graphics',
             'Animated content to make your brand pop',
             ';',
             'styleguides',
-            'book',
+            'books',
             'Style Guides',
             'Consistent rules for applying brand across channels'
         ],
@@ -588,12 +583,11 @@ export const detailedPageData = [
             'Emotionally Driven',
             'Designs that evoke trust, excitement, and brand recall.',
             ';',
-            'consistency',
+            'agileprocess',
             'Brand Consistency',
             'Maintain design uniformity across every platform.',
             ';',
-            'differentiation',
-            'star',
+            'innovation',
             'Stand Out from the Crowd',
             'Create a unique identity that sets you apart from competitors.'
         ],
@@ -624,7 +618,7 @@ export const detailedPageData = [
             'Fonts, color codes, logo usage rules, templates.'
         ]
     },
-    {
+    'performance': {
         flip: {
             icon: performance_v2,
             content: 'Speed, Stability, and Scalability'
@@ -706,7 +700,7 @@ export const detailedPageData = [
             'Performance regression checks, A/B test rollouts.'
         ]
     },
-    {
+    'it-solutions-support': {
         flip: {
             icon: bulb_v2,
             content: 'Keeping Your Tech Running Smoothly'
@@ -788,7 +782,7 @@ export const detailedPageData = [
             'Daily reports, alert systems, remote interventions.'
         ]
     },
-    {
+    'seo-digital-marketing': {
         flip: {
             icon: seo_v2,
             content: 'Visibility That Converts'
@@ -871,7 +865,7 @@ export const detailedPageData = [
             'Ranking report, heatmaps, ad ROI, conversion rate.'
         ]
     },
-    {
+    'ai-automation': {
         flip: {
             icon: ai_v2,
             content: 'Smarter Systems for a Smarter Future'
@@ -954,5 +948,4 @@ export const detailedPageData = [
             'Retraining loops, failure handling, metrics reporting.'
         ]
     }
-                            
-]
+}

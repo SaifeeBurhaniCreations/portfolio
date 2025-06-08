@@ -1,19 +1,16 @@
 import { HStack } from "../components/layout/HStack";
 import MainWrapper from "../components/layout/MainWrapper";
 import { VStack } from "../components/layout/VStack";
-import BannerSvg from "../components/svgComponents/BannerSvg";
-import TypewriterText from "../components/typography/TypewriterText";
 import Typography from "../components/typography/Typography";
-import CustomImage from "../components/ui/CustomImage";
-import Gradient from "../components/ui/Gradient";
 import TeamSection from "../components/ui/TeamSection";
 import { getColor } from "../constants/colors";
 
+import project_into from '../assets/videos/projects.mp4'
+import play_button from '../assets/images/png/play-button.png'
 import card_img_1 from '../assets/images/png/card-1.png'
 import card_img_2 from '../assets/images/png/card-2.png'
 import card_img_3 from '../assets/images/png/card-3.png'
 import card_img_4 from '../assets/images/png/card-4.png'
-import arrow_img from "../assets/images/png/arrow-img.png"
 import { useScrollToTop } from "../hooks/scrollHook";
 import useResize from "../hooks/useResize";
 import Contact from "../components/ui/Contact";
@@ -21,7 +18,11 @@ import FeaturedProjects from "../components/ui/FeaturedProjects";
 import TechStack from "../components/ui/TechStack";
 import LightenCardGrid from "../components/ui/LightenCardGrid";
 import { useEffect, useState } from "react";
+import AnchorArrow from '../components/icons/AnchorArrow'
 import AutoLayout from "../components/layout/AutoLayout";
+import HoverButton from "../components/ui/Buttons/HoverButton";
+import Button from "../components/ui/Buttons/Button";
+import CustomImage from "../components/ui/CustomImage";
 
 const tools = [
     {
@@ -94,7 +95,7 @@ const Home = () => {
 
     return (
         <>
-            <MainWrapper>
+            {/* <MainWrapper>
                 <HStack align={isMobile ? 'start' : 'end'} direction={isMobile ? 'column' : 'row'} justify='start' gap={50} style={{ position: "relative" }}>
                     <div className="width-100">
                         <Gradient width={500} coordinates={{ left: '12%', top: '55%', transform: `translate(-50%, -50%)` }} />
@@ -129,6 +130,49 @@ const Home = () => {
                     </VStack>
 
                 </HStack>
+            </MainWrapper> */}
+
+            <MainWrapper>
+                <AutoLayout align="center" gap={44} custom="2-1">
+                    <VStack align="start" justify="center" gap={24}>
+                        <Typography variant="b1" family="jk" color={getColor('purple', 300)}>
+                            full-stack. design-driven. scalable.
+                        </Typography>
+
+                        <Typography variant="h1" style={{ fontWeight: 800 }} family="p" color={getColor('light')}>
+                            Building powerful <span style={{ color: getColor('purple') }}>digital solutions</span> for modern businesses
+                        </Typography>
+
+                        <Typography variant="b3" style={{width: '80%'}} family="jk" color={getColor('purple', 100)}>
+                            From robust code to striking design, we craft scalable web, mobile, and brand experiences.
+                        </Typography>
+
+                        <HStack align="center" justify="center" gap={16}>
+                            <Button bg={getColor("purple", 400)} height={10} width={18}>
+                                <HStack gap={4}>View Projects <AnchorArrow /></HStack>
+                            </Button>
+                            <HoverButton height={10} width={18}>
+                                <HStack gap={4}>Let's Talk <AnchorArrow /></HStack>
+                            </HoverButton>
+                        </HStack>
+                    </VStack>
+                    <VStack align='end' justify='end'>
+                        <div style={{height: '350px', position: 'relative'}}>
+                        <CustomImage src={play_button} style={{position: 'absolute', width: '80px', height: '80px', left: '-4%', bottom: '-4%'}} />
+                            <video
+                                src={project_into}
+                                width="100%"
+                                height="100%"
+                                className="glow-shadow"
+                                style={{ width: '100%', height: '100%', objectFit: 'contain', borderRadius: '16px' }}
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                            />
+                        </div>
+                    </VStack>
+                </AutoLayout>
             </MainWrapper>
 
             <MainWrapper>

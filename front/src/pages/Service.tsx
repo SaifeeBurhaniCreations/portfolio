@@ -48,11 +48,20 @@ const ProcessComponent = ({ parsedProcess }: any) => (
 );
 
 const Service = () => {
-    const { id = "" } = useParams<{ id: string }>();
+    const { name } = useParams<{ name: string }>();
     const sectionRef = useRef<HTMLDivElement>(null);
-    const index = Number(id);
-    const serviceData = detailedPageData[index];
 
+    if (!name) {
+        return (
+            <MainWrapper>
+                <Typography variant="h3" color={getColor("light")}>
+                    Service not found.
+                </Typography>
+            </MainWrapper>
+        );
+    }
+
+    const serviceData = detailedPageData[name as keyof typeof detailedPageData];
 
     useScrollToTop();
 
@@ -60,6 +69,10 @@ const Service = () => {
         if (sectionRef.current) {
             FooterFadeInAnimation(sectionRef);
         }
+    }, []);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
     }, []);
 
     if (!serviceData) {
@@ -120,6 +133,7 @@ const Service = () => {
                         {head?.map((text: any, index: number) => (
                             <Typography
                                 key={index}
+                                isGradient={index === 0}
                                 variant={index === 0 ? "xl" : "b2"}
                                 align="center"
                                 family={index === 0 ? "jk" : "p"}
@@ -138,7 +152,7 @@ const Service = () => {
             <MainWrapper>
                 <VStack align="start" justify="center">
                     <Typography isHeading variant="h2" family="p" color={getColor("light")}>What We Offer</Typography>
-                    <AutoLayout columns={3} gap={24} className="w-100">
+                    <AutoLayout columns={3} align="stretch" gap={24} className="w-100">
                         {parsedOffer.map((value, index) => (
                             <InfoCard key={index} iconSize="md" {...value} />
                         ))}

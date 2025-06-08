@@ -1,13 +1,13 @@
-import { FC, ReactNode } from 'react';
+import { ForwardedRef, forwardRef, ReactNode } from 'react';
 
 interface MainWrapperProps {
     children: ReactNode;
     className?: string;
 }
 
-const MainWrapper: FC<MainWrapperProps> = ({ children, className = '' }) => {
+const MainWrapper = forwardRef<HTMLDivElement, MainWrapperProps>(({ children, className = '' }, ref: ForwardedRef<HTMLDivElement>) => {
     return (
-        <section className={`pt-cs ${className}`.trim()}>
+        <section ref={ref} className={`pt-cs ${className}`.trim()}>
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
@@ -17,6 +17,6 @@ const MainWrapper: FC<MainWrapperProps> = ({ children, className = '' }) => {
             </div>
         </section>
     );
-};
+});
 
 export default MainWrapper;

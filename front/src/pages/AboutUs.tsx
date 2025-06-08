@@ -74,7 +74,7 @@ const impactsInNumbers = [
     },
     {
         icon: code,
-        count: 25,
+        count: 75,
         prefix: '+',
         title: 'Tech Stack Expertise'
     },
@@ -232,7 +232,7 @@ const AboutUs = () => {
                     <AutoLayout columns={isMobile ? 1 : 3} gap={32} align="stretch">
                         {
                             services?.map((value, index) => (
-                                <InfoCard {...value} onClick={()=>navigate(`/service/${value?.id}/${value?.url}`)} key={index} />
+                                <InfoCard {...value} onClick={()=>navigate(`/service/${value?.url}`)} key={index} />
                             ))
                         }
                     </AutoLayout>
