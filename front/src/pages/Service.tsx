@@ -17,9 +17,9 @@ import InfoCard from "../components/ui/Cards/InfoCard";
 import FlipCard from "../components/ui/Cards/FlipCard";
 import Tabs from "../components/ui/Tabs";
 import { detailedPageData } from "../constants/services";
-// import FeatureShowcase from "../components/ui/FeatureShowcase";
 import Timeline from "../components/ui/TimeLine/Timeline";
-
+import useResize from "../hooks/useResize";
+ 
 // Utility types
 // interface ParsedCardData {
 //     icon: string;
@@ -31,11 +31,11 @@ import Timeline from "../components/ui/TimeLine/Timeline";
 //     parsedChoose: ParsedCardData[];
 // }
 
-const ChooseUsComponent = ({ parsedChoose }: any) => (
+const ChooseUsComponent = ({ parsedChoose, isMobile }: any) => (
     <VStack align="start" justify="center">
-        <AutoLayout columns={3} gap={24} align="stretch" className="w-100">
+        <AutoLayout columns={isMobile ? 1 : 3} gap={isMobile ? 16 : 24} align="stretch" className="w-100">
             {parsedChoose.map((value: any, index: number) => (
-                <InfoCard key={index} iconSize="md" {...value} />
+                <InfoCard key={index} iconSize={isMobile ? 'sm' : "md"} {...value} />
             ))}
         </AutoLayout>
     </VStack>
@@ -50,6 +50,7 @@ const ProcessComponent = ({ parsedProcess }: any) => (
 const Service = () => {
     const { name } = useParams<{ name: string }>();
     const sectionRef = useRef<HTMLDivElement>(null);
+    const isMobile = useResize();
 
     if (!name) {
         return (
@@ -107,7 +108,7 @@ const Service = () => {
                                             borderRadius={0}
                                             imgStyle={{ objectFit: "cover" }}
                                             src={flip.icon}
-                                            style={{ height: "150px", width: "150px" }}
+                                            style={{ height: isMobile ? '120px' : "150px", width: isMobile ? '120px' : "150px" }}
                                             className="animate-float"
                                         />
                                     </Parallax>
@@ -115,7 +116,7 @@ const Service = () => {
                             }
                             back={
                                 <VStack align="center" justify="center" style={{ padding: "12px" }}>
-                                    <Typography variant="b4" align="center" family="p" color={getColor("purple", 100)}>
+                                    <Typography variant={isMobile ? "b5" : "b4"} align="center" family="p" color={getColor("purple", 100)}>
                                         {flip.content}
                                     </Typography>
                                 </VStack>
@@ -126,15 +127,15 @@ const Service = () => {
                             aspectRatio="1 / 1"
                             frontBg={getColor("overlay", 400)}
                             backBg={getColor("overlay", 400)}
-                            height="200px"
-                            width="200px"
+                            height={isMobile ? '160px' : "200px"}
+                            width={isMobile ? '160px' : "200px"}
                         />
 
                         {head?.map((text: any, index: number) => (
                             <Typography
                                 key={index}
                                 isGradient={index === 0}
-                                variant={index === 0 ? "xl" : "b2"}
+                                variant={index === 0 ? isMobile ? 'h2' : "xl" : isMobile ? "b3" : "b2"}
                                 align="center"
                                 family={index === 0 ? "jk" : "p"}
                                 color={getColor("purple", index === 0 ? 200 : 100)}
@@ -147,14 +148,12 @@ const Service = () => {
                 </ParallaxProvider>
             </MainWrapper>
 
-            {/* <FeatureShowcase iconSize="md" cards={parsedOffer} /> */}
-
             <MainWrapper>
                 <VStack align="start" justify="center">
-                    <Typography isHeading variant="h2" family="p" color={getColor("light")}>What We Offer</Typography>
-                    <AutoLayout columns={3} align="stretch" gap={24} className="w-100">
+                    <Typography isHeading variant={isMobile ? 'h3' : "h2"} family="p" color={getColor("light")}>What We Offer</Typography>
+                    <AutoLayout columns={isMobile ? 1 : 3} align="stretch" gap={24} className="w-100">
                         {parsedOffer.map((value, index) => (
-                            <InfoCard key={index} iconSize="md" {...value} />
+                            <InfoCard key={index} iconSize={isMobile ? 'sm' : "md"} {...value} />
                         ))}
                     </AutoLayout>
                 </VStack>
@@ -164,9 +163,9 @@ const Service = () => {
                 <VStack align='center' style={{width: '100%'}} justify='center'>
                     <Tabs
                         tabs={[
-                            { label: "Why Choose Us", content: <ChooseUsComponent parsedChoose={parsedChoose} /> },
+                            { label: "Why Choose Us", content: <ChooseUsComponent parsedChoose={parsedChoose} isMobile={isMobile} /> },
                             { label: "Our Process", content: <ProcessComponent parsedProcess={parsedProcess} /> },
-                            { label: "Technologies", content: <ChooseUsComponent parsedChoose={parsedChoose} /> },
+                            { label: "Technologies", content: <ChooseUsComponent parsedChoose={parsedChoose} isMobile={isMobile} /> },
                         ]}
                     />
                 </VStack>

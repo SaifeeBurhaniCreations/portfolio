@@ -133,13 +133,13 @@ const Home = () => {
             </MainWrapper> */}
 
             <MainWrapper>
-                <AutoLayout align="center" gap={44} custom="2-1">
+                <AutoLayout align="center" gap={44} order={isMobile ? [2, 1] : [1,2]} custom={isMobile ? '1' : '2-1'}>
                     <VStack align="start" justify="center" gap={24}>
-                        <Typography variant="b1" family="jk" color={getColor('purple', 300)}>
+                        <Typography variant={isMobile ? 'b3' : "b1"} family="jk" color={getColor('purple', 300)}>
                             full-stack. design-driven. scalable.
                         </Typography>
 
-                        <Typography variant="h1" style={{ fontWeight: 800 }} family="p" color={getColor('light')}>
+                        <Typography variant={isMobile ? 'h3' : 'h1'} style={{ fontWeight: 800 }} family="p" color={getColor('light')}>
                             Building powerful <span style={{ color: getColor('purple') }}>digital solutions</span> for modern businesses
                         </Typography>
 
@@ -156,9 +156,9 @@ const Home = () => {
                             </HoverButton>
                         </HStack>
                     </VStack>
-                    <VStack align='end' justify='end'>
-                        <div style={{height: '350px', position: 'relative'}}>
-                        <CustomImage src={play_button} style={{position: 'absolute', width: '80px', height: '80px', left: '-4%', bottom: '-4%'}} />
+                    <VStack align={isMobile ? 'center' : 'end'} justify={isMobile ? 'center' : 'end'}>
+                        <div style={{ height: isMobile ? '280px' : '350px', position: 'relative' }}>
+                        <CustomImage src={play_button} style={{position: 'absolute', width: isMobile ? '50px' : '80px', height: isMobile ? '50px' : '80px', left: '-4%', bottom: '-4%'}} />
                             <video
                                 src={project_into}
                                 width="100%"
@@ -176,7 +176,7 @@ const Home = () => {
             </MainWrapper>
 
             <MainWrapper>
-                <AutoLayout custom="3-1" className="position-rel">
+                <AutoLayout custom={isMobile ? '1' : "3-1"} order={isMobile ? [2, 1] : [1,2]} style={{overflowX: 'clip'}} className="position-rel">
                     <VStack justify='between' align='start' gap={isMobile ? 28 : 48}>
                         <VStack justify='center' align='start' gap={32}>
                             <Typography variant={isMobile ? 'h4' : 'h2'} family='p' style={{ fontWeight: 400 }} color={getColor('light')}>We design and develop digital experiences that feel as good as they look</Typography>
@@ -190,7 +190,7 @@ const Home = () => {
                     </VStack>
 
                     {isSplineReady && (
-                        <div style={{ width: '100%', height: '500px' }}>
+                        <div style={{ width: '100%', height: isMobile ? '200px' : '500px' }}>
                             {/* @ts-ignore */}
                             <spline-viewer 
                                 class='robot-3d'

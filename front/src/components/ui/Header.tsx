@@ -5,38 +5,38 @@ import Typography from "../typography/Typography";
 import CustomImage from "./CustomImage";
 import logo from "../../assets/images/svg/sbc.svg";
 import { NavLink } from "react-router-dom";
-import { inactiveTime } from "../../utils/common";
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
     const capsuleRef = useRef<HTMLDivElement>(null);
     const navLeftRef = useRef<HTMLDivElement>(null);
     const navRightRef = useRef<HTMLDivElement>(null);
-    const inactivityTimer = useRef<NodeJS.Timeout | null>(null);
+    const autoCloseTimer = useRef<NodeJS.Timeout | null>(null);
 
     const capsuleTl = useRef(gsap.timeline({ paused: true }));
     const navTl = useRef(gsap.timeline({ paused: true }));
-    const [isMobile, setIsMobile] = useState<boolean | null>(null);
+
+    const isCursorInside = useRef(false); // Track if cursor is inside
 
     useEffect(() => {
         const checkMobile = () => {
             setIsMobile(window.innerWidth <= 767);
         };
-    
-        checkMobile(); // Initial check
+        checkMobile();
         window.addEventListener("resize", checkMobile);
         return () => window.removeEventListener("resize", checkMobile);
     }, []);
-    
 
     useEffect(() => {
         if (
-            isMobile === null || // 👈 skip until isMobile is known
+            isMobile === null ||
             !capsuleRef.current ||
             !navLeftRef.current ||
             !navRightRef.current
         ) return;
-    
+
         capsuleTl.current = gsap.timeline({ paused: true }).to(
             capsuleRef.current,
             {
@@ -48,7 +48,7 @@ const Header = () => {
             },
             0
         ).reverse();
-    
+
         navTl.current = gsap.timeline({ paused: true }).to(
             [navLeftRef.current, navRightRef.current],
             {
@@ -60,45 +60,57 @@ const Header = () => {
                 stagger: 0.05,
             }
         ).reverse();
-    
-    }, [isMobile]); // 👈 Only run after isMobile is calculated
-    
+    }, [isMobile]);
 
     useEffect(() => {
         const onScroll = () => {
             setIsScrolled(window.scrollY > 0);
-            handleUserInteraction();
+            closeHeaderImmediately(); // Close instantly on scroll
         };
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    useEffect(() => {
-        const onMove = () => handleUserInteraction();
-        window.addEventListener("mousemove", onMove);
-        window.addEventListener("click", onMove);
-        return () => {
-            window.removeEventListener("mousemove", onMove);
-            window.removeEventListener("click", onMove);
-        };
-    }, []);
-
     const openHeader = () => {
         capsuleTl.current.play();
         navTl.current.play();
+        clearAutoCloseTimer();
     };
 
     const closeHeader = () => {
+        if (isCursorInside.current) return; // Don't close if cursor is inside
         navTl.current.reverse();
         capsuleTl.current.reverse();
     };
 
-    const handleUserInteraction = () => {
-        if (inactivityTimer.current) clearTimeout(inactivityTimer.current);
-        openHeader();
-        inactivityTimer.current = setTimeout(() => {
+    const closeHeaderImmediately = () => {
+        clearAutoCloseTimer();
+        navTl.current.reverse();
+        capsuleTl.current.reverse();
+    };
+
+    const clearAutoCloseTimer = () => {
+        if (autoCloseTimer.current) {
+            clearTimeout(autoCloseTimer.current);
+            autoCloseTimer.current = null;
+        }
+    };
+
+    const startAutoCloseTimer = () => {
+        clearAutoCloseTimer();
+        autoCloseTimer.current = setTimeout(() => {
             closeHeader();
-        }, inactiveTime); // Adjustable
+        }, 3000);
+    };
+
+    const handleMouseEnter = () => {
+        isCursorInside.current = true;
+        clearAutoCloseTimer();
+    };
+
+    const handleMouseLeave = () => {
+        isCursorInside.current = false;
+        startAutoCloseTimer();
     };
 
     const capsuleStyle: React.CSSProperties = {
@@ -145,6 +157,7 @@ const Header = () => {
         justifyContent: "center",
         alignItems: "center",
         background: "transparent",
+        cursor: "pointer",
     };
 
     return (
@@ -152,12 +165,21 @@ const Header = () => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
-                        <div ref={capsuleRef} style={capsuleStyle} onClick={handleUserInteraction}>
+                        <div
+                            ref={capsuleRef}
+                            style={capsuleStyle}
+                            onMouseEnter={handleMouseEnter}
+                            onMouseLeave={handleMouseLeave}
+                        >
                             {/* Left Nav */}
                             <div
                                 ref={navLeftRef}
                                 className="navlinks-left"
-                                style={{ ...navStyle, left: isMobile ? "4%" : "10%", transform: "translateX(-100%)" }}
+                                style={{
+                                    ...navStyle,
+                                    left: isMobile ? "4%" : "10%",
+                                    transform: "translateX(-100%)",
+                                }}
                             >
                                 <ul style={{ display: "flex", gap: isMobile ? '14px' : '24px' }}>
                                     <li>
@@ -173,16 +195,16 @@ const Header = () => {
                                 </ul>
                             </div>
 
-                            {/* Logo — Fixed and Centered */}
-                            <div style={logoWrapperStyle}>
+                            {/* Logo */}
+                            <div style={logoWrapperStyle} onMouseEnter={openHeader} onClick={openHeader}>
                                 <NavLink to={`/`}>
-                                <CustomImage
-                                    borderRadius={0}
-                                    onZoom={true}
-                                    src={logo}
-                                    style={{ justifyContent: "center", display: "flex" }}
-                                    imgStyle={{ objectFit: "contain", width: "100%" }}
-                                />
+                                    <CustomImage
+                                        borderRadius={0}
+                                        onZoom={true}
+                                        src={logo}
+                                        style={{ justifyContent: "center", display: "flex" }}
+                                        imgStyle={{ objectFit: "contain", width: "100%" }}
+                                    />
                                 </NavLink>
                             </div>
 
@@ -190,7 +212,11 @@ const Header = () => {
                             <div
                                 ref={navRightRef}
                                 className="navlinks-right"
-                                style={{ ...navStyle, right: isMobile ? "4%" : "8%", transform: "translateX(100%)" }}
+                                style={{
+                                    ...navStyle,
+                                    right: isMobile ? "4%" : "8%",
+                                    transform: "translateX(100%)",
+                                }}
                             >
                                 <ul style={{ display: "flex", gap: isMobile ? '14px' : '24px' }}>
                                     <li>
@@ -198,7 +224,9 @@ const Header = () => {
                                             <Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>Projects</Typography>
                                         </NavLink>
                                     </li>
-                                    <li><Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>Blogs</Typography></li>
+                                    <li>
+                                        <Typography variant={isMobile ? 'b5' : 'b2'} color={getColor("light")}>Blogs</Typography>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

@@ -10,6 +10,13 @@ import devops_v2 from '../assets/images/png/services/devops-v2.png'
 import seo_v2 from '../assets/images/png/services/seo-v2.png'
 import graphics_v2 from '../assets/images/png/services/graphics-v2.png'
 
+import modernframework from '../assets/images/jpg/whatwedo/modernframework.jpg'
+import easymaintenance from '../assets/images/jpg/whatwedo/easymaintenance.jpg'
+import performanceoptimized from '../assets/images/jpg/whatwedo/performanceoptimized.jpg'
+import responsivedesign from '../assets/images/jpg/whatwedo/responsivedesign.jpg'
+import scalablebackend from '../assets/images/jpg/whatwedo/scalablebackend.jpg'
+import securityfirst from '../assets/images/jpg/whatwedo/securityfirst.jpg'
+
 // Initial manual services
 export const serviceContent: ContentInfo[] = [
     {
@@ -145,32 +152,32 @@ export const detailedPageData = {
             'Transform your vision into stunning, high-performance web applications that engage users and drive business growth.'
         ],
         offer: [
-            'modernframework',
+            modernframework,
             'code',
             'Modern Framework',
             'React, Next.js, and TypeScript for robust applications',
             ';',
-            'performanceoptimized',
+            performanceoptimized,
             'light',
             'Performance Optimized',
             'Lightning-fast loading with SEO-friendly architecture',
             ';',
-            'responsivedesign',
+            responsivedesign,
             'responsive',
             'Responsive Design',
             'Perfect experience across all devices and screen sizes',
             ';',
-            'securityfirst',
+            securityfirst,
             'shield',
             'Security First',
             'Built with security best practices and data protection',
             ';',
-            'scalablebackend',
+            scalablebackend,
             'stack',
             'Scalable Backend',
             'Robust database solutions that grow with your business',
             ';',
-            'easymaintenance',
+            easymaintenance,
             'setting',
             'Easy Maintenance',
             'Clean code structure for easy updates and modifications'

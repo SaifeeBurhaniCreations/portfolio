@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { HStack } from "../layout/HStack";
 import Typography from "../typography/Typography";
 import { getColor } from "../../constants/colors";
+import useResize from "../../hooks/useResize";
 
 type Tab = {
     label: string;
@@ -17,6 +18,8 @@ interface TabsProps {
 const Tabs: React.FC<TabsProps> = ({ tabs, initialIndex = 0 }) => {
     const [active, setActive] = useState(initialIndex);
     const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+    const isMobile = useResize();
+
 
     // For animated glass glider
     const [indicatorProps, setIndicatorProps] = useState({ left: 0, width: 0 });
@@ -49,7 +52,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, initialIndex = 0 }) => {
                 aria-label="Tabs"
                 align="center"
                 justify="center"
-                gap={24}
+                gap={isMobile ? 0 : 24}
                 className="glass-radio-group"
                 style={{
                     background: getColor('overlay', 500),
@@ -70,7 +73,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, initialIndex = 0 }) => {
                         style={{
                             flex: 1,
                             minWidth: 80,
-                            padding: "0.8rem 1.6rem",
+                            padding: isMobile ? "0.8rem 1rem" : "0.8rem 1.6rem",
                             cursor: "pointer",
                             background: "none",
                             border: "none",
@@ -81,7 +84,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, initialIndex = 0 }) => {
                         }}
                     >
                         <Typography
-                            variant="b3"
+                            variant={isMobile ? "caption" : "b3"}
                             family="p"
                             color={active === idx ? "#ffffff" : "#e5e5e5"}
                             style={{ color: active === idx ? "#ffffff" : "#e5e5e5" }}

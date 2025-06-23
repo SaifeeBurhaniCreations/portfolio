@@ -8,6 +8,7 @@ import VStack from '../../layout/VStack';
 import Typography from '../../typography/Typography';
 import Verified from '../../icons/Verified';
 import { iconSizeMap, mapIcon } from '../../../utils/mapper';
+import useResize from '../../../hooks/useResize';
 
 interface InfoCardProps {
     title?: string;
@@ -35,6 +36,7 @@ const InfoCard: React.FC<InfoCardProps> = ({
     const sectionRef = useRef<HTMLDivElement>(null);
     const { isHovered, bindHoverEvents } = useHover({ id: index });
     const extractIcon = icon && icon in mapIcon ? mapIcon[icon] : undefined;
+    const isMobile = useResize()
 
     useEffect(() => {
         if (cardRef.current) {
@@ -133,15 +135,15 @@ const InfoCard: React.FC<InfoCardProps> = ({
                 ref={sectionRef}
                 align="start"
                 justify="center"
-                gap={24}
+                gap={isMobile ? 16 : 24}
             >
                 {title && (
-                    <Typography variant="b1" family="jk" color={getColor('light')}>
+                    <Typography variant={isMobile ? 'b2' : "b1"} family="jk" color={getColor('light')}>
                         {title}
                     </Typography>
                 )}
                 {content && (
-                    <Typography variant="b3" family="jk" color={getColor('purple', 100)}>
+                    <Typography variant={isMobile ? 'b4' : "b3"} family="jk" color={getColor('purple', 100)}>
                         {content}
                     </Typography>
                 )}

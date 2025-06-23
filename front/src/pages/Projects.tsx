@@ -22,6 +22,7 @@ import work_img_4 from "../assets/images/png/work-4.png"
 import ProjectsGrid from "../components/ui/ProjectsGrid"
 import StackCard from "../components/ui/Cards/StackCard"
 import CustomCard from "../components/ui/Cards/CustomCard"
+import SplitCarousel from "../components/ui/Carousel/SplitCarousel"
 
 
 const featuredProjects = [
@@ -101,6 +102,38 @@ const Projects = () => {
     }, [])
 
     useScrollToTop();
+
+    const carouselItems = [
+        {
+            id: 'iceland',
+            title: 'ICELAND',
+            region: 'EUROPE',
+            content: '“As I flew north to begin my third circuit of Iceland in four years, I was slightly anxious. The number of visitors to Iceland has doubled in that period, and I feared this might mean a little less magic to go around. At the end of this trip, 6000km later, I\'m thrilled to report that the magic levels remain high. It\'s found in glorious football victories and Viking chants, kayaking among icebergs, sitting with puffins under the midnight sun and crunching across brand-new lava fields.”',
+            author: 'Carolyn Bain',
+            image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/215059/iceland.jpg',
+            backgroundColor: '#27323c'
+        },
+        {
+            id: 'china',
+            title: 'CHINA',
+            region: 'ASIA',
+            content: '“Its modern face is dazzling, but China is no one-trick pony. The world\'s oldest continuous civilisation isn\'t all smoked glass and brushed aluminium and while you won\'t be tripping over artefacts – three decades of round-the-clock development and rash town-planning have taken their toll – rich seams of antiquity await.”',
+            author: 'Damian Harper',
+            image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/215059/china.jpg',
+            backgroundColor: '#19304a'
+        },
+        {
+            id: 'china',
+            title: 'CHINA',
+            region: 'ASIA',
+            content: '“Its modern face is dazzling, but China is no one-trick pony. The world\'s oldest continuous civilisation isn\'t all smoked glass and brushed aluminium and while you won\'t be tripping over artefacts – three decades of round-the-clock development and rash town-planning have taken their toll – rich seams of antiquity await.”',
+            author: 'Damian Harper',
+            image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/215059/china.jpg',
+            backgroundColor: '#19304a'
+        },
+        // Add more items as needed
+    ];
+
     return (
         <>
             <MainWrapper>
@@ -116,6 +149,15 @@ const Projects = () => {
                         Explore our portfolio of innovative digital solutions crafted with precision and passion
                     </Typography>
                 </VStack>
+            </MainWrapper>
+
+            <MainWrapper>
+                    <SplitCarousel
+                        items={carouselItems}
+                        spinDuration={1000}
+                        autoSlide={true} // or false to disable
+                        autoSlideInterval={5000}
+                    />
             </MainWrapper>
 
             <MainWrapper>

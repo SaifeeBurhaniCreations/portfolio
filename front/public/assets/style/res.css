@@ -3,10 +3,38 @@
     body {
         overflow-x: hidden;
     }
+    .pt-cs{
+        padding-top: 100px;
+    }
 
     .footer {
-        padding: 40px 20px;
+        padding: 40px 20px !important;
         /* min-height: 400px; */
-        margin-top: 120px;
+        margin-top: 120px !important;
+    }
+    .robot-3d {
+        position: absolute;
+        top: -160px !important;
+        right: -45% !important;
+        height: 70% !important;
+        width: 180% !important;
+    }
+
+    
+    #cards-cs {
+        width: 90vw !important;
+    }
+    .card-cs {
+        width: 90vw !important;
+        top: 2vh !important;
+    }
+    .icon-badge {
+        height: 50px !important;
+        width: 50px !important;
+        padding: 0 !important;
+    }
+    .misson-vision-card {
+        padding: 20px 20px !important;
+        height: 95vh !important;
     }
 }

@@ -107,22 +107,24 @@ const contentInfo: ContentInfo[] = [
 type CardProps = ContentInfo & { index?: number };
 
 const Card: React.FC<CardProps> = ({ title, icon, content, points }) => {
+
+    const isMobile = useResize()
     
     return (
-        <VStack align='center' justify='center' gap={24} className='misson-vision-card w-100' style={{ background: getColor('overlay', 400), border: `1px solid ${getColor("purple", 300, 0.6)}` }}>
-            <div className="icon-badge" style={{ background: getColor('purple', 500, 0.4) }}>
-                <CustomImage borderRadius={0} src={icon!} />
-            </div>
-            <Typography isAnimate variant="h2" family="p" color={getColor('light')}>
+        <VStack align='center' justify='center' gap={isMobile ? 16 : 24} className='misson-vision-card w-100' style={{ background: getColor('overlay', 400), border: `1px solid ${getColor("purple", 300, 0.6)}` }}>
+            <HStack className="icon-badge" align="center" justify="center" style={{ background: getColor('purple', 500, 0.4) }}>
+                <CustomImage borderRadius={0} height={isMobile ? 30 : 60} width={isMobile ? 30 : 60} src={icon!} />
+            </HStack>
+            <Typography isAnimate variant={isMobile ? 'h3' : "h2"} family="p" color={getColor('light')}>
                 {title}
             </Typography>
-            <Typography isAnimate align="center" variant="b3" family="jk" color={getColor('purple', 100)}>
+            <Typography isAnimate align="center" variant={isMobile ? 'b4' : "b3"} family="jk" color={getColor('purple', 100)}>
                 {content}
             </Typography>
-            <HStack align="center" justify="center" gap={24}>
+            <HStack align="center" direction={isMobile ? 'column' : 'row'} justify="center" gap={isMobile ? 16 : 24}>
                 {
                     points?.map((value, index) => (
-                        <PageTitleBadge key={index} bg={getColor('purple', 700)} color={getColor('purple', 200)} badge={false}>
+                        <PageTitleBadge size={isMobile ? 'xs' : 'md'} key={index} bg={getColor('purple', 700)} color={getColor('purple', 200)} badge={false}>
                             <Verified color={getColor('purple', 200)} size={24} /> {value}
                         </PageTitleBadge>
                     ))
@@ -170,17 +172,17 @@ const AboutUs = () => {
 
             <MainWrapper>
                 <VStack align='center' justify='center' gap={32} className='w-100 p-5' style={{ background: getColor('purple', 600, 0.6), border: `1px solid ${getColor("purple", 300, 0.8)}`, borderRadius: '16px' }}>
-                    <Typography variant="h2" family="p" color={getColor('light')}>
+                    <Typography variant={isMobile ? 'h3' : "h2"} family="p" color={getColor('light')}>
                         Our Impact in Numbers
                     </Typography>
-                    <AutoLayout columns={4} align='start' className="w-100">
+                    <AutoLayout columns={isMobile ? 2 : 4} align='start' className="w-100">
                         {impactsInNumbers.map((item, idx) => (
                             <VStack key={idx} align="center" justify="center" gap={isMobile ? 12 : 8}>
                                 <CustomImage borderRadius={0} src={item.icon} />
-                                <Typography variant="h2" family="p" color={getColor('light')}>
+                                <Typography variant={isMobile ? 'h3' : "h2"} family="p" color={getColor('light')}>
                                     <CountUp end={item.count} prefix={item.prefix} />
                                 </Typography>
-                                <Typography variant="b4" family="jk" color={getColor('purple', 100)}>
+                                <Typography variant={isMobile ? 'b5' : "b4"} family="jk" color={getColor('purple', 100)}>
                                     {item.title}
                                 </Typography>
                             </VStack>

@@ -19,7 +19,7 @@ const OurStorySection = () => {
     return (
         <ParallaxProvider>
             <MainWrapper>
-                <HStack align='center' justify='center' gap={24}>
+                <HStack align='center' direction={isMobile ? 'column' : 'row'} justify='center' gap={24}>
                     <FlipCard
                         front={
                                 <Parallax speed={-8}>
@@ -28,17 +28,18 @@ const OurStorySection = () => {
                             }
                             back={
                                 <VStack gap={16}>
-                                    <Typography align="center" variant="b4" family="p" color="#f3e8ff">
+                                    <Typography align="center" variant={isMobile ? 'b6' : "b4"} family="p" color="#f3e8ff">
                                         👋 Hello from SBC
                                     </Typography>
-                                    <Typography align="center" variant="b4" family="p" color="#f3e8ff">
+                                    <Typography align="center" variant={isMobile ? 'b6' : "b4"} family="p" color="#f3e8ff">
                                         We're the makers of Safiee Burhani Creations. Clean code, clear purpose, strong delivery — that's what we stand for.
                                     </Typography>
-                                    <Typography align="center" variant="b4" family="p" style={{ fontWeight: 500 }} color="#f3e8ff">
+                                    <Typography align="center" variant={isMobile ? 'b6' : "b4"} family="p" style={{ fontWeight: 500 }} color="#f3e8ff">
                                         💬 Fun Fact: SBC started with two laptops & a dream.
                                     </Typography>
                                 </VStack>
                             }
+                            width={isMobile ? '280px' : '400px'}
                             className='cursor-pointer'
                             radius="50%"
                             aspectRatio="1 / 1"
@@ -50,10 +51,10 @@ const OurStorySection = () => {
                             Our Story
                         </Typography>
                         <VStack align='center' justify='center' gap={16}>
-                            <Typography variant='b3' family='jk' color={getColor('purple', 100)}>
+                            <Typography variant={isMobile ? 'b4' : 'b3'} family='jk' color={getColor('purple', 100)}>
                                 Founded with a vision to bridge the gap between innovative technology and meaningful user experiences, Saifee Burhani Creations has evolved from a passionate idea into a full-service digital powerhouse.
                             </Typography>
-                            <Typography variant='b3' family='jk' color={getColor('purple', 100)}>
+                            <Typography variant={isMobile ? 'b4' : 'b3'} family='jk' color={getColor('purple', 100)}>
                                 We believe that exceptional digital products emerge from the perfect synthesis of creativity, technology, and deep understanding of human behavior. Our multidisciplinary team combines diverse expertise to create solutions that don't just look stunning—they drive tangible business results and create lasting impact.
                             </Typography>
                         </VStack>
