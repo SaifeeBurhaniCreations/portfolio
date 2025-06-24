@@ -130,7 +130,7 @@
 
 
 /* Accordion Content */
-.content {
+.accordian-content {
   overflow: hidden;
   will-change: height;
   transition: none; /* Controlled via JS */

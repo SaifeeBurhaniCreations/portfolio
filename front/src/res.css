@@ -1,0 +1,43 @@
+@media screen and (max-width: 767px) {
+
+    body {
+        overflow-x: hidden;
+    }
+    .pt-cs{
+        padding-top: 100px;
+    }
+
+    .footer {
+        padding: 40px 20px;
+        /* min-height: 400px; */
+        margin-top: 120px;
+    }
+    .robot-3d {
+        position: absolute;
+        top: -160px;
+        right: -45%;
+        height: 70%;
+        width: 180%;
+    }
+
+    
+    #cards-cs {
+        width: 90vw;
+    }
+    .card-cs {
+        width: 90vw;
+        top: 2vh;
+    }
+    .icon-badge {
+        height: 50px;
+        width: 50px;
+        padding: 0;
+    }
+    .misson-vision-card {
+        padding: 20px 20px;
+        height: 95vh;
+    }
+    .glass-radio-group{
+        width: 100%;
+    }
+}

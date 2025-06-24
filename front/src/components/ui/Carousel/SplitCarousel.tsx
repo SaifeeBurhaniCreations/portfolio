@@ -154,7 +154,7 @@ const Carousel: React.FC<CarouselProps> = ({
                                     className={`spinner__face__left ${isActive ? 'js-active' : ''} ${isNext ? 'js-next' : ''}`}
                                     data-bg={bg}
                                 >
-                                    <div className="content" data-type={index}>
+                                    <div className="carousel-content" data-type={index}>
                                         <div
                                             className={`content__left${isNext && isAnimating ? ' split-anim-left' : ''}`}
                                             style={{ backgroundImage: `url(${item.image})` }}
@@ -180,7 +180,7 @@ const Carousel: React.FC<CarouselProps> = ({
                                     className={`spinner__face__right ${isActive ? 'js-active' : ''} ${isNext ? 'js-next' : ''}`}
                                     data-bg={bg}
                                 >
-                                    <div className="content" data-type={index}>
+                                    <div className="carousel-content" data-type={index}>
                                         <div
                                             className={`content__right${isNext && isAnimating ? ' split-anim-right' : ''}`}
                                             style={{ backgroundColor: getColor('purple', 600) }}

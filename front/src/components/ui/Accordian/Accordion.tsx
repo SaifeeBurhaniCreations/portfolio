@@ -223,7 +223,7 @@ const Accordion: React.FC<AccordionProps> = ({ items, title, className = '' }) =
               </span>
             </div>
             <div
-              className="content"
+              className="accordian-content"
               ref={el => {
                 if (el !== null) {
                   contentRefs.current[item.id] = el;
