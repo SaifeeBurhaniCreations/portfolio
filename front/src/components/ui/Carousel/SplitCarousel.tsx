@@ -12,7 +12,7 @@ interface CarouselItem {
 
 interface CarouselProps {
     items: CarouselItem[];
-    bg: string;
+    bg?: string;
     spinDuration?: number;
     autoSlide?: boolean;
     autoSlideInterval?: number; // in ms
